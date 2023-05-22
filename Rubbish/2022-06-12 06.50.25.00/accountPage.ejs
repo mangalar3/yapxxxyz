@@ -1,0 +1,113 @@
+<div class="content">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>IG Priv</h1>
+          </div>
+  
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+  
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3">
+  
+            <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle" src=#"
+                    alt="User profile picture">
+                </div>
+  
+                <h3 class="profile-username text-center">
+                  <%- gelenUser.name %>
+                </h3>
+  
+                <p class="text-muted text-center">@<%- userDetail.iUsername %></p>
+               
+                <p class="text-muted text-center"><a href="/logout" title="Çıkış Yap"><font class="text-muted text-center" size="2">Çıkış Yap</font></a></p>
+  
+                <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item">
+                    <b>Takipçi</b> <a class="float-right">
+                     SONRA
+                    </a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Takip Ettiği</b> <a class="float-right">
+                      SONRA
+                    </a>
+                  </li>
+                
+                  <!--    <li class="list-group-item">
+                  <b>Profil Görüntülenmesi</b> <a class="float-right">3,287</a>
+                </li> -->
+                </ul>
+  
+  
+              </div>
+   
+  
+            </div>
+            <center>
+              <input type="checkbox" class="checkbox" id="chk">
+              <label class="label" for="chk">
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <i class="fas fa-moon" aria-hidden="true"></i>
+                <div class="ball"></div>
+              </label>
+            </center>
+            <center>
+              <div id="google_translate_element"></div>
+              <script type="text/javascript">
+                function googleTranslateElementInit() {
+                  new google.translate.TranslateElement({ pageLanguage: 'tr' }, 'google_translate_element');
+                }
+              </script>
+            </center>
+  
+  
+          </div>
+  
+          <div class="col-md-9">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="#profile" data-toggle="tab">Profil</a></li>
+  
+                </ul>
+              </div>
+  
+              <div class="card-body">
+                <form action="/accounts" method="post" class="form-horizontal">
+                  <div class="input-group input-group-sm mb-0">
+                    <input name="tweetID" class="form-control form-control-sm" placeholder="Neler oluyor?">
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-danger">Tweetle</button>
+                    </div>
+                  </div>
+                </form>
+                <hr>
+  
+                <div class="tab-content">
+  
+                  <div class="tab-pane active" id="profile">
+  
+                  
+                    </div>
+                  </div>
+                </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  
+  
+    </section>
+  
+<%- userDetail.iUsername %> 

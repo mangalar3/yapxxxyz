@@ -1,0 +1,281 @@
+<style>
+  
+select {
+
+/* styling */
+background-color: white;
+border: thin solid #fed700;
+border-radius: 4px;
+display: inline-block;
+font: inherit;
+line-height: 1.5em;
+padding: 0.5em 3.5em 0.5em 1em;
+
+/* reset */
+
+margin: 0;      
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+
+
+/* arrows */
+
+select.classic {
+background-image:
+linear-gradient(45deg, transparent 50%, blue 50%),
+linear-gradient(135deg, blue 50%, transparent 50%),
+linear-gradient(to right, skyblue, skyblue);
+background-position:
+calc(100% - 20px) calc(1em + 2px),
+calc(100% - 15px) calc(1em + 2px),
+100% 0;
+background-size:
+5px 5px,
+5px 5px,
+2.5em 2.5em;
+background-repeat: no-repeat;
+}
+
+select.classic:focus {
+background-image:
+linear-gradient(45deg, white 50%, transparent 50%),
+linear-gradient(135deg, transparent 50%, white 50%),
+linear-gradient(to right, gray, gray);
+background-position:
+calc(100% - 15px) 1em,
+calc(100% - 20px) 1em,
+100% 0;
+background-size:
+5px 5px,
+5px 5px,
+2.5em 2.5em;
+background-repeat: no-repeat;
+border-color: grey;
+outline: 0;
+}
+  
+</style>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+<div class="row flex-lg-nowrap">
+</div>
+
+<div class="col">
+  <div class="row">
+    <div class="col mb-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="e-profile">
+            <div class="row">
+             
+                  <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                      <div class="text-center text-sm-left mb-2 mb-sm-0" >
+                        <span>Dükkan: <span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 15px;"> <%-myacc[0].dukkanadi%></span> </span>
+                        
+                        <div class="mt-2">
+                        </div>
+                      </div>
+                      <div class="text-center text-sm-right">
+                      </div>
+                    </div>
+              
+              
+            </div>
+            <div class="container">
+
+              <form id="urunara" action="/urungetirv2" method="post" enctype="application/x-www-form-urlencoded">
+              <div class="row" style="background: #F0F1F6; margin-top: 20px;">
+                <div class="col-md-3">
+                  <div style=" padding: 10px;">
+                    <div style="color: gray; font-size: 18px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding: 10px;">Ürün Adı</div>
+                    <div class="input-group mb-3">
+                      
+                      <input name="aranan" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </div>
+          
+                </div>
+                <div class="col-md-3">
+                  <div style=" padding: 10px;">
+                    <div style="color: gray; font-size: 18px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding: 10px;">Ürün Markası</div>
+                    <div class="input-group mb-3">
+                      
+                      <input name="brand" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                  </div>
+          
+                </div>
+                <div class="col-md-3">
+          
+                </div>
+                <div class="col-md-3">
+                  <div style=" padding: 30px;  text-align: center;">
+                  
+                    <button type="submit" class="btn btn-primary btn-lg" style="border-radius: 0;">Ürünü Ara</button>
+                  </div>
+          
+                </div>
+          
+              </div>
+            </form>
+                <form action="/urunbul" method="post">
+                  <div class="row" style="background: #F0F1F6; margin-top: 0px;">
+                <div class="col-md-3">
+                  <div style=" padding: 10px;">
+                    <div style="color: gray; font-size: 18px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding: 10px;">Ana Kategori Adı</div>
+                    <div class="input-group mb-3">
+                      <select name="subject" id="subject" class="form-select" style="border: none;">
+                        <option value="" selected="selected">Kategori Seçiniz!</option>
+                      </select>
+                    </div>
+                  </div>
+          
+                </div>
+                <div class="col-md-3">
+                  <div style=" padding: 10px;">
+                    
+                    <div style="color: gray; font-size: 18px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding: 10px;">Alt Kategori Adı</div>
+                    <div class="input-group mb-3">
+                      <select name="topic" id="topic" class="form-select" style="border: none;">
+                        <option value="" selected="selected">Önce Kategori Seçiniz!</option>
+                      </select>
+                    </div>
+                  </div>
+          
+                </div>
+                <div class="col-md-3">
+                  <div style=" padding: 10px;">
+                    <div style="color: gray; font-size: 18px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; padding: 10px;">Cins</div>
+                    <div class="input-group mb-3">
+                      <select name="chapter" id="chapter" class="form-select" style="border: none;">
+                        <option value="" selected="selected">Alt Kategori Seçiniz!</option>
+                      </select>
+                    </div>
+                  </div>
+          
+                </div>
+                <div class="col-md-3">
+                  <div style=" padding: 30px;  text-align: center;">
+                  
+                    <button class="btn btn-primary btn-lg" type="submit" id="singlebutton" name="singlebutton" style="border-radius: 0;">Kategori Ara</button>
+                  </div>
+          
+                </div>
+              </div>
+              </form>
+      </div>
+          
+          
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+
+<script>
+  var subjectObject = {
+    "Kaba & İnce Yapı": {
+      "Demir Grubu": ["İnce Demir(Q8-Q10)", "Kalın Demir(Q12-Q30)", "Çelik Hasır", "Kangal Demir","Çivi ve Tel",],
+      "Beton Grubu": ["GRO Beton(C16-C24)", "C30 Beton", "C35 Beton", "C40 Beton","Hazır Sıva"],
+      "Dolgu Malzemeleri" : ['Mıcır', 'Toprak', 'Moloz', 'Cüruf' ],   
+      "Yalıtım Malzemeleri" : ['Temel Yalıtım Malzemeleri', 'Çatı Yalıtım Malzemeleri', 'Cephe Yalıtım Malzemeleri', 'Islak Zemin Yalıtım Malzemeleri ','Ses Yalıtım Malzemeleri'],
+      "Tuğla ve Blok Ürünleri" : ['Tuğla(8.5-10-13.5)','GazBeton','Bims','İzoTuğla','Yığma Tuğla'],
+      "Çatı Malzemeleri"  : ['Kiremit Grubu','Sac Grubu','Sandvic Panel Grubu','Şıngıl Çatı Grubu','Beton Kiremit Grubu','OSB Plaka',],
+      "Sıva ve Harç Malzemeleri": ['Çimento','Kireç','Kum','Brüt Beton Astarı','Hazır Sıva','Grout Harcı',],
+      "Alçı ve Alçıpan Grubu": ['Makine Sıva Alçısı','El Sıva Alçsı(Perlitli)','Saten Alçısı','Kartonpiyer Alçısı','Ders Dolgu Alçısı','Alçıpan','OSB Plaka'],
+      "Asma Tavan Grubu" : ['Metal Asma Tavan(CLIP-IN)','Karolam Asma Tavan','Taş Yünü Asma Tavan','Gergi Tavan','Dekoratif Tavan'],
+      "Boya Grubu" :  ['İç Cephe Boyası','Dış Cephe Boyası','Tavan Boyası','Ahşap Boyası','Metal Boyası'],
+      "Cephe Kaplama Ürünleri" :  ['Betopan Plaka','Dış Cephe Plakası','Kompozit Kaplama','Doğal Taş Kaplama'],
+      "Mantolama Ürünleri" : ['Hazır Söve Ürünleri','Dübelli EPS Kaplama','Dübelli XPS Kaplama','Dübelli Taş Yünü Kaplama','Mantolama Yapıştırıcısı Harcı'],
+
+      //burası bitti//
+
+    },
+    "Mobilya ve PVC Doğrama ": {
+      "İç Mekan Kapı Grubu": ["Lake Kapı", "PVC Kapı", "Amerikan Kapı"],
+      "İç Mekan Mobilya Grubu": ["Vestiyerler", "Mutfak Dolapları", "Banyo Dolapları","Gardıroplar"],
+      "Dış Cephe Kaplama Grubu": ["Dış Cephe Kaplama Grubu", ],
+      "Zemin Kaplama ve Parke Grubu": ["Laminant Parke", "Masif Parke", "Lamine Parke","PVC Zemin Kaplama"],
+      "Kapı Pencere Doğramaları": ["Çelik Kapılar", "Alüminyum Kapı-Pencereler", "Demir Kapılar","PVC Kapı-Pencereler","Menfez ve Müdahele Kapakları","Havalandırma Kapakları",],
+      "Korkuluklar": ["Demir Korkuluklar", "Alüminyum Korkuluklar", "Cam Korkuluklar","Ahşap Korkuluklar",],
+      "Açılır Kapanır Sistemler": ["Garaj Kapıları", "Açılır Kapanır Pergule", "Otomatik Panjur","Otomatik ve Fotoselli Kapılar","Otomatik Bahçe Kapısı",],
+      "Cam Grubu": ["Saydam ve Yarı Saydam Cam", "Renkli Cam", "Reflekte Cam","Isı Cam"],
+//burası da bitti//
+    },
+
+    "Peyzaj ve Mermer Grubu": {
+      "Havuz Sistemleri": ["Yüzme Havuzları", "Süs Havuzları", "Sulama Havuzları","Prefabrik Havuzlar"],
+      "Bitki Grubu": ["Ağaç Grubu", "Çim Grubu", "Süs Bitkileri","Saksı Bitkileri","Dekoratif Bitkiler"],
+      "Çit ve Bahçe Sistemleri": ["Sulama Sistemleri", "Panel Çitler", "Telli Çit Çeşitleri","Dekoratif Çit Çeşitleri","Ahşap Çit Çeşitleri"],
+      "Doğal Taş ve Mermerler": ["Mermerit", "Koryan", "Çimstone","Doğal Mermer","Granit","Porselen"],
+      //burası da bitti//
+    },
+    "Genel Hizmetler": {
+      "İş Makineleri": ["Hafriyat Araçları", "Taşıma Araçları", "Yük Asansörleri","Cephe İskeleti Sistemleri"],
+      "Nakliye": ["Traktör Nakliyesi", "Kamyon Nakliyesi", "Tır Nakliyesi"],
+      "İş Güvenliği": ["İş Güvenliği Ekipmanları", "Uyarı Levhaları", "İş Güvenliği Firmaları","Şantiye Güvenliği","Saha Güvenliği Ekipmanları"],
+      "Yemek Hizmetleri": ["Yemek Firmaları", ],
+      "Temizlik Hizmetleri": ["Şantiye Temizliği", "Bina Temizliği", ""],
+      "Hammaliye": ["Günlük Beden İşçisi", "Yük Taşıma", ],
+      //burası da bitti//
+
+    },
+    "Elektrik ve Su Tesisatı": {
+      "Temiz ve Pis Su Malzemeleri": ["PPRC Boruları", "PPRC Ek Parçaları", "PN Boru Grubu","PVC Pis Su Boruları","PVC Pis Su Ek Parçaları","Altyapı Boru Grubu","Süzgeçler"],
+      "Isıtma ve Soğutma Sistemleri": ["Kombiler", "Radyatörler", "Kazanlar","Yerden Isıtma Malzemeleri","Isı Pompaları","Şömine ve Aksesuarları","Klimalar","Şofbenler"],
+      "Vitrifiye ve Armatürler": ["Lavabolar", "Pisuar ve Hela Taşları", "Klozet ve Kapakları","Bataryalar","Duşakabin,Jakuzi ve Küvet","Banyo Aksesuarları"],
+      "Kablo ve Priz Grubu": ["Besleme Kabloları", "TV Kabloları", "Zayıf Akım Kabloları","Priz ve Anahtar Grubu"],
+      "Sigorta ve Pano Grubu": ["Kaçak Akım Grubu", "Şalter Grubu", "Sigorta Grubu","Kombinasyon Kutuları","Sigorta Kutusu","Pano Malzemeleri"],
+      "TV ve Uydu Sistemleri": ["TV ve Uydu Sistemleri", ],
+      "Aydınlatma Grubu": ["Avizeler", "Aplikler", "Bahçe Aydınlatmaları","Cephe Aydınlatmaları","Ampul Led ve Spotlar"],
+      "Güvenlik Sistemleri": ["Diyafon ve Zil Sistemler","Kamera Sistemleri","Alarm Sistemleri","Yangın Uyarı Sistemleri"],
+      "Paratoner ve Topraklama Sistemleri": ["Paratoner ve Topraklama Sistemleri",],
+      "Mekanik Elektrik Sistemleri": ["Asansör ve Ekipmanları", "Güneş Enerjisi Sistemleri", "Mekanik Havalandırma Sistemleri","Jenaratörler"],
+    },
+//burası da bitti//
+
+    "Hırdavat ve Nalbur Grubu": {
+      "El Aletleri": ["Mekanik El Aletleri", "Elektrikli El Aletleri", "Kaynak Makineleri ve Aksesuarları"],
+      "Vida ve Civata Grubu": ["Vidalar", "Civatalar", "Somun Grubu","Guon ve Rot Grubu","Dübel Grubu","Bağlantı Elemanları"], 
+      "Sulama Ekipmanları": ["Su Hortumları", "Fıskiyeler", "Vana ve Musluklar"],
+      "Silikon ve Mastikler": ["Silikonlar", "Mastikler", "Yapıştırıcı ve Bantlar","Ekopsi Yapıştırıcı Grubu"],
+      "Kapı ve Pencere Aksesuarları": ["Kapı ve Pencere Kolları", "Kilit Sistemleri", "Mobilya Kulpları","Menteşeler"],
+      "Hırdavat": ["Ölçü Aletleri", "Merdivenler", "Takım Çanta ve Dolapları","İnşaat Makineleri"],
+    },//burası da bitti//
+  
+  }
+  window.onload = function() {
+    var subjectSel = document.getElementById("subject");
+    var topicSel = document.getElementById("topic");
+    var chapterSel = document.getElementById("chapter");
+    for (var x in subjectObject) {
+      subjectSel.options[subjectSel.options.length] = new Option(x, x);
+    }
+    subjectSel.onchange = function() {
+      //empty Chapters- and Topics- dropdowns
+      chapterSel.length = 1;
+      topicSel.length = 1;
+      //display correct values
+      for (var y in subjectObject[this.value]) {
+        topicSel.options[topicSel.options.length] = new Option(y, y);
+      }
+    }
+    topicSel.onchange = function() {
+      //empty Chapters dropdown
+      chapterSel.length = 1;
+      //display correct values
+      var z = subjectObject[subjectSel.value][this.value];
+      for (var i = 0; i < z.length; i++) {
+        chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+      }
+    }
+  }
+</script>
+<!-- ========== END FOOTER ========== -->

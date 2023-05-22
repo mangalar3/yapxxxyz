@@ -1,0 +1,586 @@
+<% test1.forEach(Product => { %>
+    <title>Yapx | <%-Product.split(':')[1] %> </title>
+    <% }) %>
+<body>
+ <!-- ========== MAIN CONTENT ========== -->
+        <main id="content" role="main">
+            <!-- breadcrumb -->
+            <div class="bg-gray-13 bg-md-transparent">
+                <div class="container">
+                    <!-- breadcrumb -->
+                    <div class="my-md-3">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-3 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
+                                <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1"><a href="/">Yapx</a></li>
+                                <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active" aria-current="page"><%-test1[0].split(':')[1] %> </li>
+                                <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active" aria-current="page"><%-test1[0].split(':')[0] %></li>
+                                
+                            </ol>
+                        </nav>
+                    </div>
+                    <!-- End breadcrumb -->
+                </div>
+            </div>
+            <!-- End breadcrumb -->
+
+            <div class="container">
+                <div class="row">
+                    <div class="d-xl-block col-xl-3 col-wd-2gdot5">
+                        <div class="mb-8 border border-width-2 border-color-3 borders-radius-6">
+                            <!-- List -->
+                            <a class="u-header-collapse__submenu-nav-link u-header-collapse__nav-pointer  " href="javascript:;" data-target="#headerSidebarPages-Kate-Collapse" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="headerSidebarPagesCollapse" style="font-size: medium; font-weight: bold; color: black; border:none; margin-left: 10px; padding-right: 10%; ">Kategoriler</a>
+                            <div id="headerSidebarPages-Kate-Collapse" class="collapse " data-parent="#headerSidebarPagesCollapse" >
+                                <ul id="sidebarNav" class="list-unstyled mb-0 sidebar-navbar d-sm-block">
+                                    <li>
+    
+                                        <% test1.forEach(Product => { %>
+                                            <a class="dropdown-current active" href="/<% if(test1[0].split(':')[0]==test1[0].split(':')[1]){ %>anakategori<% } else{ %>kategori<% } %>/<%-Product.split(':')[1] %>"><%-Product.split(':')[1] %></a>
+                                            <% }) %>
+    
+                                        <ul class="list-unstyled dropdown-list">
+                                            <!-- Menu List -->
+                                            <% filteredkategorilist.forEach(Product => { %>
+                                                <li><a class="dropdown-item" href="/<% if(test1[0].split(':')[0]==test1[0].split(':')[1] && test1[0].split(':')[0]==test1[0].split(':')[2] ){ %>kategori<% } else{ %>kategoriler<% } %>/<%-Product.split(':')[0] %>"><%-Product.split(':')[0] %> <span class="text-gray-25 font-size-12 font-weight-normal"> (<%-Product.split(':')[1] %>)</span></a></li>
+                                            <% }) %>
+                                            <!-- End Menu List -->
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            
+                            <!-- End List -->
+                        </div>
+                        <div class="border-bottom border-color-1 mb-5">
+                            <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Filtrele</h3>
+                        </div>
+                        <ul class="list-unstyled">
+                            <div class="panel-body" style="background-color: #ffffff;">
+                                <form action="/filtre" method="post" role="form product-form">
+                                    <div class="form-group">
+                                        <form role="form product-form">
+                                            
+                                                <a class="u-header-collapse__submenu-nav-link u-header-collapse__nav-pointer card-header" href="javascript:;" data-target="#headerSidebarPages-Filtre-Collapse" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="headerSidebarPagesCollapse" style="padding: 10px; font-weight: bold;">Marka</a>
+                                                
+                                                <div id="headerSidebarPages-Filtre-Collapse" style="background-color: #f4f4f4;">
+                                                    <div class="filtreicin resize-on-mobile" style="overflow-y: scroll; ">
+                                                        <form id="Brands" class="form-deneme" action="/filtre" method="post" role="form product-form">
+                                                            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                                                                <div class="card-body">
+                                                                    <form action="/filtre" method="post" role="form product-form">
+                                                                        <% BrandList.forEach(Product => { %>
+                                                                            <div class="input-group mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                    <div class="input-group-text">
+                                                                                        <input type="checkbox" id="brand-filter" value="<%-Product %>" aria-label="Checkbox for following text input">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <p type="text" class="form-control card-text" aria-label="Text input with checkbox">
+                                                                                    <%-Product.split(':')[0] %>
+                                                                                    <span class="badge badge-primary badge-pill" style="float: right; justify-content: center;">
+                                                                                        <%-(Product.split(':')[1]) %>
+                                                                                    </span>
+                                                                                </p>
+                                                                            </div>
+                                                                        <% }) %>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                                                    <a class="u-header-collapse__submenu-nav-link u-header-collapse__nav-pointer card-header" href="javascript:;" data-target="#headerSidebarPages-Filtre-Collapse2" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="headerSidebarPagesCollapse" style="padding: 10px; font-weight: bold;">Arama</a>
+                                                
+                                                <div id="headerSidebarPages-Filtre-Collapse2" style="background-color: #f8f9fa;">
+                                                    <div class="card-body">
+                                                     
+                                                      <p class="card-text">
+                                                        <form id="Brands" class="form-deneme" action="/filtre" method="post" role="form product-form">
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" class="form-control" placeholder="Ürün adına göre arama yapın" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                <div class="input-group-append">
+                                                                  <button class="btn btn-outline-secondary" type="button">Ara</button>
+                                                                </div>
+                                                              </div>
+                                                            
+                                                        </form>
+                                                        
+                                                      </p>
+                                                    </div>
+                                                    
+                                                  </div>
+                                            </div>
+                                            
+                                        </form>
+                                    </div>
+                                </form>
+                                
+                                  
+                                  </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-9 col-wd-9gdot5">
+                        <% test1.forEach(Product => { %> 
+                        <div class="d-flex justify-content-between align-items-center border-bottom border-color-1 flex-lg-nowrap flex-wrap mb-4">
+                            <h3 class="section-title section-title__full mb-0 pb-2 font-size-22"><%-Product.split(':')[0] %> </h3>
+                        </div>
+                        <% }) %>
+                        <div id="sira" class="bg-gray-1 flex-center-between borders-radius-9 py-1 ">
+                            <div class="d-xl-none">
+                                <!-- Account Sidebar Toggle Button -->
+                                <a id="sidebarNavToggler1" class="btn btn-sm py-1 font-weight-normal" href="javascript:;" role="button" aria-controls="sidebarContent1" aria-haspopup="true" aria-expanded="false" data-unfold-event="click" data-unfold-hide-on-scroll="false" data-unfold-target="#sidebarContent1" data-unfold-type="css-animation" data-unfold-animation-in="fadeInLeft" data-unfold-animation-out="fadeOutLeft" data-unfold-duration="500">
+                                    <i class="fas fa-sliders-h"></i> <span class="ml-1">Filtrele</span>
+                                </a>
+                                <!-- End Account Sidebar Toggle Button -->
+                            </div>
+                            <div class="px-3 d-none d-xl-block">
+                                <ul class="nav nav-tab-shop" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-one-example1-tab" data-toggle="pill" href="#pills-one-example1" role="tab" aria-controls="pills-one-example1" aria-selected="false">
+                                            <div class="d-md-flex justify-content-md-center align-items-md-center">
+                                                <i class="fa fa-th"></i>
+                                            </div>
+                                        </a>
+                                    </li>                                   
+                                </ul>
+                            </div>
+                            
+                            <nav class="px-3 flex-horizontal-center text-gray-20 d-xl-flex">
+                                <select id="sirala" class="js-select selectpicker dropdown-select max-width-200 max-width-160-sm right-dropdown-0 px-2 px-xl-0"
+                                    data-style="btn-sm bg-white font-weight-normal py-2 border text-gray-20 bg-lg-down-transparent border-lg-down-0">
+                                    <option value="one" selected>Klasik Listele</option>
+                                    <option value="two">A-Z'ye göre listele</option>
+                                    
+                                </select>
+                            </nav>
+                        </div>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div id="products" class="tab-pane fade pt-2 show active" id="pills-one-example1" role="tabpanel" aria-labelledby="pills-one-example1-tab" data-target-group="groups">
+                                <ul id="test" class="row list-unstyled products-group no-gutters">
+                                    <% Product.forEach(Product => { %>
+                                        <%- include('../../partials/_kategoriurun', {Product}) %> 
+                                    <% }) %>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Best Sellers -->
+                        <!-- End Top rated in this category -->
+                        <nav class="d-md-flex justify-content-between align-items-center border-top pt-3" aria-label="Page navigation example">
+                           
+                        </nav>
+                    </div>
+                </div>
+                <!-- Brand Carousel -->
+            </div>
+        </main>
+        <!-- ========== END MAIN CONTENT ========== -->
+
+        <!-- ========== FOOTER ========== -->
+        <!-- ========== END FOOTER ========== -->
+
+        <!-- ========== SECONDARY CONTENTS ========== -->
+        <!-- Account Sidebar Navigation -->
+        <aside id="sidebarContent" class="u-sidebar u-sidebar__lg" aria-labelledby="sidebarNavToggler">
+            <div class="u-sidebar__scroller">
+                <div class="u-sidebar__container">
+                    <div class="js-scrollbar u-header-sidebar__footer-offset pb-3">
+                        <!-- Toggle Button -->
+                        <div class="d-flex align-items-center pt-4 px-7">
+                            <button type="button" class="close ml-auto"
+                                aria-controls="sidebarContent"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                data-unfold-event="click"
+                                data-unfold-hide-on-scroll="false"
+                                data-unfold-target="#sidebarContent"
+                                data-unfold-type="css-animation"
+                                data-unfold-animation-in="fadeInRight"
+                                data-unfold-animation-out="fadeOutRight"
+                                data-unfold-duration="500">
+                                <i class="ec ec-close-remove"></i>
+                            </button>
+                        </div>
+                        <!-- End Toggle Button -->
+
+                        <!-- Content -->
+                        <!-- End Content -->
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- End Account Sidebar Navigation -->
+        <!-- ========== END SECONDARY CONTENTS ========== -->
+
+        <!-- Go to Top -->
+        <a class="js-go-to u-go-to" href="#"
+            data-position='{"bottom": 15, "right": 15 }'
+            data-type="fixed"
+            data-offset-top="400"
+            data-compensation="#header"
+            data-show-effect="slideInUp"
+            data-hide-effect="slideOutDown">
+            <span class="fas fa-arrow-up u-go-to__inner"></span>
+        </a>
+        <!-- End Go to Top -->
+
+        <!-- JS Global Compulsory -->
+
+
+        <!-- JS Plugins Init. -->
+        <script>
+            $(window).on('load', function () {
+                // initialization of HSMegaMenu component
+                $('.js-mega-menu').HSMegaMenu({
+                    event: 'hover',
+                    direction: 'horizontal',
+                    pageContainer: $('.container'),
+                    breakpoint: 767.98,
+                    hideTimeOut: 0
+                });
+            });
+
+            $(document).on('ready', function () {
+                // initialization of header
+                $.HSCore.components.HSHeader.init($('#header'));
+
+                // initialization of animation
+                $.HSCore.components.HSOnScrollAnimation.init('[data-animation]');
+
+                // initialization of unfold component
+                $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
+                    afterOpen: function () {
+                        $(this).find('input[type="search"]').focus();
+                    }
+                });
+
+                // initialization of HSScrollNav component
+                $.HSCore.components.HSScrollNav.init($('.js-scroll-nav'), {
+                  duration: 700
+                });
+
+                // initialization of quantity counter
+                $.HSCore.components.HSQantityCounter.init('.js-quantity');
+
+                // initialization of popups
+                $.HSCore.components.HSFancyBox.init('.js-fancybox');
+
+                // initialization of countdowns
+                var countdowns = $.HSCore.components.HSCountdown.init('.js-countdown', {
+                    yearsElSelector: '.js-cd-years',
+                    monthsElSelector: '.js-cd-months',
+                    daysElSelector: '.js-cd-days',
+                    hoursElSelector: '.js-cd-hours',
+                    minutesElSelector: '.js-cd-minutes',
+                    secondsElSelector: '.js-cd-seconds'
+                });
+
+                // initialization of malihu scrollbar
+                $.HSCore.components.HSMalihuScrollBar.init($('.js-scrollbar'));
+
+                // initialization of forms
+                $.HSCore.components.HSFocusState.init();
+
+                // initialization of form validation
+                $.HSCore.components.HSValidation.init('.js-validate', {
+                    rules: {
+                        confirmPassword: {
+                            equalTo: '#signupPassword'
+                        }
+                    }
+                });
+
+                // initialization of show animations
+                $.HSCore.components.HSShowAnimation.init('.js-animation-link');
+
+                // initialization of fancybox
+                $.HSCore.components.HSFancyBox.init('.js-fancybox');
+
+                // initialization of slick carousel
+                $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
+
+                // initialization of go to
+                $.HSCore.components.HSGoTo.init('.js-go-to');
+
+                // initialization of hamburgers
+                $.HSCore.components.HSHamburgers.init('#hamburgerTrigger');
+
+                // initialization of unfold component
+                $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
+                    beforeClose: function () {
+                        $('#hamburgerTrigger').removeClass('is-active');
+                    },
+                    afterClose: function() {
+                        $('#headerSidebarList .collapse.show').collapse('hide');
+                    }
+                });
+
+                $('#headerSidebarList [data-toggle="collapse"]').on('click', function (e) {
+                    e.preventDefault();
+
+                    var target = $(this).data('target');
+
+                    if($(this).attr('aria-expanded') === "true") {
+                        $(target).collapse('hide');
+                    } else {
+                        $(target).collapse('show');
+                    }
+                });
+
+                // initialization of unfold component
+                $.HSCore.components.HSUnfold.init($('[data-unfold-target]'));
+
+                // initialization of select picker
+                $.HSCore.components.HSSelectPicker.init('.js-select');
+            });
+        </script>
+    </body>
+<script name="siralama">
+$("#sirala").change(function(){
+    if ($(this).val() === "two"){
+
+        $( "#test" ).empty();
+        var search_params = new URLSearchParams(window.location.search);
+                
+                // new value of "id" is set to "101"
+                
+                $.ajax({
+            
+            // İstek türü (örneğin, GET veya POST)
+            type: 'GET',
+                    //okeeeyyy
+            // İstek gönderilecek URL
+            url: '/filters/'+'<%-test1[0].split(":")[0] %>'+'?pg='+'1',
+            // İstek başarılı olduğunda çalıştırılacak fonksiyon
+            success: function(data) {
+                // Veritabanından döndürülen verileri kullanın
+                if(data.length>0){
+                    search_params.set('pg', 1);
+                    search_params.set('sirala', "a-z");
+                    let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + search_params.toString();
+                    window.history.pushState({path: newurl}, '', newurl);    
+                }
+                data.forEach(Product => {
+                    
+                    $( "#test" ).append('<li class="col-6 col-md-3 col-wd-2gdot4 product-item"><div class="product-item__outer h-100"><div class="product-item__inner px-xl-4 p-3"><div class="product-item__body pb-xl-2"><div class="mb-2"><a href="/kategori/'+Product.product_category+'" class="font-size-12 text-gray-5">'+Product.product_category+'</a></div><h5 class="mb-1 product-item__title"><a href="/urunler/'+Product.product_url+'" class="text-blue font-weight-bold">'+ Product.product_name+'</a></h5><div class="mb-2"><a href="/urunler/'+Product.product_url+'" class="d-block text-center"><img class="img-fluid" src="/uploads/images/'+Product.product_category3+'/'+Product.product_photo[0]+'" alt="'+Product.product_name+'"></a></div><div class="flex-center-between mb-1"><div class="prodcut-price"><div class="text-gray-100"></div></div></div></div><div class="product-item__footer"><div class="border-top pt-2 flex-center-between flex-wrap"><a href="/isteklistesi" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> İstek Listesi</a></div></div></div></div></li>');
+                });
+            }})
+        }
+        if ($(this).val() === "one"){
+
+        $( "#test" ).empty();
+        var search_params = new URLSearchParams(window.location.search);
+                
+                // new value of "id" is set to "101"
+                
+                $.ajax({
+            
+            // İstek türü (örneğin, GET veya POST)
+            type: 'GET',
+                    //okeeeyyy
+            // İstek gönderilecek URL
+            url: '/yeniurl/'+'<%-test1[0].split(":")[0] %>'+'?pg='+'1',
+            // İstek başarılı olduğunda çalıştırılacak fonksiyon
+            success: function(data) {
+                // Veritabanından döndürülen verileri kullanın
+                if(data.length>0){
+                    search_params.set('pg', 1);
+                    search_params.delete('sirala');
+                    let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + search_params.toString();
+                    window.history.pushState({path: newurl}, '', newurl);    
+                }
+                data.forEach(Product => {
+                    
+                    $( "#test" ).append('<li class="col-6 col-md-3 col-wd-2gdot4 product-item"><div class="product-item__outer h-100"><div class="product-item__inner px-xl-4 p-3"><div class="product-item__body pb-xl-2"><div class="mb-2"><a href="/kategori/'+Product.product_category+'" class="font-size-12 text-gray-5">'+Product.product_category+'</a></div><h5 class="mb-1 product-item__title"><a href="/urunler/'+Product.product_url+'" class="text-blue font-weight-bold">'+ Product.product_name+'</a></h5><div class="mb-2"><a href="/urunler/'+Product.product_url+'" class="d-block text-center"><img class="img-fluid" src="/uploads/images/'+Product.product_category3+'/'+Product.product_photo[0]+'" alt="'+Product.product_name+'"></a></div><div class="flex-center-between mb-1"><div class="prodcut-price"><div class="text-gray-100"></div></div></div></div><div class="product-item__footer"><div class="border-top pt-2 flex-center-between flex-wrap"><a href="/isteklistesi" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> İstek Listesi</a></div></div></div></div></li>');
+                });
+            }})
+        }
+});
+</script>
+<script name="urunyukle">
+
+$(document).ready(function() {
+    var search_params = new URLSearchParams(window.location.search);
+    search_params.delete('filtersByBrand');
+    search_params.set('pg', "1"); 
+    let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' +  search_params.toString();
+    window.history.pushState({path: newurl}, '', newurl);
+    $("#loadingproducts").bind("inview", function(event, isInView) {
+      if (isInView) {      
+            var search_params = new URLSearchParams(window.location.search);
+            if(Number(search_params.get('pg'))==0){
+                var newparams = Number(search_params.get('pg'))+2
+            }
+            else{
+                var newparams = Number(search_params.get('pg'))+1
+            }
+            
+            // new value of "id" is set to "101"
+        if(search_params.get('sirala')=='a-z'){   
+                $.ajax({
+            
+            // İstek türü (örneğin, GET veya POST)
+            type: 'GET',
+                    //okeeeyyy
+            // İstek gönderilecek URL
+            url: '/filters/'+'<%-test1[0].split(":")[0] %>'+'?pg='+newparams,
+            // İstek başarılı olduğunda çalıştırılacak fonksiyon
+            success: function(data) {
+                // Veritabanından döndürülen verileri kullanın
+                if(data.length>0){
+                    search_params.set('pg', newparams);
+                    let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + search_params.toString();
+                    window.history.pushState({path: newurl}, '', newurl);    
+                }
+                data.forEach(Product => {
+                    
+                    $( "#test" ).append('<li class="col-6 col-md-3 col-wd-2gdot4 product-item"><div class="product-item__outer h-100"><div class="product-item__inner px-xl-4 p-3"><div class="product-item__body pb-xl-2"><div class="mb-2"><a href="/kategori/'+Product.product_category+'" class="font-size-12 text-gray-5">'+Product.product_category+'</a></div><h5 class="mb-1 product-item__title"><a href="/urunler/'+Product.product_url+'" class="text-blue font-weight-bold">'+ Product.product_name+'</a></h5><div class="mb-2"><a href="/urunler/'+Product.product_url+'" class="d-block text-center"><img class="img-fluid" src="/uploads/images/'+Product.product_category3+'/'+Product.product_photo[0]+'" alt="'+Product.product_name+'"></a></div><div class="flex-center-between mb-1"><div class="prodcut-price"><div class="text-gray-100"></div></div></div></div><div class="product-item__footer"><div class="border-top pt-2 flex-center-between flex-wrap"><a href="/isteklistesi" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> İstek Listesi</a></div></div></div></div></li>');
+                });
+                
+            }
+            });
+            
+      }
+      
+      else{
+        if(search_params.get('filtersByBrand')!=null){
+            $.ajax({
+                
+                // İstek türü (örneğin, GET veya POST)
+                type: 'GET',
+                        //okeeeyyy
+                // İstek gönderilecek URL
+                url: '/yeniurl/'+'<%-test1[0].split(":")[0] %>'+'?filtersByBrand='+search_params.get('filtersByBrand')+'&pg='+newparams,
+                // İstek başarılı olduğunda çalıştırılacak fonksiyon
+                success: function(data) {
+                    // Veritabanından döndürülen verileri kullanın
+                    if(data.length>0){
+                        search_params.set('pg', newparams);
+                        let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + search_params.toString();
+                        window.history.pushState({path: newurl}, '', newurl);    
+                    }
+                    data.forEach(Product => {
+                        
+                        $( "#test" ).append('<li class="col-6 col-md-3 col-wd-2gdot4 product-item"><div class="product-item__outer h-100"><div class="product-item__inner px-xl-4 p-3"><div class="product-item__body pb-xl-2"><div class="mb-2"><a href="/kategori/'+Product.product_category+'" class="font-size-12 text-gray-5">'+Product.product_category+'</a></div><h5 class="mb-1 product-item__title"><a href="/urunler/'+Product.product_url+'" class="text-blue font-weight-bold">'+ Product.product_name+'</a></h5><div class="mb-2"><a href="/urunler/'+Product.product_url+'" class="d-block text-center"><img class="img-fluid" src="/uploads/images/'+Product.product_category3+'/'+Product.product_photo[0]+'" alt="'+Product.product_name+'"></a></div><div class="flex-center-between mb-1"><div class="prodcut-price"><div class="text-gray-100"></div></div></div></div><div class="product-item__footer"><div class="border-top pt-2 flex-center-between flex-wrap"><a href="/isteklistesi" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> İstek Listesi</a></div></div></div></div></li>');
+                    });
+                    
+                }
+                });
+        }
+        else{
+            $.ajax({
+                
+                // İstek türü (örneğin, GET veya POST)
+                type: 'GET',
+                        //okeeeyyy
+                // İstek gönderilecek URL
+                url: '/yeniurl/'+'<%-test1[0].split(":")[0] %>'+'?pg='+newparams,
+                // İstek başarılı olduğunda çalıştırılacak fonksiyon
+                success: function(data) {
+                    // Veritabanından döndürülen verileri kullanın
+                    if(data.length>0){
+                        search_params.set('pg', newparams);
+                        let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + search_params.toString();
+                        window.history.pushState({path: newurl}, '', newurl);    
+                    }
+                    data.forEach(Product => {
+                        
+                        $( "#test" ).append('<li class="col-6 col-md-3 col-wd-2gdot4 product-item"><div class="product-item__outer h-100"><div class="product-item__inner px-xl-4 p-3"><div class="product-item__body pb-xl-2"><div class="mb-2"><a href="/kategori/'+Product.product_category+'" class="font-size-12 text-gray-5">'+Product.product_category+'</a></div><h5 class="mb-1 product-item__title"><a href="/urunler/'+Product.product_url+'" class="text-blue font-weight-bold">'+ Product.product_name+'</a></h5><div class="mb-2"><a href="/urunler/'+Product.product_url+'" class="d-block text-center"><img class="img-fluid" src="/uploads/images/'+Product.product_category3+'/'+Product.product_photo[0]+'" alt="'+Product.product_name+'"></a></div><div class="flex-center-between mb-1"><div class="prodcut-price"><div class="text-gray-100"></div></div></div></div><div class="product-item__footer"><div class="border-top pt-2 flex-center-between flex-wrap"><a href="/isteklistesi" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> İstek Listesi</a></div></div></div></div></li>');
+                    });
+                    
+                }
+                });
+        }
+    }
+    }})})
+</script> 
+<script name="caktirma">
+    $("input[type=checkbox]").change(function(){
+        var checkedValues = $('input:checkbox:checked').map(function() {
+            return this.value;
+        }).get();
+        if(checkedValues.length != 0){
+            $("#sira").css('display','none')
+        }
+        else{
+            $("#sira").css('display','')
+        }
+    })
+</script>
+<script name="BrandFilter">
+    $("input[type=checkbox]").change(function(){
+        var checkedValues = $('input:checkbox:checked').map(function() {
+            return this.value;
+        }).get();
+        if(checkedValues.length != 0){
+            for(let i=0;i<checkedValues.length;i++){
+                if (selectedValues==undefined){
+                    var selectedValues = checkedValues[i].split(':')[0]
+                }
+                else{
+                    var selectedValues = selectedValues+','+checkedValues[i].split(':')[0]
+                }
+            }
+            
+            var search_params = new URLSearchParams(window.location.search);
+                search_params.set('filtersByBrand', selectedValues); 
+                    // new value of "id" is set to "101"
+                    
+                $.ajax({
+                
+                // İstek türü (örneğin, GET veya POST)
+                type: 'GET',
+                        //okeeeyyy
+                // İstek gönderilecek URL
+                url: '/BrandFilter?searchKey='+'<%-test1[0].split(":")[0] %>'+'&pg=1'+'&filtersByBrand='+selectedValues,
+                // İstek başarılı olduğunda çalıştırılacak fonksiyon
+                
+                success: function(data) {
+                    // Veritabanından döndürülen verileri kullanın
+                    if(data.length>0){
+                        search_params.set('pg', 1);
+                        search_params.delete('sirala');
+                        let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + search_params.toString();
+                        window.history.pushState({path: newurl}, '', newurl);    
+                    }
+                    $( "#test" ).empty();
+                    data.forEach(Product => {
+                        
+                        $( "#test" ).append('<li class="col-6 col-md-3 col-wd-2gdot4 product-item"><div class="product-item__outer h-100"><div class="product-item__inner px-xl-4 p-3"><div class="product-item__body pb-xl-2"><div class="mb-2"><a href="/kategori/'+Product.product_category+'" class="font-size-12 text-gray-5">'+Product.product_category+'</a></div><h5 class="mb-1 product-item__title"><a href="/urunler/'+Product.product_url+'" class="text-blue font-weight-bold">'+ Product.product_name+'</a></h5><div class="mb-2"><a href="/urunler/'+Product.product_url+'" class="d-block text-center"><img class="img-fluid" src="/uploads/images/'+Product.product_category3+'/'+Product.product_photo[0]+'" alt="'+Product.product_name+'"></a></div><div class="flex-center-between mb-1"><div class="prodcut-price"><div class="text-gray-100"></div></div></div></div><div class="product-item__footer"><div class="border-top pt-2 flex-center-between flex-wrap"><a href="/isteklistesi" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> İstek Listesi</a></div></div></div></div></li>');
+                    });
+                }})
+            }
+            else{
+                var search_params = new URLSearchParams(window.location.search);
+                search_params.delete('filtersByBrand');
+                search_params.set('pg', 1);
+                let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + search_params.toString();
+                window.history.pushState({path: newurl}, '', newurl);
+                $.ajax({
+            
+                // İstek türü (örneğin, GET veya POST)
+                type: 'GET',
+                        //okeeeyyy
+                // İstek gönderilecek URL
+                url: '/urunara/'+'<%-test1[0].split(":")[0] %>'+'?pg='+"1",
+                // İstek başarılı olduğunda çalıştırılacak fonksiyon
+                success: function(data) {
+                    // Veritabanından döndürülen verileri kullanın
+                    if(data.length>0){
+                        search_params.set('pg', 1);
+                        let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?"+  search_params.toString();
+                        window.history.pushState({path: newurl}, '', newurl);    
+                    }
+                    $( "#test" ).empty();
+                    data.forEach(Product => {
+                        
+                        $( "#test" ).append('<li class="col-6 col-md-3 col-wd-2gdot4 product-item"><div class="product-item__outer h-100"><div class="product-item__inner px-xl-4 p-3"><div class="product-item__body pb-xl-2"><div class="mb-2"><a href="/kategori/'+Product.product_category+'" class="font-size-12 text-gray-5">'+Product.product_category+'</a></div><h5 class="mb-1 product-item__title"><a href="/urunler/'+Product.product_url+'" class="text-blue font-weight-bold">'+ Product.product_name+'</a></h5><div class="mb-2"><a href="/urunler/'+Product.product_url+'" class="d-block text-center"><img class="img-fluid" src="/uploads/images/'+Product.product_category3+'/'+Product.product_photo[0]+'" alt="'+Product.product_name+'"></a></div><div class="flex-center-between mb-1"><div class="prodcut-price"><div class="text-gray-100"></div></div></div></div><div class="product-item__footer"><div class="border-top pt-2 flex-center-between flex-wrap"><a href="/isteklistesi" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> İstek Listesi</a></div></div></div></div></li>');
+                    });
+                    
+                }
+                });
+            }
+});
+</script>

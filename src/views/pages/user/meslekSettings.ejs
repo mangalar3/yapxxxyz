@@ -1,0 +1,468 @@
+<style>
+    body{
+    margin-top:20px;
+}
+
+.ui-w-80 {
+    width: 80px !important;
+    height: auto;
+}
+
+.btn-default {
+    border-color: rgba(24,28,33,0.1);
+    background: rgba(0,0,0,0);
+    color: #4E5155;
+}
+
+label.btn {
+    margin-bottom: 0;
+}
+
+.btn-outline-primary {
+    border-color: #26B4FF;
+    background: transparent;
+    color: #26B4FF;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.text-light {
+    color: #babbbc !important;
+}
+
+.btn-facebook {
+    border-color: rgba(0,0,0,0);
+    background: #3B5998;
+    color: #fff;
+}
+
+.btn-instagram {
+    border-color: rgba(0,0,0,0);
+    background: #000;
+    color: #fff;
+}
+
+.card {
+    background-clip: padding-box;
+    box-shadow: 0 1px 4px rgba(24,28,33,0.012);
+    padding: 30px;
+    margin: 20px;
+}
+
+.row-bordered {
+    overflow: hidden;
+}
+
+.account-settings-fileinput {
+    position: absolute;
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+.account-settings-links .list-group-item.active {
+    font-weight: bold !important;
+}
+html:not(.dark-style) .account-settings-links .list-group-item.active {
+    background: transparent !important;
+}
+.account-settings-multiselect ~ .select2-container {
+    width: 100% !important;
+}
+.light-style .account-settings-links .list-group-item {
+    padding: 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+}
+.light-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+}
+.material-style .account-settings-links .list-group-item {
+    padding: 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+}
+.material-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+}
+.dark-style .account-settings-links .list-group-item {
+    padding: 0.85rem 1.5rem;
+    border-color: rgba(255, 255, 255, 0.03) !important;
+}
+.dark-style .account-settings-links .list-group-item.active {
+    color: #fff !important;
+}
+.light-style .account-settings-links .list-group-item.active {
+    color: #4E5155 !important;
+}
+.light-style .account-settings-links .list-group-item {
+    padding: 0.85rem 1.5rem;
+    border-color: rgba(24,28,33,0.03) !important;
+}
+
+</style>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container pt-3 pb-3 ">
+  <form action="/profiliguncelle" method="post" enctype="multipart/form-data">
+  <div class="container light-style flex-grow-1 container-p-y">
+
+    <h4 class="font-weight-bold py-3 mb-4 mt-2">
+      Meslek Hesap Ayarları
+    </h4>
+
+    <div class="card overflow-hidden">
+      <div class="row no-gutters row-bordered row-border-light">
+        <div class="col-md-3 pt-0">
+          <div class="list-group list-group-flush account-settings-links">
+            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">Hesap Bilgileri</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Şifreyi Değiştir</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-projects">Projeler</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-ref">Referanslar</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Hakkımızda</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-social-links">Kapak Fotoğrafları</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-connections">İletişim Bilgileri</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-notifications">Bildirimler ve Ayarlar</a>
+          </div>
+        </div>
+        
+        <div class="col-md-9">
+          <div class="tab-content">
+            
+            <div class="tab-pane fade active show" id="account-general">
+
+              <div class="card-body media align-items-center">
+                
+                <img src="/uploads/images/" alt="" class="d-block ui-w-80 rounded border">
+                <div class="media-body ml-4">
+                  <label class="btn btn-outline-primary">
+                    Avatar Yükle
+                    <input type="file" class="account-settings-fileinput">
+                  </label> &nbsp;
+                  
+                 
+                  <div class="text-light small mt-1">Bu fotoğraf profil fotoğrafınız olarak görüntülenecektir.</div>
+                </div>
+              </div>
+              <hr class="border-light m-0">
+
+              <div class="card-body">
+                <div class="form-group">
+                  <label class="form-label">Adınız</label>
+                  <input type="text" class="form-control mb-1" value="" disabled>
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label">E-mail</label>
+                  <input type="text" class="form-control mb-1" value="" disabled>
+                  
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Meslek</label>
+                    <input type="text" class="form-control mb-1" value="" disabled>
+                    
+                  </div>
+                
+              </div>
+              <div class="text-right mt-3">
+                <button type="button" class="btn btn-secondary">Değişikleri Kaydet</button>&nbsp;
+              </div>
+            </div>
+            <div class="tab-pane fade" id="account-change-password">
+              <div class="card-body pb-2">
+
+                <div class="form-group">
+                  <label class="form-label">Güncel Şifre</label>
+                  <input  class="form-control" id="guncelsifre" name="guncelsifre" type="password" placeholder="••••••">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Yeni Şifre</label>
+                  <input class="form-control" name="yenisifre" type="password" placeholder="••••••">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Şifreyi Onayla</label>
+                  <input class="form-control" name="yenisifreonay" type="password" placeholder="••••••">
+                </div>
+
+              </div>
+              <div class="text-right mt-3">
+                <button type="button" class="btn btn-secondary">Değişikleri Kaydet</button>&nbsp;
+              </div>
+            </div>
+            <div class="tab-pane fade" id="account-projects">
+                <div class="card-body pb-2">
+  
+                  <div class="form-group">
+                    <label class="form-label" style="text-align: center;">ÖRNEK PROJENİZ</label>
+                    <div class="form-group">
+                        <label class="form-label">Proje Kapak fotoğrafı</label>
+                        <img src="/uploads/images/yapxmarketimthumb.jpg" alt="" class="d-block ui-w-120 rounded border">
+                      <div class="media-body mt-4">
+                        <label class="btn btn-outline-primary">
+                          Fotoğrafı Yükle
+                          <input type="file" class="account-settings-fileinput">
+                        </label> &nbsp;
+                        
+                       
+                        <div class="text-light small mt-1">Projenizin Fotoğrafı olarak görüntülecektir.</div>
+                      </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label">Proje Başlık</label>
+                        <input class="form-control" name="projead" type="text" placeholder="Proje Adı">
+                      </div>
+      
+                      
+                      <label class="form-label">Proje Açıklama</label>
+                      <textarea class="form-control" rows="5"></textarea>
+                      
+                      <div class="form-group mt-4">
+                        <label class="form-label">Proje Detay Fotoğrafı-1</label>
+                        <img src="/uploads/images/yapxmarketimthumb.jpg" alt="" class="d-block ui-w-120 rounded border">
+                      <div class="media-body mt-4">
+                        <label class="btn btn-outline-primary">
+                          Fotoğrafı Yükle
+                          <input type="file" class="account-settings-fileinput">
+                        </label> &nbsp;
+                        
+                       
+                        <div class="text-light small mt-1">Projenizin detay 2.Fotoğrafı olarak görüntülecektir.</div>
+                      </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label">Proje Detay Fotoğrafı-2</label>
+                        <img src="/uploads/images/yapxmarketimthumb.jpg" alt="" class="d-block ui-w-120 rounded border">
+                      <div class="media-body mt-4">
+                        <label class="btn btn-outline-primary">
+                          Fotoğrafı Yükle
+                          <input type="file" class="account-settings-fileinput">
+                        </label> &nbsp;
+                        
+                       
+                        <div class="text-light small mt-1">Projenizin detay 3. Fotoğrafı olarak görüntülecektir.</div>
+                      </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label">Proje Detay Fotoğrafı-3</label>
+                        <img src="/uploads/images/yapxmarketimthumb.jpg" alt="" class="d-block ui-w-120 rounded border">
+                      <div class="media-body mt-4">
+                        <label class="btn btn-outline-primary">
+                          Fotoğrafı Yükle
+                          <input type="file" class="account-settings-fileinput">
+                        </label> &nbsp;
+                        
+                       
+                        <div class="text-light small mt-1">Projenizin detay 4. Fotoğrafı olarak görüntülecektir.</div>
+                      </div>
+                      </div>
+                  </div>
+                  
+                  
+                  
+  
+                </div>
+                <hr class="border-light m-0">
+                
+                <div class="text-right mt-3">
+                  <button type="button" class="btn btn-secondary">Yükle</button>&nbsp;
+                </div>
+              </div>
+            
+            <div class="tab-pane fade" id="account-ref">
+              <div class="card-body pb-2">
+
+                <div class="form-group">
+                    <label class="form-label" style="text-align: center;">Referanslar</label>
+                    <div class="form-group">
+                        <label class="form-label">Referans Başlık</label>
+                        <input class="form-control" name="projead" type="text" placeholder="Referans Adı">
+                      </div>
+                    <label class="form-label">Referans Açıklama</label>
+                    <textarea class="form-control" rows="5"></textarea>
+                  </div>
+                
+                
+                
+
+              </div>
+              <hr class="border-light m-0">
+              
+              <div class="text-right mt-3">
+                <button type="button" class="btn btn-secondary">Yükle</button>&nbsp;
+              </div>
+            </div>
+            <div class="tab-pane fade" id="account-info">
+                <div class="card-body pb-2">
+  
+                  <div class="form-group">
+                    <label class="form-label">Hakkımızda Yazısı</label>
+                    <textarea class="form-control" rows="5"></textarea>
+                  </div>
+                  
+                  
+                  
+                  
+  
+                </div>
+                <hr class="border-light m-0">
+                
+                <div class="text-right mt-3">
+                  <button type="button" class="btn btn-secondary">Değişikleri Kaydet</button>&nbsp;
+                </div>
+              </div>
+            <div class="tab-pane fade" id="account-social-links">
+              <div class="card-body pb-2">
+
+                <div class="form-group">
+                  <label class="form-label">Kapak Fotoğrafı - 1</label>
+                  <img src="/uploads/images/yapxmarketimthumb.jpg" alt="" class="d-block ui-w-120 rounded border">
+                <div class="media-body mt-4">
+                  <label class="btn btn-outline-primary">
+                    Kapak Fotoğrafı Yükle
+                    <input type="file" class="account-settings-fileinput">
+                  </label> &nbsp;
+                  
+                 
+                  <div class="text-light small mt-1">Bu fotoğraf 1.kapak fotoğrafınız olarak görüntülenecektir.</div>
+                </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Kapak Fotoğrafı - 2</label>
+                  <img src="/uploads/images/yapxmarketimthumb.jpg" alt="" class="d-block ui-w-120 rounded border">
+                <div class="media-body mt-4">
+                  <label class="btn btn-outline-primary">
+                    Kapak Fotoğrafı Yükle
+                    <input type="file" class="account-settings-fileinput">
+                  </label> &nbsp;
+                  
+                 
+                  <div class="text-light small mt-1">Bu fotoğraf 2.kapak fotoğrafınız olarak görüntülenecektir.</div>
+                </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Kapak Fotoğrafı - 3</label>
+                  <img src="/uploads/images/yapxmarketimthumb.jpg" alt="" class="d-block ui-w-120 rounded border">
+                <div class="media-body mt-4">
+                  <label class="btn btn-outline-primary">
+                    Kapak Fotoğrafı Yükle
+                    <input type="file" class="account-settings-fileinput">
+                  </label> &nbsp;
+                  
+                 
+                  <div class="text-light small mt-1">Bu fotoğraf 3.kapak fotoğrafınız olarak görüntülenecektir.</div>
+                </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Kapak Fotoğrafı - 4</label>
+                  <img src="/uploads/images/yapxmarketimthumb.jpg" alt="" class="d-block ui-w-120 rounded border">
+                <div class="media-body mt-4">
+                  <label class="btn btn-outline-primary">
+                    Kapak Fotoğrafı Yükle
+                    <input type="file" class="account-settings-fileinput">
+                  </label> &nbsp;
+                  
+                 
+                  <div class="text-light small mt-1">Bu fotoğraf 4.kapak fotoğrafınız olarak görüntülenecektir.</div>
+                </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Kapak Fotoğrafı - 5</label>
+                  <img src="/uploads/images/yapxmarketimthumb.jpg" alt="" class="d-block ui-w-120 rounded border">
+                <div class="media-body mt-4">
+                  <label class="btn btn-outline-primary">
+                    Kapak Fotoğrafı Yükle
+                    <input type="file" class="account-settings-fileinput">
+                  </label> &nbsp;
+                  
+                 
+                  <div class="text-light small mt-1">Bu fotoğraf 5.kapak fotoğrafınız olarak görüntülenecektir.</div>
+
+                  <hr class="border-light m-0">
+              
+              <div class="text-right mt-3">
+                <button type="button" class="btn btn-secondary">Değişikleri Kaydet</button>&nbsp;
+              </div>
+                </div>
+                </div>
+                
+
+              </div>
+            </div>
+            <div class="tab-pane fade" id="account-connections">
+              <div class="card-body pb-2">
+
+                <div class="form-group">
+                  <label class="form-label">Adres</label>
+                  <input  class="form-control" id="adres" name="adres" type="text" placeholder="İstanbul/Ataşehir">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Telefon</label>
+                  <input class="form-control" name="telefon" type="tel" placeholder="05535698525">
+                </div>
+
+                
+
+              </div>
+              <div class="text-right mt-3">
+                <button type="button" class="btn btn-secondary">Değişikleri Kaydet</button>&nbsp;
+              </div>
+            </div>
+            <div class="tab-pane fade" id="account-notifications">
+              <div class="card-body pb-2">
+
+                <h6 class="mb-4">Bildirimler</h6>
+
+                <div class="form-group">
+                  <label class="switcher">
+                    <input type="checkbox" class="switcher-input" checked="">
+                    <span class="switcher-indicator">
+                      <span class="switcher-yes"></span>
+                      <span class="switcher-no"></span>
+                    </span>
+                    <span class="switcher-label">Favori ürünlerimde fiyat değişikliğinde bana e-mail ile bildir.</span>
+                  </label>
+                </div>
+                
+                
+              </div>
+              <hr class="border-light m-0">
+              <div class="card-body pb-2">
+
+                
+                
+                <div class="text-right mt-3">
+                  <button type="button" class="btn btn-secondary">Değişikleri Kaydet</button>&nbsp;
+                  <button type="button" class="btn btn-danger">Hesabımı Sil</button>&nbsp;
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+
+   
+
+  </div>
+</form>
+
+
+
+
+
+ 
+</div>
+
+<script>
+  imag.onchange = evt => {
+  const [file] = imag.files
+  if (file) {
+    blah.src = URL.createObjectURL(file)
+  }
+}
+
+</script>

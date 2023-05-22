@@ -1,0 +1,210 @@
+<style>
+   h1 {
+color: white;
+line-height: 120%;
+margin: 0 auto 2rem auto;
+max-width: 30rem;
+}
+select {
+
+/* styling */
+background-color: white;
+border: thin solid blue;
+border-radius: 4px;
+display: inline-block;
+font: inherit;
+line-height: 1.5em;
+padding: 0.5em 3.5em 0.5em 1em;
+
+/* reset */
+
+margin: 0;      
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+
+
+/* arrows */
+
+select.classic {
+background-image:
+linear-gradient(45deg, transparent 50%, blue 50%),
+linear-gradient(135deg, blue 50%, transparent 50%),
+linear-gradient(to right, skyblue, skyblue);
+background-position:
+calc(100% - 20px) calc(1em + 2px),
+calc(100% - 15px) calc(1em + 2px),
+100% 0;
+background-size:
+5px 5px,
+5px 5px,
+2.5em 2.5em;
+background-repeat: no-repeat;
+}
+
+select.classic:focus {
+background-image:
+linear-gradient(45deg, white 50%, transparent 50%),
+linear-gradient(135deg, transparent 50%, white 50%),
+linear-gradient(to right, gray, gray);
+background-position:
+calc(100% - 15px) 1em,
+calc(100% - 20px) 1em,
+100% 0;
+background-size:
+5px 5px,
+5px 5px,
+2.5em 2.5em;
+background-repeat: no-repeat;
+border-color: grey;
+outline: 0;
+}
+
+
+table {
+   width: 100%;
+   height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  
+  background: linear-gradient(90deg, #ffe656, #ffffff);
+ }
+
+ th, td {
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 600;
+  font-size: 13px;
+  color: black;
+  border: 1px solid gray;
+  
+  
+  
+ }
+
+
+ th {
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 800;
+  font-size: 12px;
+  color: black;
+  text-transform: uppercase;
+  background: rgb(218, 218, 218);
+ }
+ 
+
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-x0t1BZt7wE2R/8Cfym/XiERe/3lN3qDpY8PnCGLx5z5+t5a5GZz5OrV+kk1IuF7VhQtkk9X6ZX2U6NOddUHuVg==" crossorigin="anonymous" />
+
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                        <div class="row">
+                           
+                                            <div class="col-md-12 pb-3">
+                                                <div class="overview-wrap" style="margin-bottom: 20px; margin-left: 50px; margin-right: 50px;  padding: 2%; background: linear-gradient(90deg, #fed700, #ffffff);">
+                                                    <h4 style="padding: 2%; padding-left: 2px;">Kullanıcı Arama</h4>
+                                                    
+                                                    <form action="/yapxadminlogin/getUser" method="post" enctype="application/x-www-form-urlencoded">
+                                                    <div class="mt-2">
+                                                        
+                                                        
+                                                        <select  name="" id="" style="border: none; margin-right: 0;">
+                                                            <option value="Kullanıcı Adına Göre">Kullanıcı Adına Göre:</option>
+                                                            <option value="Maile Göre">Maile Göre:</option>
+                                                            
+                                                        </select>
+                                                        
+                                                        <input class="au-input au-input--xl"
+                                                        type="text"
+                                                        name="SearchedUser"
+                                                        id="search-input"
+                                                        placeholder="Arama yapın..."
+                                                        
+                                                      />
+                                                      <button type="submit"  class="au-btn--submit" id="search-button" style="color: white; ">Ara</button> 
+                                                    </div>
+                                                    </form>
+                                                    
+                                                
+                                                    
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row m-t-25">
+                                            
+                                            <div id="myBackDiv" style="margin-left: 700px; display: none;">
+                                                <button ><a href="/yapxadminlogin/tables" style="font-size: 20px;"><i class="fa fa-angle-left" style="font-size: 30px; padding-right: 10px;"></i>Kullanıcılara Geri Dön </a></button>
+                                              </div>
+                                            
+                                        </div>                       
+                                        <div class="row">
+                                            
+                                            <div class="col-lg-12 m-t-25">
+                                                    <table class="table table-dark" id="product-table" style="margin-left: 35px;">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Mail</th>
+                                                                <th>Ad</th>
+                                                                <th>Dükkan Adı</th>
+                                                                <th>Telefon No</th>
+                                                                <th>İl</th>
+                                                                <th>İlçe</th>
+                                                                <th>Durum</th>
+                                                                <th>Rol</th>
+                                                                <th>Kalan Üyelik Süresi</th>
+                                                                <th >Detaylar ve İşlemler</th>
+                                                            </tr>
+                                                        </thead>                                      
+                                                            <tbody id="">
+                                                                <% UserList.forEach(Product => { %>
+                                                                  <%- include('../../partials/_adminUserList', {Product}) %>
+                                                                <% }) %>                  
+                                                            </tbody>  
+                                                    </table>
+                                                    <div style="text-align: center; padding: 2%;">
+                                                        <a href=""><i class="fas fa-angle-left"></i></a>
+                                                        <label for="" style="padding: 2%;"> 1</label>
+                                                        <a href=""><i class="fas fa-angle-right"></i></a>
+                                                    </div>
+                                                   
+                                                    
+                                                   
+                                                   
+                                                
+                            </div>
+                            <!-- END MAIN CONTENT-->
+                            <!-- END PAGE CONTAINER-->
+                        </div>
+                
+                    </div>
+                        
+                        
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2023 Yapx. All rights reserved. Template by <a href="/">Yapx</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+           
+            <script>
+                if(window.location.href.indexOf("yapxadminlogin/getUser") > -1) {
+
+                    document.getElementById("myBackDiv").style.display = "block";
+
+
+                }
+            </script>

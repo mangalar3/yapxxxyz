@@ -1,0 +1,702 @@
+<title>Yapx | Arama Sonuçları</title>
+
+<style>
+    /* Masaüstü görünümü */
+    .filtre-button {
+        display: none;
+    }
+
+    /* Mobil görünümü */
+    @media (max-width: 767px) {
+        .filtre-button {
+            display: block;
+            text-align: center;
+            justify-content: center;
+            border-radius: 2px;
+        }
+
+        .fixed-button {
+  position: fixed;
+  bottom: 20px; /* İstenilen alttan uzaklık */
+  left: 20px;
+  right: 20px;
+  text-align: center;
+  justify-content: center;
+  z-index: 9999;
+  
+  cursor: pointer; /* Diğer öğelerin üzerinde olmasını sağlar */
+
+  /* Opsiyonel stillendirmeler */
+  /* width: 150px; */
+  /* height: 50px; */
+  /* background-color: #fff; */
+  /* border: 1px solid #ccc; */
+  /* border-radius: 5px; */
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
+}
+
+/* Opsiyonel stillendirmeler */
+.fixed-button button {
+ width: 100%;
+ border-radius: 0%;
+  /* height: 100%; */
+  /* padding: 10px; */
+  /* font-size: 16px; */
+  /* color: #fff; */
+}
+
+    }
+
+    .filtre-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 9999;
+        background-color: #fff;
+        overflow-y: scroll;
+        padding: 20px;
+    }
+
+    .filtre-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+
+</style>
+
+
+
+<body>
+
+        <!-- ========== MAIN CONTENT ========== -->
+        <main id="content" role="main">
+            <!-- breadcrumb -->
+            <div class="bg-gray-13 bg-md-transparent">
+                <div class="container">
+                    <!-- breadcrumb -->
+                    <div class="my-md-3">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-3 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
+                                <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1"><a href="/">Yapx</a></li>
+                                <li class="breadcrumb-item flex-shrink-0 flex-xl-shrink-1 active" aria-current="page">Arama Sonuçları</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <!-- End breadcrumb -->
+                </div>
+            </div>
+            <!-- End breadcrumb -->
+
+            <div class="container">
+                <div class="row mb-8">
+                    <button id="filtreButton" class="btn btn-warning btn-lg filtre-button" style="width:100%;"><i class="fa fa-filter mr-2" aria-hidden="true"></i>Filtrele</button>
+
+                    <div id="filtreMenu" class="filtre-menu">
+                        <span id="filtreClose" class="filtre-close">&times;</span>
+                        <div class="d-xl-block col-xl-12 col-wd-2gdot5">
+                            <div class="mb-8">
+                                <div class="border-bottom border-color-1 mb-5">
+                                    <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Filtrele</h3>
+                                </div>
+                                
+                                <!--Mobil Filtre Var Burda -->
+                                <ul class="list-unstyled">
+                                    <div class="panel-body" style="background-color: #ffffff;">
+                                        <form action="/filtre" method="post" role="form product-form">
+                                            <div class="form-group">
+                                                <form role="form product-form">
+                                                    
+                                                        <a class="u-header-collapse__submenu-nav-link u-header-collapse__nav-pointer card-header" href="javascript:;" data-target="#headerSidebarPages-Filtre-Collapse" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="headerSidebarPagesCollapse" style="padding: 10px; font-weight: bold;">Marka</a>
+                                                        
+                                                        <div id="headerSidebarPages-Filtre-Collapse" style="background-color: #f4f4f4;">
+                                                            <div class="filtreicin resize-on-mobile mb-3" style="overflow-y: scroll; ">
+                                                                <form id="Brands" class="form-deneme" action="/filtre" method="post" role="form product-form">
+                                                                    <div class="card bg-light mb-3" style="max-width: 20rem;">
+                                                                        <div class="card-body">
+                                                                            <form action="/filtre" method="post" role="form product-form">
+                                                                                <% filteredkategorilist2.forEach(Product => { %>
+                                                                                    <div class="input-group mb-3">
+                                                                                        <div class="input-group-prepend">
+                                                                                            <div class="input-group-text">
+                                                                                                <input type="checkbox" id="brand-filter" value="<%-Product %>" aria-label="Checkbox for following text input">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <p type="text" class="form-control card-text" aria-label="Text input with checkbox">
+                                                                                            <%-Product.split(':')[0] %>
+                                                                                            <span class="badge badge-primary badge-pill" style="float: right; justify-content: center;">
+                                                                                                <%-(Product.split(':')[1]) %>
+                                                                                            </span>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                <% }) %>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card bg-light mb-3" style="max-width: 22rem;">
+                                                            <a class="u-header-collapse__submenu-nav-link u-header-collapse__nav-pointer card-header" href="javascript:;" data-target="#headerSidebarPages-Filtre-Collapse2" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="headerSidebarPagesCollapse" style="padding: 10px; font-weight: bold;">Arama</a>
+                                                        
+                                                        <div id="headerSidebarPages-Filtre-Collapse2" style="background-color: #f8f9fa;">
+                                                            <div class="card-body">
+                                                             
+                                                              <p class="card-text">
+                                                                <form id="Brands" class="form-deneme" action="/filtre" method="post" role="form product-form">
+                                                                    <div class="input-group mb-3">
+                                                                        <input type="text" class="form-control" placeholder="Ürün adına göre arama yapın" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                        <div class="input-group-append">
+                                                                          <button class="btn btn-outline-secondary" type="button">Ara</button>
+                                                                        </div>
+                                                                      </div>
+                                                                    
+                                                                </form>
+                                                                
+                                                              </p>
+                                                            </div>
+                                                            
+                                                          </div>
+                                                    </div>
+                                                    <div class="card bg-light mb-3" style="max-width: 22rem;">
+                                                        <a class="u-header-collapse__submenu-nav-link u-header-collapse__nav-pointer card-header" href="javascript:;" data-target="#headerSidebarPages-Filtre-Collapse3" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="headerSidebarPagesCollapse" style="padding: 10px; font-weight: bold;">Fiyat</a>
+                                                        <div id="headerSidebarPages-Filtre-Collapse3" style="background-color: #f8f9fa;">
+                                                          <div class="card-body">
+                                                            <div id="slider" style="margin-top: 30px; position: relative; height: 5px; background-color: rgb(232, 229, 229); user-select: none;">
+                                                                <div id="min-handle" style="position: absolute; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 15px solid #fed500; cursor: pointer;"></div>
+                                                                <div id="max-handle" style="position: absolute; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 15px solid #fed500; cursor: pointer;"></div>
+                                                            </div>
+                                                            
+                                                            <p style="margin-top: 30px; text-align: center; justify-content: center; font-weight: bold;">
+                                                                <span class="mr-2">Fiyat Aralığı: </span>  
+                                                                <span id="min-price" style=" font-size: 16px ;"></span>₺ -
+                                                                <span id="max-price" style=" font-size: 16px ;"></span>₺
+                                                            </p>
+                                                            <div style="text-align: center; justify-content: center;">
+                                                                <button class="btn btn-outline-secondary" type="button">Ara</button>
+                                                            </div>
+                                                              
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                      
+                                                    
+                                                </form>
+                                            </div>
+                                        </form>
+                                        
+                                          
+                                          </div>
+                                </ul>
+                            </div>
+                            <div class="fixed-button" id="filtreClosez">
+                                <button class="btn btn-success btn-lg">
+                                  <i class="fa fa-arrow-left mr-2" aria-hidden="true"></i>Geri Dön
+                                </button>
+                              </div>
+                              
+                        </div>
+                    </div>
+                                  
+                    <div class="d-xl-block col-xl-3 col-wd-2gdot5 d-none">
+                        <div class="mb-8">
+                            <div class="border-bottom border-color-1 mb-5">
+                                <h3 class="section-title section-title__sm mb-0 pb-2 font-size-18">Filtrele</h3>
+                            </div>
+                            
+
+                            <ul class="list-unstyled">
+                                <div class="panel-body" style="background-color: #ffffff;">
+									<form action="/filtre" method="post" role="form product-form">
+                                        <div class="form-group">
+                                            <form role="form product-form">
+                                                
+                                                    <a class="u-header-collapse__submenu-nav-link u-header-collapse__nav-pointer card-header" href="javascript:;" data-target="#headerSidebarPages-Filtre-Collapse" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="headerSidebarPagesCollapse" style="padding: 10px; font-weight: bold;">Marka</a>
+                                                    
+                                                    <div id="headerSidebarPages-Filtre-Collapse" style="background-color: #f4f4f4;">
+                                                        <div class="filtreicin resize-on-mobile mb-3" style="overflow-y: scroll; ">
+                                                            <form id="Brands" class="form-deneme" action="/filtre" method="post" role="form product-form">
+                                                                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                                                                    <div class="card-body">
+                                                                        <form action="/filtre" method="post" role="form product-form">
+                                                                            <% filteredkategorilist2.forEach(Product => { %>
+                                                                                <div class="input-group mb-3">
+                                                                                    <div class="input-group-prepend">
+                                                                                        <div class="input-group-text">
+                                                                                            <input type="checkbox" id="brand-filter" value="<%-Product %>" aria-label="Checkbox for following text input">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <p type="text" class="form-control card-text" aria-label="Text input with checkbox">
+                                                                                        <%-Product.split(':')[0] %>
+                                                                                        <span class="badge badge-primary badge-pill" style="float: right; justify-content: center;">
+                                                                                            <%-(Product.split(':')[1]) %>
+                                                                                        </span>
+                                                                                    </p>
+                                                                                </div>
+                                                                            <% }) %>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card bg-light mb-3" style="max-width: 18rem;">
+                                                        <a class="u-header-collapse__submenu-nav-link u-header-collapse__nav-pointer card-header" href="javascript:;" data-target="#headerSidebarPages-Filtre-Collapse2" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="headerSidebarPagesCollapse" style="padding: 10px; font-weight: bold;">Arama</a>
+                                                    
+                                                    <div id="headerSidebarPages-Filtre-Collapse2" style="background-color: #f8f9fa;">
+                                                        <div class="card-body">
+                                                         
+                                                          <p class="card-text">
+                                                            <form id="Brands" class="form-deneme" action="/filtre" method="post" role="form product-form">
+                                                                <div class="input-group mb-3">
+                                                                    <input type="text" class="form-control" placeholder="Ürün adına göre arama yapın" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                    <div class="input-group-append">
+                                                                      <button class="btn btn-outline-secondary" type="button">Ara</button>
+                                                                    </div>
+                                                                  </div>
+                                                                
+                                                            </form>
+                                                            
+                                                          </p>
+                                                        </div>
+                                                        
+                                                      </div>
+                                                </div>
+                                                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                                                    <a class="u-header-collapse__submenu-nav-link u-header-collapse__nav-pointer card-header" href="javascript:;" data-target="#headerSidebarPages-Filtre-Collapse3" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="headerSidebarPagesCollapse" style="padding: 10px; font-weight: bold;">Fiyat</a>
+                                                    <div id="headerSidebarPages-Filtre-Collapse3" style="background-color: #f8f9fa;">
+                                                      <div class="card-body">
+                                                        <div id="slider" style="margin-top: 30px; position: relative; height: 5px; background-color: rgb(232, 229, 229); user-select: none;">
+                                                            <div id="min-handle" style="position: absolute; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 15px solid #fed500; cursor: pointer;"></div>
+                                                            <div id="max-handle" style="position: absolute; width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 15px solid #fed500; cursor: pointer;"></div>
+                                                        </div>
+                                                        
+                                                        <p style="margin-top: 30px; text-align: center; justify-content: center; font-weight: bold;">
+                                                            <span class="mr-2">Fiyat Aralığı: </span>  
+                                                            <span id="min-price" style=" font-size: 16px ;"></span>₺ -
+                                                            <span id="max-price" style=" font-size: 16px ;"></span>₺
+                                                        </p>
+                                                        <div style="text-align: center; justify-content: center;">
+                                                            <button class="btn btn-outline-secondary" type="button">Ara</button>
+                                                        </div>
+                                                          
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  
+                                                
+                                            </form>
+                                        </div>
+                                    </form>
+                                    
+                                      
+                                      </div>
+                            </ul>
+                        </div>
+                        <!--Buraya filter gelecek-->
+                    </div>
+                    <div class="col-xl-9 col-wd-9gdot5">
+                        <!-- Recommended Products -->
+                        <!-- End Recommended Products -->
+                        <!-- Shop-control-bar Title -->
+                        <div class="flex-center-between mb-3">
+                            
+                        </div>
+                        <!-- End shop-control-bar Title -->
+                        <!-- Shop-control-bar -->
+                        <div class="bg-gray-1 flex-center-between borders-radius-9 py-1" style="display: none">
+                            <div class="d-xl-none">
+                                <!-- Account Sidebar Toggle Button -->
+                                <a id="sidebarNavToggler1" class="btn btn-sm py-1 font-weight-normal" href="javascript:;" role="button"
+                                    aria-controls="sidebarContent1"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                    data-unfold-event="click"
+                                    data-unfold-hide-on-scroll="false"
+                                    data-unfold-target="#sidebarContent1"
+                                    data-unfold-type="css-animation"
+                                    data-unfold-animation-in="fadeInLeft"
+                                    data-unfold-animation-out="fadeOutLeft"
+                                    data-unfold-duration="500">
+                                    <i class="fas fa-sliders-h"></i> <span class="ml-1">Filters</span>
+                                </a>
+                                <!-- End Account Sidebar Toggle Button -->
+                            </div>
+                            <div class="px-3 d-none d-xl-block">
+                                <ul class="nav nav-tab-shop" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-one-example1-tab" data-toggle="pill" href="#pills-one-example1" role="tab" aria-controls="pills-one-example1" aria-selected="false">
+                                            <div class="d-md-flex justify-content-md-center align-items-md-center">
+                                                <i class="fa fa-th"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-two-example1-tab" data-toggle="pill" href="#pills-two-example1" role="tab" aria-controls="pills-two-example1" aria-selected="false">
+                                            <div class="d-md-flex justify-content-md-center align-items-md-center">
+                                                <i class="fa fa-align-justify"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-three-example1-tab" data-toggle="pill" href="#pills-three-example1" role="tab" aria-controls="pills-three-example1" aria-selected="true">
+                                            <div class="d-md-flex justify-content-md-center align-items-md-center">
+                                                <i class="fa fa-list"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-four-example1-tab" data-toggle="pill" href="#pills-four-example1" role="tab" aria-controls="pills-four-example1" aria-selected="true">
+                                            <div class="d-md-flex justify-content-md-center align-items-md-center">
+                                                <i class="fa fa-th-list"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="d-flex">
+                                <form method="get">
+                                    <!-- Select -->
+                                    <select class="js-select selectpicker dropdown-select max-width-200 max-width-160-sm right-dropdown-0 px-2 px-xl-0"
+                                        data-style="btn-sm bg-white font-weight-normal py-2 border text-gray-20 bg-lg-down-transparent border-lg-down-0">
+                                        <option value="one" selected>Default sorting</option>
+                                        <option value="two">Sort by popularity</option>
+                                        <option value="three">Sort by average rating</option>
+                                        <option value="four">Sort by latest</option>
+                                        <option value="five">Sort by price: low to high</option>
+                                        <option value="six">Sort by price: high to low</option>
+                                    </select>
+                                    <!-- End Select -->
+                                </form>
+                                <form method="POST" class="ml-2 d-none d-xl-block">
+                                    <!-- Select -->
+                                    <select class="js-select selectpicker dropdown-select max-width-120"
+                                        data-style="btn-sm bg-white font-weight-normal py-2 border text-gray-20 bg-lg-down-transparent border-lg-down-0">
+                                        <option value="one" selected>Show 20</option>
+                                        <option value="two">Show 40</option>
+                                        <option value="three">Show All</option>
+                                    </select>
+                                    <!-- End Select -->
+                                </form>
+                            </div>
+                            <nav class="px-3 flex-horizontal-center text-gray-20 d-none d-xl-flex">
+                                <form method="post" class="min-width-50 mr-1">
+                                    <input size="2" min="1" max="3" step="1" type="number" class="form-control text-center px-2 height-35" value="1">
+                                </form> of 3
+                                <a class="text-gray-30 font-size-20 ml-2" href="#">→</a>
+                            </nav>
+                        </div>
+                        <!-- End Shop-control-bar -->
+                        <!-- Shop Body -->
+                        <!-- Tab Content -->
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade pt-2 show active" id="pills-one-example1" role="tabpanel" aria-labelledby="pills-one-example1-tab" data-target-group="groups">
+                                <ul id="test" class="row list-unstyled products-group no-gutters">
+                                    <% sayfaurunleri.forEach(Product => { %>
+                                        <%- include('../../partials/_arama', {Product}) %> 
+                                    <% }) %>
+                                    
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade pt-2" id="pills-two-example1" role="tabpanel" aria-labelledby="pills-two-example1-tab" data-target-group="groups">
+                                <ul class="row list-unstyled products-group no-gutters">
+                                    <% sayfaurunleri.forEach(Product => { %>
+                                        <%- include('../../partials/_aramayatay', {Product}) %> 
+                                    <% }) %>                                   
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade pt-2" id="pills-three-example1" role="tabpanel" aria-labelledby="pills-three-example1-tab" data-target-group="groups">
+                                <ul class="d-block list-unstyled products-group prodcut-list-view">
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade pt-2" id="pills-four-example1" role="tabpanel" aria-labelledby="pills-four-example1-tab" data-target-group="groups">
+                                <ul class="d-block list-unstyled products-group prodcut-list-view-small">
+
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End Tab Content -->
+                        <!-- End Shop Body -->
+                        <!-- Shop Pagination -->
+                        
+                        <!-- End Shop Pagination -->
+                    </div>
+                </div>
+                <!-- Brand Carousel -->        
+                <!-- End Brand Carousel -->
+            </div>
+        </main>
+        <!-- ========== END MAIN CONTENT ========== -->
+
+    
+
+        <!-- ========== SECONDARY CONTENTS ========== -->
+        <!-- Account Sidebar Navigation -->
+                        <!-- End Toggle Button -->
+
+        <!-- End Account Sidebar Navigation -->
+        <!-- ========== END SECONDARY CONTENTS ========== -->
+        <!-- Sidebar Navigation -->
+        <!-- End Sidebar Navigation -->
+
+        <!-- Go to Top -->
+        <a class="js-go-to u-go-to" href="#"
+            data-position='{"bottom": 15, "right": 15 }'
+            data-type="fixed"
+            data-offset-top="400"
+            data-compensation="#header"
+            data-show-effect="slideInUp"
+            data-hide-effect="slideOutDown">
+            <span class="fas fa-arrow-up u-go-to__inner"></span>
+        </a>
+        <!-- End Go to Top -->
+
+        <!-- JS Global Compulsory -->
+        <!-- JS Plugins Init. -->
+    </body>
+</html>
+
+<script>
+    const slider = document.getElementById('slider');
+const minHandle = document.getElementById('min-handle');
+const maxHandle = document.getElementById('max-handle');
+const minPrice = document.getElementById('min-price');
+const maxPrice = document.getElementById('max-price');
+
+const minValue = 100;
+const maxValue = 900;
+const sliderRange = 1000;
+
+function setPosition(handle, value) {
+    handle.style.left = (value / sliderRange) * slider.clientWidth - handle.clientWidth / 2 + 'px';
+}
+
+function updatePrices() {
+    minPrice.textContent = Math.round(((minHandle.offsetLeft + minHandle.clientWidth / 2) / slider.clientWidth) * sliderRange);
+    maxPrice.textContent = Math.round(((maxHandle.offsetLeft + maxHandle.clientWidth / 2) / slider.clientWidth) * sliderRange);
+}
+
+setPosition(minHandle, minValue);
+setPosition(maxHandle, maxValue);
+updatePrices();
+
+minHandle.onmousedown = maxHandle.onmousedown = (event) => {
+    const handle = event.target;
+    const shiftX = event.clientX - handle.getBoundingClientRect().left;
+
+    function onMouseMove(event) {
+        let newLeft = event.clientX - shiftX - slider.getBoundingClientRect().left;
+
+        if (newLeft < -handle.clientWidth / 2) {
+            newLeft = -handle.clientWidth / 2;
+        }
+
+        const rightEdge = slider.clientWidth - handle.clientWidth / 2;
+        if (newLeft > rightEdge) {
+            newLeft = rightEdge;
+        }
+
+        if (handle === minHandle && newLeft > maxHandle.offsetLeft - handle.clientWidth) {
+            newLeft = maxHandle.offsetLeft - handle.clientWidth;
+        }
+
+        if (handle === maxHandle && newLeft < minHandle.offsetLeft + handle.clientWidth) {
+            newLeft = minHandle.offsetLeft + handle.clientWidth;
+        }
+
+        handle.style.left = newLeft + 'px';
+        updatePrices();
+    }
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', () => {
+        document.removeEventListener('mousemove', onMouseMove);
+    }, { once: true });
+};
+</script>
+
+
+
+
+
+
+<script>
+
+$(document).ready(function() {   
+    var search_params = new URLSearchParams(window.location.search);
+    search_params.set('aranan', "<%-aranan %>");
+    search_params.set('searchKey', "urun");
+    search_params.delete('filtersByBrand');
+    search_params.set('pg', "1");
+    let newurl = window.location.protocol + "//" + window.location.host + "/arama?"+  search_params.toString();
+    window.history.pushState({path: newurl}, '', newurl);
+    $("#loadingproducts").bind("inview", function(event, isInView) {
+      if (isInView) {      
+            var search_params = new URLSearchParams(window.location.search);
+            if(Number(search_params.get('pg'))==0){
+                var newparams = Number(search_params.get('pg'))+2
+            }
+            else{
+                var newparams = Number(search_params.get('pg'))+1
+            }
+            
+            // new value of "id" is set to "101"
+        if(search_params.get('filtersByBrand')!=null){   
+            $.ajax({
+            
+            // İstek türü (örneğin, GET veya POST)
+            type: 'GET',
+                    //okeeeyyy
+            // İstek gönderilecek URL
+            url: '/urunara/'+'<%-aranan %>'+'?filtersByBrand='+search_params.get('filtersByBrand')+'&pg='+newparams,
+            // İstek başarılı olduğunda çalıştırılacak fonksiyon
+            success: function(data) {
+                // Veritabanından döndürülen verileri kullanın
+                if(data.length>0){
+                    
+                    search_params.set('aranan', "<%-aranan %>");
+                    search_params.set('searchKey', "urun");
+                    search_params.set('pg', newparams);
+                    let newurl = window.location.protocol + "//" + window.location.host + "/arama?"+  search_params.toString();
+                    window.history.pushState({path: newurl}, '', newurl);    
+                }
+                
+                data.forEach(Product => {
+                    
+                    $( "#test" ).append('<li class="col-6 col-md-3 col-wd-2gdot4 product-item"><div class="product-item__outer h-100"><div class="product-item__inner px-xl-4 p-3"><div class="product-item__body pb-xl-2"><div class="mb-2"><a href="/kategori/'+Product.product_category+'" class="font-size-12 text-gray-5">'+Product.product_category+'</a></div><h5 class="mb-1 product-item__title"><a href="/urunler/'+Product.product_url+'" class="text-blue font-weight-bold">'+ Product.product_name+'</a></h5><div class="mb-2"><a href="/urunler/'+Product.product_url+'" class="d-block text-center"><img class="img-fluid" src="/uploads/images/'+Product.product_category3+'/'+Product.product_photo[0]+'" alt="'+Product.product_name+'"></a></div><div class="flex-center-between mb-1"><div class="prodcut-price"><div class="text-gray-100"></div></div></div></div><div class="product-item__footer"><div class="border-top pt-2 flex-center-between flex-wrap"><a href="/isteklistesi" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> İstek Listesi</a></div></div></div></div></li>');
+                });
+                
+            }
+            });
+        }
+
+      else{
+        $.ajax({
+            
+            // İstek türü (örneğin, GET veya POST)
+            type: 'GET',
+                    //okeeeyyy
+            // İstek gönderilecek URL
+            url: '/urunara/'+'<%-aranan %>'+'?pg='+newparams,
+            // İstek başarılı olduğunda çalıştırılacak fonksiyon
+            success: function(data) {
+                // Veritabanından döndürülen verileri kullanın
+                if(data.length>0){
+                    
+                    search_params.set('aranan', "<%-aranan %>");
+                    search_params.set('searchKey', "urun");
+                    search_params.set('pg', newparams);
+                    let newurl = window.location.protocol + "//" + window.location.host + "/arama?"+  search_params.toString();
+                    window.history.pushState({path: newurl}, '', newurl);    
+                }
+                
+                data.forEach(Product => {
+                    
+                    $( "#test" ).append('<li class="col-6 col-md-3 col-wd-2gdot4 product-item"><div class="product-item__outer h-100"><div class="product-item__inner px-xl-4 p-3"><div class="product-item__body pb-xl-2"><div class="mb-2"><a href="/kategori/'+Product.product_category+'" class="font-size-12 text-gray-5">'+Product.product_category+'</a></div><h5 class="mb-1 product-item__title"><a href="/urunler/'+Product.product_url+'" class="text-blue font-weight-bold">'+ Product.product_name+'</a></h5><div class="mb-2"><a href="/urunler/'+Product.product_url+'" class="d-block text-center"><img class="img-fluid" src="/uploads/images/'+Product.product_category3+'/'+Product.product_photo[0]+'" alt="'+Product.product_name+'"></a></div><div class="flex-center-between mb-1"><div class="prodcut-price"><div class="text-gray-100"></div></div></div></div><div class="product-item__footer"><div class="border-top pt-2 flex-center-between flex-wrap"><a href="/isteklistesi" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> İstek Listesi</a></div></div></div></div></li>');
+                });
+                
+            }
+            });
+      }
+    }})})
+</script> 
+<script name="BrandFilter">
+    $("input[type=checkbox]").change(function(){
+        var checkedValues = $('input:checkbox:checked').map(function() {
+            return this.value;
+        }).get();
+        if(checkedValues.length != 0){
+            for(let i=0;i<checkedValues.length;i++){
+                if (selectedValues==undefined){
+                    var selectedValues = checkedValues[i].split(':')[0]
+                }
+                else{
+                    var selectedValues = selectedValues+','+checkedValues[i].split(':')[0]
+                }
+            }
+            
+            var search_params = new URLSearchParams(window.location.search);
+                search_params.set('filtersByBrand', selectedValues); 
+                    // new value of "id" is set to "101"
+                    
+                $.ajax({
+                
+                // İstek türü (örneğin, GET veya POST)
+                type: 'GET',
+                        //okeeeyyy
+                // İstek gönderilecek URL
+                url: '/BrandFilter?searchKey='+'<%-aranan %>'+'&pg=1'+'&filtersByBrand='+selectedValues,
+                // İstek başarılı olduğunda çalıştırılacak fonksiyon
+                
+                success: function(data) {
+                    // Veritabanından döndürülen verileri kullanın
+                    if(data.length>0){
+                        search_params.set('pg', 1);
+                        search_params.delete('sirala');
+                        let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + search_params.toString();
+                        console.log(newurl)
+                        window.history.pushState({path: newurl}, '', newurl);    
+                    }
+                    $( "#test" ).empty();
+                    data.forEach(Product => {
+                        
+                        $( "#test" ).append('<li class="col-6 col-md-3 col-wd-2gdot4 product-item"><div class="product-item__outer h-100"><div class="product-item__inner px-xl-4 p-3"><div class="product-item__body pb-xl-2"><div class="mb-2"><a href="/kategori/'+Product.product_category+'" class="font-size-12 text-gray-5">'+Product.product_category+'</a></div><h5 class="mb-1 product-item__title"><a href="/urunler/'+Product.product_url+'" class="text-blue font-weight-bold">'+ Product.product_name+'</a></h5><div class="mb-2"><a href="/urunler/'+Product.product_url+'" class="d-block text-center"><img class="img-fluid" src="/uploads/images/'+Product.product_category3+'/'+Product.product_photo[0]+'" alt="'+Product.product_name+'"></a></div><div class="flex-center-between mb-1"><div class="prodcut-price"><div class="text-gray-100"></div></div></div></div><div class="product-item__footer"><div class="border-top pt-2 flex-center-between flex-wrap"><a href="/isteklistesi" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> İstek Listesi</a></div></div></div></div></li>');
+                    });
+                }})
+            }
+            else{
+                var search_params = new URLSearchParams(window.location.search);
+                search_params.delete('filtersByBrand');
+                search_params.set('pg', 1);
+                let newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + search_params.toString();
+                window.history.pushState({path: newurl}, '', newurl);
+                $.ajax({
+            
+                // İstek türü (örneğin, GET veya POST)
+                type: 'GET',
+                        //okeeeyyy
+                // İstek gönderilecek URL
+                url: '/urunara/'+'<%-aranan %>'+'?pg='+"1",
+                // İstek başarılı olduğunda çalıştırılacak fonksiyon
+                success: function(data) {
+                    // Veritabanından döndürülen verileri kullanın
+                    if(data.length>0){
+                        
+                        search_params.set('aranan', "<%-aranan %>");
+                        search_params.set('searchKey', "urun");
+                        search_params.set('pg', 1);
+                        let newurl = window.location.protocol + "//" + window.location.host + "/arama?"+  search_params.toString();
+                        window.history.pushState({path: newurl}, '', newurl);    
+                    }
+                    $( "#test" ).empty();
+                    data.forEach(Product => {
+                        
+                        $( "#test" ).append('<li class="col-6 col-md-3 col-wd-2gdot4 product-item"><div class="product-item__outer h-100"><div class="product-item__inner px-xl-4 p-3"><div class="product-item__body pb-xl-2"><div class="mb-2"><a href="/kategori/'+Product.product_category+'" class="font-size-12 text-gray-5">'+Product.product_category+'</a></div><h5 class="mb-1 product-item__title"><a href="/urunler/'+Product.product_url+'" class="text-blue font-weight-bold">'+ Product.product_name+'</a></h5><div class="mb-2"><a href="/urunler/'+Product.product_url+'" class="d-block text-center"><img class="img-fluid" src="/uploads/images/'+Product.product_category3+'/'+Product.product_photo[0]+'" alt="'+Product.product_name+'"></a></div><div class="flex-center-between mb-1"><div class="prodcut-price"><div class="text-gray-100"></div></div></div></div><div class="product-item__footer"><div class="border-top pt-2 flex-center-between flex-wrap"><a href="/isteklistesi" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> İstek Listesi</a></div></div></div></div></li>');
+                    });
+                    
+                }
+                });
+            }
+});
+</script>
+<script>
+    document.getElementById('filtreButton').addEventListener('click', function() {
+        document.getElementById('filtreMenu').style.display = 'block';
+    });
+
+    document.getElementById('filtreClose').addEventListener('click', function() {
+        document.getElementById('filtreMenu').style.display = 'none';
+    });
+    document.getElementById('filtreClosez').addEventListener('click', function() {
+        document.getElementById('filtreMenu').style.display = 'none';
+    });
+</script>

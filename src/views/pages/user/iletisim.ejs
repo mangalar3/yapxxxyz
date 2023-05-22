@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yapx Yapı Çözümleri</title>
+    <link href="https: //fonts.googleapis.com/css2? family= Montserrat+Alternates & display=swap" rel="stylesheet">
+    
+    <div class="header">
+        <a href="/" class="logo">Logo</a>
+        <div class="header-right">
+          <a href="/">Anasayfa</a>
+          <a href="/hakkimizda">Hakkımızda</a>
+          <a href="/kategori">Kategoriler</a>
+          <a href="/iletisim">İletişim</a>
+          <a href="/giris">Üye Girişi</a>
+          <a href="/kayitol">Üye Ol</a>
+        </div>       
+     </div>
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+   margin: 0;
+}
+
+.header {
+   position: relative;
+   padding-top: 15px;
+  overflow: hidden;
+  width: 100%;
+  height: 80px;
+  background-color: #d8920f;
+  top: 0;
+}
+.header a {
+  display: flex;
+   float: left;
+   color: white;
+   text-align: center;
+   padding: 12px;
+   text-decoration: none;
+   font-size: 18px; 
+   line-height: 25px;
+   border-radius: 4px;
+   text-align: center;
+
+ }
+ 
+ .header a.logo {
+   font-size: 25px;
+   font-weight: bold;
+ }
+ .header a:hover {
+   background-color: black;
+   color: white;
+ }
+   
+.header-right {
+   float: right;
+ }
+
+
+.logo_container {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+}
+
+.header h1 {
+  color: white;
+  height: 100%;
+  display: table-cell;
+  font-size: 32px;
+  font-family: sans-serif;
+  font-weight: 200;
+  position: relative;
+  left: 200px;
+  top: 40px;
+}
+.header h1 span {
+  font-weight: 800;
+}
+.navigation {
+  display: block;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+
+  margin-top: -25px;
+}
+.navigation a {
+  height: 70%;
+  display: block;
+  float: left; /*yazılar soldan sağa mı sağdan sola mı yazsın onu belirtiyo*/
+  padding: 0px 10px;
+  cursor: pointer;
+}
+
+.navigation li a {
+  display: inline-block;
+  color: white;
+  font-family: sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.content {
+  width: 100%;
+  position: absolute;
+  top: 40%;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+.content h1 {
+  font-size: 65px; /*ortaya yazı yazdık*/
+}
+.content p {
+  margin: 20px auto;
+}
+button {
+  background-color: black;
+  width: 150px;
+  padding: 10px 0 10px 10px;
+  border-radius: 35px; /*karenin kenarlarını yuvarlar*/
+  margin: 15px; /*aralarındaki mesafeyi ayarlar*/
+  cursor: pointer; /*üstüne gittiğinde imleç değişiyor*/
+}
+button:hover {
+  color: yellow;
+  transition: 1s;
+}
+
+#box {
+  max-width: 300px;
+  position: relative;
+  float: left;
+  margin-right: 500px;
+}
+
+#box .fa-search {
+  position: absolute;
+  top: 14px;
+  left: 12px;
+  font-size: 20px;
+  color: black;
+}
+
+#search {
+  width: 100px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 4px;
+  font-size: 18px;
+  padding: 12px 20px 12px 40px;
+  -moz-transition: width 0.4s ease-in-out;
+  -o-transition: width 0.4s ease-in-out;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+#search:focus {
+  width: 100%;
+}
+.adres {
+  color: black;
+  width: 35%;
+  float: left;
+  height: 350px;
+  border: 1px solid#d8d8d8;
+  padding: 10px;
+  margin-bottom: 70px;
+  margin-top: 20px;
+  margin-left: 4px;
+}
+.span1 {
+  display: block;
+  margin: 20px 0 0 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  letter-spacing: 1.2px; /*harflerin arasını açıyo*/
+  text-align: left;
+  font-size: 24px;
+  color: black;
+  padding: 10px 20px;
+}
+.span2 {
+  margin-left: 180px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: 1.5px;
+  color: black;
+}
+
+.span3 {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 24px;
+  letter-spacing: 1.5px;
+  margin-left: 205px;
+  color: black;
+}
+
+#İndirim{
+  color: white;
+  background-color: #d8920f; 
+  text-align: left;
+  
+
+}
+iframe {
+  /*harita*/
+  width: 61%;
+  height: 370px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px 2px rgba(20, 23, 28, 0.15);
+  margin-right: 20px;
+  float: right;
+}
+h3 {
+  text-align: center;
+  font-size: 30px;
+}
+.footer {
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  height: 200px;
+  background-color: #d8920f;
+}
+.footer .col {
+  width: 150px;
+  height: auto;
+  text-align: center;
+  float: left;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding: 0px 5px 5px 5px;
+  margin-left: 5px;
+}
+.indirim h2{
+  background-color: #d8920f;
+}
+.footer .col h1 {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 17px;
+  padding: 20px 0px 5px 0px;
+  color: white;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+.footer .col ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.footer .col ul li {
+  color: #999999;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: bold;
+  padding: 5px 0px 5px 0px;
+  cursor: pointer;
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+  -moz-transition: 0.2s;
+}
+.social ul li {
+  display: inline-block;
+  padding-right: 5px !important;
+}
+
+.footer .col ul li:hover {
+  color: #ffffff;
+  transition: 0.1s;
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+}
+.clearfix {
+  clear: both;
+}
+@media only screen and (min-width: 1280px) {
+  .contain {
+    width: 1200px;
+    margin: 0 auto;
+  }
+}
+@media only screen and (max-width: 1139px) {
+  .contain .social {
+    width: 1000px;
+    display: block;
+  }
+  .social h1 {
+    margin: 0px;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .footer .col {
+    width: 33%;
+  }
+  .footer .col h1 {
+    font-size: 14px;
+  }
+  .footer .col ul li {
+    font-size: 13px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .footer .col {
+    width: 50%;
+  }
+  .footer .col h1 {
+    font-size: 14px;
+  }
+  .footer .col ul li {
+    font-size: 13px;
+  }
+}
+@media only screen and (max-width: 340px) {
+  .footer .col {
+    width: 100%;
+  }
+}
+/* reset */
+:root {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/*iletisim*/
+
+h2 {
+  text-align: center;
+  background-color: #d8920f;
+  color: white;
+  height: 50px;
+  line-height: 50px; /*satır yüksekliği*/
+  margin-top: 25px;
+  box-shadow: 0 2px 8px 2px rgba(20, 23, 28, 0.15);
+}
+iframe {
+  /*harita*/
+  width: 61%;
+  height: 370px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px 2px rgba(20, 23, 28, 0.15);
+  margin-right: 20px;
+  float: right;
+}
+h3 {
+  text-align: center;
+  font-size: 30px;
+}
+
+/* carousel */
+.carousel {
+  position: relative;
+}
+
+.carousel_inner {
+  width: 100%;
+  overflow: hidden;
+  max-height: 450px;
+}
+
+.carousel_inner::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.carousel_item {
+  position: relative;
+  float: left;
+  display: none;
+  width: 100%;
+  margin-right: 100px;
+}
+
+/* slide effect */
+.carousel_item__active,
+.carousel_item__pos_prev,
+.carousel_item__pos_next {
+  display: block;
+}
+
+.carousel_item__pos_prev {
+  left: -100%;
+}
+
+.carousel_item__pos_next {
+  left: 100%;
+}
+
+.carousel_item__prev {
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel_item__next {
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+/* fade effect */
+.carousel__fade .carousel_item__pos_prev,
+.carousel__fade .carousel_item__pos_next {
+  left: 0;
+  opacity: 0;
+}
+
+.carousel__fade .carousel_item__prev,
+.carousel__fade .carousel_item__next {
+  transform: none;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel__fade .carousel_item__active.carousel_item__prev,
+.carousel__fade .carousel_item__active.carousel_item__next {
+  opacity: 0;
+}
+
+/* carousel */
+.carousel_img {
+  display: block;
+  width: 50%;
+  margin-left: 450px;
+  padding: 30px;
+}
+
+.carousel_caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 3rem 4rem;
+  text-align: center;
+  color: #fff;
+  z-index: 1;
+}
+
+.carousel_title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.carousel_description {
+  margin-top: 0.75rem;
+  line-height: 150%;
+}
+
+.carousel_indicator {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  z-index: 1;
+}
+
+.carousel_dot {
+  display: block;
+  padding: 0.25rem;
+  background-color: rgba(255, 255, 255, 0.25);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.carousel_dot__active {
+  background-color: #d8920f;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.carousel_control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel_button {
+  display: block;
+  padding-inline: 1rem;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.375rem;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.25);
+  border: none;
+  cursor: pointer;
+  transition: color 0.25s;
+  z-index: 1;
+}
+
+.carousel_button:hover {
+  color: rgba(135, 206, 250, 0.75);
+}
+</style>
+</head>
+
+<body>
+  <p>İletişim Bilgileri
+    KURTULUŞ MAH. KOŞUYOLU CAD. BIRLIK APT. NO: 73 İÇ KAPI NO: 3 SALİHLİ/ MANİSA</p>  
+  <p>+90 538 330 68 04
+  </p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+  <p>İLETİSİM VERİLERİ BURAYA GİRİLECEK</p>  
+ 
+
+
+
+
+</body>
+  
+            </html>

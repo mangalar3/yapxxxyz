@@ -1,0 +1,18 @@
+<li class="col-4 col-md-4 col-xl-2gdot5 product-item remove-divider-sm-down border-0">
+    <div class="product-item__outer h-100">
+        <div class="remove-prodcut-hover product-item__inner px-xl-4 p-3">
+            <div class="product-item__body pb-xl-2">
+                <div class="mb-2 d-none d-md-block"><a href="/urunler/<%- Product.product_url %> " class="font-size-12 text-gray-5"><%-Product.product_category  %></a></div>
+                <h5 class="mb-1 product-item__title d-none d-md-block"><a href="#" class="text-blue font-weight-bold"><%-Product.product_name  %> </a></h5>
+                <div class="mb-2">
+                    <a href="/urunler/<%- Product.product_url %> " class="d-block text-center"><img class="img-fluid-25" src="/uploads/images/<%-Product.product_category3.trim() %>/<%- Product.product_photo[0] %>" alt="Image Description"></a>
+                </div>
+                <div class="flex-center-between mb-1 d-none d-md-block">
+                    <div class="prodcut-price">
+                        <div class="text-gray-100"><%-Product.product_price  %></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>

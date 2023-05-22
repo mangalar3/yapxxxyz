@@ -1,0 +1,47 @@
+
+
+
+<div class="product-item__outer w-100">
+    
+    <div class="product-item__inner remove-prodcut-hover py-4 row">
+        <div class="product-item__header col-6 col-md-4">
+            <div class="mb-2">
+                <a href="/dukkanlar/<%- Product[0].dukkanurl %>" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/<%- Product[0].dukkanphoto %>" alt="Image Description"></a>
+            </div>
+        </div>
+        <div class="product-item__body col-6 col-md-5">
+            <div class="pr-lg-10">
+                <div class="mb-2"><a href="/dukkanlar/<%- Product[0].dukkanurl %>" class="font-size-12 text-gray-5"><%-Product[0].vergidairesiili  %></a></div>
+                <h5 class="mb-2 product-item__title"><a href="/dukkanlar/<%- Product[0].dukkanurl %>" class="text-blue font-weight-bold"><%-Product[0].dukkanadi  %></a></h5>
+                <div class="prodcut-price mb-2 d-md-none">
+                    <div class="text-gray-100">Ürün Fiyatı  <%- Product[1] %> ₺</div>
+                </div>
+                <div class="mb-3 d-none d-md-block">
+                    <a class="d-inline-flex align-items-center small font-size-14" href="#">
+                        <div class="text-warning mr-2">
+                            <small class="fas fa-star <% if(Product[0].dukkan_av>0){ %><% } else{ %>text-muted<% } %>"></small>
+                            <small class="fas fa-star <% if(Product[0].dukkan_av>1){ %><% } else{ %>text-muted<% } %>"></small>
+                            <small class="fas fa-star <% if(Product[0].dukkan_av>2){ %><% } else{ %>text-muted<% } %>"></small>
+                            <small class="fas fa-star <% if(Product[0].dukkan_av>3){ %><% } else{ %>text-muted<% } %>"></small>
+                            <small class="fas fa-star <% if(Product[0].dukkan_av>4){ %><% } else{ %>text-muted<% } %>"></small>
+                        </div>
+                        <span class="text-secondary"><%- Product[0].dukkanoysayisi %></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="product-item__footer col-md-3 d-md-block">
+            <div class="mb-3">
+                <div class="prodcut-price mb-2">
+                    <div class="text-gray-100">Ürün Fiyatı  <%- Product[1] %> ₺</div>
+                </div>
+                <div class="prodcut-price mb-2">
+                    <div class="text-gray-100">Ürün Stok  <%- Product[2] %></div>
+                </div>
+                <div class="prodcut-add-cart">
+                    <a href="/dukkanlar/<%- Product[0].dukkanurl %>" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

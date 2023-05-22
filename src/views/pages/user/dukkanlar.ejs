@@ -1,0 +1,599 @@
+<style>
+    .rating {
+display: flex;
+flex-direction: row-reverse;
+justify-content: center;
+}
+
+.rating > input{
+ display:none;
+}
+
+.rating > label {
+position: relative;
+width: 1.1em;
+font-size: 3em;
+color: #FFD700;
+cursor: pointer;
+}
+
+.rating > label::before{
+content: "\2605";
+position: absolute;
+opacity: 0;
+}
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before {
+opacity: 1 !important;
+}
+
+.rating > input:checked ~ label:before{
+opacity:1;
+}
+
+.rating:hover > input:checked ~ label:before{ 
+opacity: 0.4;
+ }
+
+ .arama-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    padding: 15px;
+   
+}
+
+#arama-input {
+    width: 150px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    outline: none;
+    font-size: 16px;
+}
+#arama-input:focus {
+    border-color: #66afe9;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+}
+#arama-button {
+    background-color: #77838f;
+    color: #fff;
+    border: none;
+    border-radius: 0px;
+    margin-left: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#arama-button:hover {
+    background-color: #77818b;
+}
+</style>
+<title>Yapx | <%-Product[0].dukkanadi %></title>
+ 
+        <!-- ========== MAIN CONTENT ========== -->
+        <main id="content" role="main">
+            <!-- breadcrumb -->
+            <div class="bg-gray-13 bg-md-transparent">
+                <div class="container">
+                    <!-- breadcrumb -->
+                    <div class="my-md-3">
+                        <nav aria-label="breadcrumb">
+                           
+                        </nav>
+                    </div>
+                    <!-- End breadcrumb -->
+                </div>
+            </div>
+            <!-- End breadcrumb -->
+
+            <div class="container">
+                <div class="row">
+                    <% Product.forEach(Product => { %>
+                  
+                   
+                    <% }) %>
+                    
+                    
+                    <div class="col-xl-12 col-wd-12gdot5">
+                        <!-- Single Product Body -->
+                        <div class="mb-xl-14 mb-6">
+                            <div class="d-lg-none d-block" style="text-align: center;">
+                               
+                            </div>
+                            
+                            <% Product.forEach(Product => { %>
+								<%- include('../../partials/_dukkanphoto', {Product}) %> 
+							<% }) %>
+                        </div>
+                        <!-- End Single Product Body -->
+                        <!-- Single Product Tab -->
+                        <!-- Single Product Tab -->
+                        <!-- Related products -->
+                        
+                        <div class="mb-6">
+                            
+                            
+                            <div class="col-xl-12 col-wd-12gdot5">
+                                <div class="position-relative bg-white text-center z-index-2">
+                                    <ul class="nav nav-classic nav-tab justify-content-center" id="pills-tab" role="tablist" style="margin: 30px;">
+                                        <li class="nav-item">
+                                            <a class="nav-link active js-animation-link" id="pills-one-example1-tab" data-toggle="pill" href="#pills-one-example1" role="tab" aria-controls="pills-one-example1" aria-selected="true"
+                                                data-target="#pills-one-example1"
+                                                data-link-group="groups"
+                                                data-animation-in="slideInUp">
+                                                <div class="d-md-flex justify-content-md-center align-items-md-center">
+                                                    Dükkan Ürünleri
+                                                </div>
+                                            </a>
+                                        </li>
+                            
+                                        <li class="nav-item">
+                                            <a class="nav-link js-animation-link" id="pills-two-example2-tab" data-toggle="pill" href="#pills-two-example1" role="tab" aria-controls="pills-two-example2" aria-selected="false"
+                                                data-target="#pills-two-example1"
+                                                data-link-group="groups"
+                                                data-animation-in="slideInUp">
+                                                <div class="d-md-flex justify-content-md-center align-items-md-center">
+                                                    Dükkan Hakkında
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link js-animation-link" id="pills-three-example1-tab" data-toggle="pill" href="#pills-three-example1" role="tab" aria-controls="pills-three-example1" aria-selected="false"
+                                                data-target="#pills-three-example1"
+                                                data-link-group="groups"
+                                                data-animation-in="slideInUp">
+                                                <div class="d-md-flex justify-content-md-center align-items-md-center">
+                                                    Dükkan İletişim Bilgileri
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link js-animation-link" id="pills-four-example1-tab" data-toggle="pill" href="#pills-four-example1" role="tab" aria-controls="pills-four-example1" aria-selected="
+                                            false"
+                                            data-target="#pills-four-example1"
+                                            data-link-group="groups"
+                                            data-animation-in="slideInUp">
+                                            <div class="d-md-flex justify-content-md-center align-items-md-center">
+                                            Dükkan Yorumları
+                                            </div>
+                                            </a>
+                                            </li>
+                                            </ul>
+                                            </div>
+
+                                            <div class="row tab-content" id="pills-tabContent">
+                                                <div class="col-xl-12 col-wd-12gdot5 tab-pane fade pt-2 show active" id="pills-one-example1" role="tabpanel" aria-labelledby="pills-one-example1-tab" data-target-group="groups">
+                                                    <div class="row">
+                                                        <div class="col-xl-3 col-wd-3gdot5">
+
+                                                            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                                                                <div class="card-header">Arama</div>
+                                                                <div class="card-body">
+                                                                 
+                                                                  <p class="card-text">
+                                                                    
+                                                                        <div class="input-group mb-3">
+                                                                            <input id="arananUrun" type="text" class="form-control" placeholder="Ürün adına göre arama yapın" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                            <div class="input-group-append">
+                                                                              <button id="araUrun" class="btn btn-outline-secondary" type="button">Ara</button>
+                                                                            </div>
+                                                                          </div>
+
+                                                                    
+                                                                  </p>
+                                                                </div>
+                                                                
+                                                              </div>
+                                                              <div class="card bg-light mb-3" style="max-width: 18rem;">
+                                                                <div class="card-header">Marka</div>
+                                                                <div class="card-body">
+                                                                    <% Object.entries(countByBrand).forEach(([brand, count]) => { %>
+                                                                    <div class="input-group mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                          <div class="input-group-text">
+                                                                            <input type="checkbox" value="<%= brand %>" aria-label="Checkbox for following text input">
+                                                                          </div>
+                                                                        </div>
+                                                                        <p type="text" class="form-control card-text" aria-label="Text input with checkbox"><%= brand %> <span class="badge badge-primary badge-pill" style="float: right; justify-content: center;"><%= count %></span> </p>
+                                                                    </div>
+                                                                    <% }); %>
+                                                                </div>
+                                                              </div>
+                                                              
+
+                                                           
+
+
+                                                        </div>
+                                                        <div class="col-xl-8 col-wd-8gdot5">
+                                                             <ul id="Products" class="row list-unstyled products-group no-gutters">      
+                                                                <% urunler.forEach(Product => { %>
+                                                                    <%- include('../../partials/_dukkanurunleri', {Product}) %> 
+                                                                <% }) %>                                                
+                                                            </ul>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="col-xl-12 col-wd-12gdot5 tab-pane fade pt-2" id="pills-two-example1" role="tabpanel" aria-labelledby="pills-two-example1-tab" data-target-group="groups">
+                                                    <div class="row">
+                                                        
+                                                        <div class="col-xl-12 col-wd-12gdot5">
+                                                            <h2 class="text-center">Hakkımızda</h2>
+                                                            <hr>
+                                                            <p class="mb-4">
+                                                                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                                                                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="col-xl-12 col-wd-12gdot5 tab-pane fade pt-2" id="pills-three-example1" role="tabpanel" aria-labelledby="pills-three-example1-tab" data-target-group="groups">
+                                                    <div class="row">
+                                                        <div class="col-xl-6 col-wd-6gdot5">
+                                                            <div class="card mb-4">
+                                                                <div class="card-header">
+                                                                  Dükkan Adresi <i class="fas fa-map ml-1" aria-hidden="true"></i>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                  
+                                                                  <p class="card-text"><%-Product[0].sirketadresi   %></p>
+                                    
+                                                                </div>
+                                                              </div>
+                                                              <div class="card">
+                                                                <div class="card-header">
+                                                                  Dükkan Ürün Sayısı <i class="fas fa-database ml-1" aria-hidden="true"></i>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <p class="card-text"><%-Product[0].dukkanurunleri.length  %></p>
+                                                                  
+                                    
+                                                                </div>
+                                                              </div>
+                                                        </div>
+                                                        <div class="col-xl-6 col-wd-6gdot5">
+                                                            <div class="card mb-4">
+                                                                <div class="card-header">
+                                                                  Dükkan Telefonu <i class="fas fa-phone ml-1" aria-hidden="true"></i>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                  
+                                                                  <p class="card-text"><%-Product[0].sabittelefon  %></p>
+                                    
+                                                                </div>
+                                                              </div>
+                                                              <div class="card">
+                                                                <div class="card-header">
+                                                                  Dükkan Puanı <i class="fa fa-star-o ml-1" aria-hidden="true"></i>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                  <p class="card-text"><%-Product[0].dukkan_av  %></p>
+                                    
+                                                                </div>
+                                                              </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="col-xl-12 col-wd-12gdot5 tab-pane fade pt-2" id="pills-four-example1" role="tabpanel" aria-labelledby="pills-four-example1-tab" data-target-group="groups">
+                                                    <div class="row">
+                                                        
+                                                        <div class="col-xl-12 col-wd-12gdot5">
+                                                            <div class="borders-radius-17 border p-4 mt-4 mt-md-0 px-lg-10 py-lg-9">
+                                                                <div class="tab-content" id="Jpills-tabContent">
+                                                                    <div class="tab-pane fade" id="Jpills-one-example1" role="tabpanel" aria-labelledby="Jpills-one-example1-tab">
+                                                                        <div class="row no-gutters">
+                                                                            <div class="col mb-6 mb-md-0">
+                                                                                <ul class="row list-unstyled products-group no-gutters border-bottom border-md-bottom-0">
+                                                                                    
+                                                                                        <li class="col-4 col-md-4 col-xl-2gdot5 product-item remove-divider-sm-down border-0">
+                                                <div class="product-item__outer h-100">
+                                                <div class="remove-prodcut-hover product-item__inner px-xl-4 p-3">
+                                                    <div class="product-item__body pb-xl-2">
+                                                        <div class="mb-2 d-none d-md-block"><a href="/urunler/341431 " class="font-size-12 text-gray-5"></a></div>
+                                                        <h5 class="mb-1 product-item__title d-none d-md-block"><a href="#" class="text-blue font-weight-bold">123123123 </a></h5>
+                                                        <div class="mb-2">
+                                                            <a href="/urunler/341431 " class="d-block text-center"><img class="img-fluid" src="/uploads/images/yapx_1660259804250.jpg" alt="Image Description"></a>
+                                                        </div>
+                                                        <div class="flex-center-between mb-1 d-none d-md-block">
+                                                            <div class="prodcut-price">
+                                                                <div class="text-gray-100">12312312</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                </li> 
+                                                                                    
+                                                                                </ul>
+                                                                               
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="tab-pane fade active show" id="Jpills-four-example1" role="tabpanel" aria-labelledby="Jpills-four-example1-tab">
+                                                                        <div class="row mb-8">
+                                                                            <div class="col-md-4">
+                                                                              
+                                                                                <!-- Form -->
+                                                                                
+                                                                                <% Product.forEach(Product => { %>
+                                                                                    <form action="/yorumekledukkan/<%-Product.dukkanurl %> " method="post" class="js-validate">
+                                                                                        <% }) %>
+                                                                                    
+                                                                                    <div class="row align-items-center mb-4">
+                                                                                        <div class="col-md-4 col-lg-3">
+                                                                                            <label for="rating" class="form-label mb-0">Derecelendirme</label>
+                                                                                        </div>
+                                                                                        <div class="col-md-8 col-lg-9">
+                                                                                            <a href="#" class="d-block">
+                                                                                                <div name="rating" class="rating">
+                                                                                                
+                                                                                                    <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                                                                                                    <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                                                                                                    <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                                                                                                    <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                                                                                                    <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                                                                                                    
+                                                                                                </div>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="js-form-message form-group mb-3 row">
+                                                                                        <div class="col-md-4 col-lg-3">
+                                                                                            <label for="descriptionTextarea" class="form-label">Yorumunuz</label>
+                                                                                        </div>
+                                                                                        <div class="col-md-8 col-lg-9">
+                                                                                            <textarea id="yorum" name="yorum" class="form-control" rows="10" data-msg="Please enter your message." data-error-class="u-has-error" data-success-class="u-has-success" required></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-12 col-lg-12">
+                                                                                            <button type="submit" class="btn btn-primary-dark  transition-3d-hover" style="float: right;">Yorumunuzu Ekleyin </button>
+                                                                                        </div>
+                                                                                            
+                                                                                        
+                                                                                    </div>
+                                                                                </form>
+                                                                                <!-- End Form -->
+                                                                            </div>
+                                                                            <div class="col-md-1">
+
+                                                                            </div>
+                                                                            <div class="col-md-7">
+                                                                                <% dukkanyorum.forEach(Product => { %>
+                                                                                    <%- include('../../partials/_dukkanyorum', {Product}) %> 
+                                                                                <% }) %>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- Review -->
+                                                                        
+                                                
+                                                <!-- Reviewer -->
+                                                
+                                                <!-- End Reviewer -->
+                                                </div>
+                                                                        
+                                                
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+    
+
+
+
+                            
+                            
+                            
+                        </div>
+                        
+                        <!-- End Related products -->
+                    </div>
+                   
+
+                </div>
+                <!-- Brand Carousel -->
+                
+            </div>
+        
+            </div>
+        </main>
+        
+        <!-- ========== END MAIN CONTENT ========== -->
+                        <!-- End Content -->
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- End Account Sidebar Navigation -->
+        <!-- ========== END SECONDARY CONTENTS ========== -->
+
+    
+        <!-- Go to Top -->
+        <a class="js-go-to u-go-to" href="#"
+            data-position='{"bottom": 15, "right": 15 }'
+            data-type="fixed"
+            data-offset-top="400"
+            data-compensation="#header"
+            data-show-effect="slideInUp"
+            data-hide-effect="slideOutDown">
+            <span class="fas fa-arrow-up u-go-to__inner"></span>
+        </a>
+        <!-- End Go to Top -->
+
+        <!-- JS Plugins Init. -->
+        <script>
+            $(window).on('load', function () {
+                // initialization of HSMegaMenu component
+                $('.js-mega-menu').HSMegaMenu({
+                    event: 'hover',
+                    direction: 'horizontal',
+                    pageContainer: $('.container'),
+                    breakpoint: 767.98,
+                    hideTimeOut: 0
+                });
+            });
+
+            $(document).on('ready', function () {
+                // initialization of header
+                $.HSCore.components.HSHeader.init($('#header'));
+
+                // initialization of animation
+                $.HSCore.components.HSOnScrollAnimation.init('[data-animation]');
+
+                // initialization of unfold component
+                $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
+                    afterOpen: function () {
+                        $(this).find('input[type="search"]').focus();
+                    }
+                });
+
+                // initialization of HSScrollNav component
+                $.HSCore.components.HSScrollNav.init($('.js-scroll-nav'), {
+                  duration: 700
+                });
+
+                // initialization of quantity counter
+                $.HSCore.components.HSQantityCounter.init('.js-quantity');
+
+                // initialization of popups
+                $.HSCore.components.HSFancyBox.init('.js-fancybox');
+
+                // initialization of countdowns
+                var countdowns = $.HSCore.components.HSCountdown.init('.js-countdown', {
+                    yearsElSelector: '.js-cd-years',
+                    monthsElSelector: '.js-cd-months',
+                    daysElSelector: '.js-cd-days',
+                    hoursElSelector: '.js-cd-hours',
+                    minutesElSelector: '.js-cd-minutes',
+                    secondsElSelector: '.js-cd-seconds'
+                });
+
+                // initialization of malihu scrollbar
+                $.HSCore.components.HSMalihuScrollBar.init($('.js-scrollbar'));
+
+                // initialization of forms
+                $.HSCore.components.HSFocusState.init();
+
+                // initialization of form validation
+                $.HSCore.components.HSValidation.init('.js-validate', {
+                    rules: {
+                        confirmPassword: {
+                            equalTo: '#signupPassword'
+                        }
+                    }
+                });
+
+                // initialization of show animations
+                $.HSCore.components.HSShowAnimation.init('.js-animation-link');
+
+                // initialization of fancybox
+                $.HSCore.components.HSFancyBox.init('.js-fancybox');
+
+                // initialization of slick carousel
+                $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
+
+                // initialization of go to
+                $.HSCore.components.HSGoTo.init('.js-go-to');
+
+                // initialization of hamburgers
+                $.HSCore.components.HSHamburgers.init('#hamburgerTrigger');
+
+                // initialization of unfold component
+                $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
+                    beforeClose: function () {
+                        $('#hamburgerTrigger').removeClass('is-active');
+                    },
+                    afterClose: function() {
+                        $('#headerSidebarList .collapse.show').collapse('hide');
+                    }
+                });
+
+                $('#headerSidebarList [data-toggle="collapse"]').on('click', function (e) {
+                    e.preventDefault();
+
+                    var target = $(this).data('target');
+
+                    if($(this).attr('aria-expanded') === "true") {
+                        $(target).collapse('hide');
+                    } else {
+                        $(target).collapse('show');
+                    }
+                });
+
+                // initialization of unfold component
+                $.HSCore.components.HSUnfold.init($('[data-unfold-target]'));
+
+                // initialization of select picker
+                $.HSCore.components.HSSelectPicker.init('.js-select');
+            });
+        </script>
+    </body>
+    <script name="BrandFilter">
+        $("input[type=checkbox]").change(function(){
+            var checkedValues = $('input:checkbox:checked').map(function() {
+                return this.value;
+            }).get();
+            console.log(checkedValues)     
+            $.ajax({
+            
+            // İstek türü (örneğin, GET veya POST)
+            type: 'GET',
+                    //okeeeyyy
+            // İstek gönderilecek URL
+            url: '/FilterBrandAtShop?url='+'<%-Product[0].dukkanurl %>'+'&filtersByBrand='+checkedValues,
+            // İstek başarılı olduğunda çalıştırılacak fonksiyon
+            
+            success: function(data) {
+                // Veritabanından döndürülen verileri kullanın
+                $( "#Products" ).empty();
+                data.forEach(Product => {
+                    
+                    $( "#Products" ).append('<li class="col-6 col-md-3 col-wd-2gdot4 product-item"> <div class="product-item__outer h-100"> <div class="product-item__inner px-xl-4 p-3"> <div class="product-item__body pb-xl-2"> <div class="mb-2"><a href="/kategoriler/'+ Product.product_category3 +'" class="font-size-12 text-gray-5">'+ Product.product_category3 +'</a></div> <h5 class="mb-1 product-item__title"><a href="/urunler/'+ Product.product_url +'" class="text-blue font-weight-bold">'+Product.product_title +'</a></h5> <div class="mb-2"> <a href="/urunler/'+ Product.product_url +'" class="d-block text-center"><img class="img-fluid" src="/uploads/images/'+ Product.product_category3.trim() +'/'+ Product.product_photo +'" alt="Image Description"></a> </div> <div class="flex-center-between mb-1" style="margin-top: 20%;"> <div > <div class="text-gray-23" style="font-size: small; margin-left: 10px;"> Fiyat <div class="text-secondary" style="font-weight: bold;">'+ Product.price +'₺</div> </div> </div> <div > <div class="text-gray-23" style="font-size: small; margin-right: 20px;"> Stok S. <div class="text-secondary" style="font-weight: bold;">'+ Product.stock+'</div> </div> </div> </div> </div> </div> </div></li>');
+                });
+            }})
+        }
+                
+    );
+    </script>
+    <script>
+        $(document).ready(function() {
+          $('#araUrun').click(function() {
+              $( "#Products" ).empty();
+                var secenekDegeri = $('#arananUrun').val();
+                var search_params = new URLSearchParams(window.location.search);
+                        
+                        // new value of "id" is set to "101"
+                        
+                    $.ajax({
+                    
+                    // İstek türü (örneğin, GET veya POST)
+                    type: 'GET',
+                            //okeeeyyy
+                    // İstek gönderilecek URL
+                    url: '/searchAtShop?url=<%-Product[0].dukkanurl %>&aranan='+secenekDegeri,
+                    // İstek başarılı olduğunda çalıştırılacak fonksiyon
+                    success: function(data) {
+                        // Veritabanından döndürülen verileri kullanın
+                        console.log(data)
+                        data.forEach(Product => {
+                                    $( "#Products" ).append('<li class="col-6 col-md-3 col-wd-2gdot4 product-item"> <div class="product-item__outer h-100"> <div class="product-item__inner px-xl-4 p-3"> <div class="product-item__body pb-xl-2"> <div class="mb-2"><a href="/kategoriler/'+ Product.product_category3 +'" class="font-size-12 text-gray-5">'+ Product.product_category3 +'</a></div> <h5 class="mb-1 product-item__title"><a href="/urunler/'+ Product.product_url +'" class="text-blue font-weight-bold">'+Product.product_title +'</a></h5> <div class="mb-2"> <a href="/urunler/'+ Product.product_url +'" class="d-block text-center"><img class="img-fluid" src="/uploads/images/'+ Product.product_category3.trim() +'/'+ Product.product_photo +'" alt="Image Description"></a> </div> <div class="flex-center-between mb-1" style="margin-top: 20%;"> <div > <div class="text-gray-23" style="font-size: small; margin-left: 10px;"> Fiyat <div class="text-secondary" style="font-weight: bold;">'+ Product.price +'₺</div> </div> </div> <div > <div class="text-gray-23" style="font-size: small; margin-right: 20px;"> Stok S. <div class="text-secondary" style="font-weight: bold;">'+ Product.stock+'</div> </div> </div> </div> </div> </div> </div></li>');
+                        });
+                    }})
+          });
+        });
+        </script>
+</html>

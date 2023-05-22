@@ -1,0 +1,39 @@
+
+<div class=" col-md-7 mb-md-8 mb-lg-0">
+    <div class="mb-2">
+        <div class="border-bottom mb-3 pb-md-1 pb-3">
+            <a href="#" class="font-size-12 text-gray-5 mb-2 d-inline-block"><%-Product.product_category  %></a>
+            <h2 class="font-size-25 text-lh-1dot2"><%-Product.product_name  %> </h2>
+            <div class="mb-2">
+                <a class="d-inline-flex align-items-center small font-size-15 text-lh-1" href="#">
+                    <div class="text-warning mr-2">
+                        <small class="fas fa-star <% if(Product.avarage>0){ %><% } else{ %>text-muted<% } %>"></small>
+                        <small class="fas fa-star <% if(Product.avarage>1){ %><% } else{ %>text-muted<% } %>"></small>
+                        <small class="fas fa-star <% if(Product.avarage>2){ %><% } else{ %>text-muted<% } %>"></small>
+                        <small class="fas fa-star <% if(Product.avarage>3){ %><% } else{ %>text-muted<% } %>"></small>
+                        <small class="fas fa-star <% if(Product.avarage>4){ %><% } else{ %>text-muted<% } %>"></small>
+                    </div>
+                    <span class="text-secondary font-size-13">(<%-Product.urun_oysayisi %>  müşteri yorumu)</span>
+                </a>
+            </div>
+            <div class="d-md-flex align-items-center">
+                <div class="ml-md-3 text-gray-9 font-size-14">Toplam Stok: <span class="text-green font-weight-bold"><%-Product.stock_alert  %></span></div>
+            </div>
+        </div>
+        <form id="isteklistesiekle" action="/isteklistesiekle/<%- Product.product_url %>" method="post">
+        <div class="flex-horizontal-center flex-wrap mb-4">
+            <button type="submit" style="background:transparent; border:none; color:transparent;" class="text-gray-6 font-size-13 mr-2"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</button>
+        </div>
+        </form>
+        <div class="mb-2">
+            <ul class="font-size-14 pl-3 ml-1 text-gray-110">
+                <li><%-Product.product_description  %></li>
+                
+            </ul>
+        </div>
+        <p><strong>Ürün Numarası</strong>: FW511948218</p>
+        <div class="mb-4">
+            <div class="d-flex align-items-baseline">
+                <ins class="font-size-36 text-decoration-none"><%-Product.product_price  %></ins>
+            </div>
+        </div>

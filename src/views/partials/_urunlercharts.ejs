@@ -1,0 +1,38 @@
+<% if(Product.banner==1){ %>
+    <tr>
+        <td>
+        <form action="/yapxadminlogin/banner2/<%-Product.product_url %> " method="post" enctype="multipart/form-data">
+            <table class="table table-borderless table-striped table-earning">
+                <tr>
+                    <td><textarea class="form-control" id="banneryazi" name="banneryazi"></textarea></td>
+                    <td><div class="col-md-4"><input id="images" name="images" class="input-files" type="file" ></div></td>
+                    <td><%-Product.product_name  %></td>
+                    <th class="text-right"><button type="submit" class="btn btn-danger">Bannerdan Ürünü Kaldır</button></th>
+                </tr>
+            </table>
+        </form>
+
+        </td>
+        
+    </tr>
+
+<% } else{ %>
+    
+        <tr>
+            <td>
+            <form action="/yapxadminlogin/banner/<%-Product.product_url %> " method="post"  enctype="multipart/form-data">
+                <table class="table table-borderless table-striped table-earning">
+                    <tr>
+                        <td><textarea class="form-control" id="banneryazi" name="banneryazi"></textarea></td>
+                        <td><div class="col-md-4"><input id="images" name="images" class="input-files" type="file" ></div></td>
+                        <td><%-Product.product_name  %></td>
+                        <th class="text-right"><button type="submit" class="btn btn-success">Bannera Ekle</button></th>
+                    </tr>
+                </table>
+            </form>
+
+            </td>
+            
+        </tr>
+
+    <% } %>

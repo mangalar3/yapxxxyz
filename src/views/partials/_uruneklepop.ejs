@@ -1,0 +1,49 @@
+ <!-- Modal -->
+ <style>
+    .buttonekle:hover{
+        background-color: rgba(0, 128, 0, 0.418);
+    }
+ </style>
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <tr>
+        
+        
+        <td><%-Product.product_name  %></td>
+        <th class="text-right"><button type="button" data-toggle="modal" class="btn btn-outline-primary buttonekle" style="border-radius: 2px; border: 1px solid green; color:green;" data-target="#<%-(Product.product_name.split(' ')[0]+Product.product_name.split(' ')[1]+Product.product_name.split(' ')[2])  %>">Dükkana Ekle</button></th>
+        <td>
+            <div class="modal fade" id="<%-(Product.product_name.split(' ')[0]+Product.product_name.split(' ')[1]+Product.product_name.split(' ')[2])  %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <form action="/dukkanaekle/<%-Product.product_url  %>" method="post">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><%-Product.product_name  %></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        
+                            <div class="modal-body">               
+                                    <div class="form-group">
+                                    <label for="formGroupExampleInput">Ürün Stock Sayınız</label>
+                                    <input type="number" class="form-control" name="stok" id="stok" placeholder="Ürün Stock Sayınız" >
+                                    </div>
+                                    <div class="form-group">
+                                    <label for="formGroupExampleInput2">Ürün Satış Fiyatınız</label>
+                                    <input type="number" class="form-control" name="fiyat" id="fiyat" placeholder="Ürün Satış Fiyatınız" >
+                                    </div>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                            <button type="submit" class="btn btn-primary">Ürünü Dükkanıma Ekle</button>
+                            </div>           
+        
+                    </div>
+                </div>
+                </form>
+            </div>
+        
+        </td>
+    </tr>
+<!-- Modal -->
+
+   

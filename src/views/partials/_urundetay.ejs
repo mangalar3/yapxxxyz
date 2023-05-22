@@ -1,0 +1,22 @@
+<div class="col-md-6">
+    <div class="pt-lg-8 pt-xl-10">
+        <h3 class="font-size-24 mb-3"><%-Product.product_details1.split(':')[0] %>  </h3>
+        <p class="mb-6"><%-Product.product_details1.split(':')[1] %></p>
+        <h3 class="font-size-24 mb-3"><%-Product.product_details2.split(':')[0] %></h3>
+        <p class="mb-6"><%-Product.product_details2.split(':')[1] %></p>
+    </div>
+</div>
+<% for( let index = 0; index < Product.product_photo.length; index++ ) { %>
+    <div class="col-md-6 text-right">
+        <img class="img-fluid mr-n4 mr-lg-n10" src="/uploads/images/<%-Product.product_category3.trim() %>/<%- Product.product_photo[index]%> " alt="Image Description">
+    </div>
+<% } %> 
+
+<div class="col-md-6 align-self-center">
+    <div class="pt-lg-8 pt-xl-10 text-right">
+        <h3 class="font-size-24 mb-3"><%-Product.product_details3.split(':')[0] %></h3>
+        <p class="mb-6"><%-Product.product_details3.split(':')[1] %></p>
+        <h3 class="font-size-24 mb-3"><%-Product.product_details4.split(':')[0] %></h3>
+        <p class="mb-6"><%-Product.product_details4.split(':')[1] %></p>
+    </div>
+</div>

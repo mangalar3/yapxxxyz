@@ -1,0 +1,61 @@
+<% if (Product.product_url) { %>
+<li class="col-6 col-md-3 col-wd-2gdot4 product-item">
+    <div class="product-item__outer h-100">
+        <div class="product-item__inner px-xl-4 p-3">
+            <div class="product-item__body pb-xl-2">
+                <div class="mb-2"><a href="/urunler/<%- Product.product_url %>" class="font-size-12 text-gray-5"><%- Product.product_category %></a></div>
+                <h5 class="mb-1 product-item__title"><a href="/urunler/<%- Product.product_url %>" class="text-blue font-weight-bold"><%- Product.product_name %></a></h5>
+                <div class="mb-2">
+                    <a href="/urunler/<%- Product.product_url %>" class="d-block text-center"><img class="img-fluid" src="/uploads/images/<%-Product.product_category3.trim()%>/<%- Product.product_photo[0] %>" alt="Image Description"></a>
+                </div>
+                <div class="mb-3">
+                    <a class="d-inline-flex align-items-center small font-size-14" href="#">
+                        <div class="text-warning mr-2">
+                            <small class="fas fa-star <% if(Product.avarage>0){ %><% } else{ %>text-muted<% } %>"></small>
+                            <small class="fas fa-star <% if(Product.avarage>1){ %><% } else{ %>text-muted<% } %>"></small>
+                            <small class="fas fa-star <% if(Product.avarage>2){ %><% } else{ %>text-muted<% } %>"></small>
+                            <small class="fas fa-star <% if(Product.avarage>3){ %><% } else{ %>text-muted<% } %>"></small>
+                            <small class="fas fa-star <% if(Product.avarage>4){ %><% } else{ %>text-muted<% } %>"></small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="product-item__footer">
+                <div class="border-top pt-2 flex-center-between flex-wrap">
+                    <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+<% } else { %>
+    <li class="col-6 col-md-3 col-wd-2gdot4 product-item">
+        <div class="product-item__outer h-100">
+            <div class="product-item__inner px-xl-4 p-3">
+                <div class="product-item__body pb-xl-2">
+                    <div class="mb-2"><a href="/urunler/<%- Product.dukkanurl %>" class="font-size-12 text-gray-5"><%- Product.vergidairesiili %></a></div>
+                    <h5 class="mb-1 product-item__title"><a href="/urunler/<%- Product.dukkanurl %>" class="text-blue font-weight-bold"><%- Product.dukkanadi %></a></h5>
+                    <div class="mb-2">
+                        <a href="/urunler/<%- Product.dukkanurl %>" class="d-block text-center"><img class="img-fluid" src="/uploads/images/<%- Product.dukkanphoto %>" alt="Image Description"></a>
+                    </div>
+                    <div class="mb-3">
+                        <a class="d-inline-flex align-items-center small font-size-14" href="#">
+                            <div class="text-warning mr-2">
+                                <small class="fas fa-star <% if(Product.dukkan_av>0){ %><% } else{ %>text-muted<% } %>"></small>
+                                <small class="fas fa-star <% if(Product.dukkan_av>1){ %><% } else{ %>text-muted<% } %>"></small>
+                                <small class="fas fa-star <% if(Product.dukkan_av>2){ %><% } else{ %>text-muted<% } %>"></small>
+                                <small class="fas fa-star <% if(Product.dukkan_av>3){ %><% } else{ %>text-muted<% } %>"></small>
+                                <small class="fas fa-star <% if(Product.dukkan_av>4){ %><% } else{ %>text-muted<% } %>"></small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="product-item__footer">
+                    <div class="border-top pt-2 flex-center-between flex-wrap">
+                        <a href="../shop/wishlist.html" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <% } %>

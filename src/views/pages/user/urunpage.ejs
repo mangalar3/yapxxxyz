@@ -1,0 +1,2255 @@
+<style>
+    .rating {
+display: flex;
+flex-direction: row-reverse;
+justify-content: center;
+}
+
+.rating > input{
+ display:none;
+}
+
+.rating > label {
+position: relative;
+width: 1.1em;
+font-size: 3em;
+color: #FFD700;
+cursor: pointer;
+}
+
+.rating > label::before{
+content: "\2605";
+position: absolute;
+opacity: 0;
+}
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before {
+opacity: 1 !important;
+}
+
+.rating > input:checked ~ label:before{
+opacity:1;
+}
+
+.rating:hover > input:checked ~ label:before{ 
+opacity: 0.4;
+ }
+
+
+
+ .checkbox-container {
+            display: flex;
+            flex-direction: column;
+        }
+</style>
+<% Product.forEach(Product => { %>
+<title>Yapx | <%-Product.product_name %> </title>
+<% }) %>
+        <!-- ========== MAIN CONTENT ========== -->
+        <main id="content" role="main">
+            <!-- breadcrumb -->
+            <div class="bg-gray-13 bg-md-transparent">
+                <div class="container">
+                    <!-- breadcrumb -->
+                    <div class="my-md-3">
+                        <nav aria-label="breadcrumb">
+                            <% Product.forEach(Product => { %>
+                                <%- include('../../partials/_urunpagecat', {Product}) %> 
+                            <% }) %>
+                        </nav>
+                    </div>
+                    <!-- End breadcrumb -->
+                </div>
+            </div>
+            <!-- End breadcrumb -->
+            <div class="container">
+                
+                <!-- Single Product Body -->
+                <div class="mb-xl-14 mb-6">
+                    <div class="row">
+                        
+                            <div class="col-md-5 mb-4 mb-md-0">
+                                <% Product.forEach(Product => { %>
+                                    <%- include('../../partials/_urunpagephoto', {Product}) %> 
+                                <% }) %>
+                            </div>
+                                <% Product.forEach(Product => { %>
+                                    <%- include('../../partials/_urunpage', {Product}) %> 
+                                <% }) %>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <!-- End Single Product Body -->
+                <!-- Single Product Tab -->
+
+                
+                <div class=" container mb-8">
+                    <div class="position-relative position-md-static px-md-6">
+                        <ul class="nav nav-classic nav-tab nav-tab-lg justify-content-xl-center flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble border-0 pb-1 pb-xl-0 mb-n1 mb-xl-0" id="pills-tab-8" role="tablist">
+                            <li class="nav-item flex-shrink-0 flex-xl-shrink-1 z-index-2">
+                                <a class="nav-link active" id="Jpills-one-example1-tab" data-toggle="pill" href="#Jpills-one-example1" role="tab" aria-controls="Jpills-one-example1" aria-selected="true">Satıcılar</a>
+                            </li>
+                           
+                            <li class="nav-item flex-shrink-0 flex-xl-shrink-1 z-index-2">
+                                <a class="nav-link" id="Jpills-three-example1-tab" data-toggle="pill" href="#Jpills-three-example1" role="tab" aria-controls="Jpills-three-example1" aria-selected="false">Ürün Özellikleri</a>
+                            </li>
+                            <li class="nav-item flex-shrink-0 flex-xl-shrink-1 z-index-2">
+                                <a class="nav-link" id="Jpills-four-example1-tab" data-toggle="pill" href="#Jpills-four-example1" role="tab" aria-controls="Jpills-four-example1" aria-selected="false">Ürün Yorumları</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Tab Content -->
+                    
+                    <div class="borders-radius-17 border p-4 mt-4 mt-md-0 px-lg-10 py-lg-9 ">
+                        <div class="tab-content" id="Jpills-tabContent">
+                            <div class="tab-pane fade active show" id="Jpills-one-example1" role="tabpanel" aria-labelledby="Jpills-one-example1-tab">
+                                <div class="row no-gutters" >
+                                  <% if (satansayisi > 0) { %> 
+                                    <div class="col mb-6 mb-md-0 col-md-2">
+                                      
+                                        <ul class="list-unstyled " >
+                                            <div class="panel-body  " style="background-color: #f4f4f4;">
+                                                <form action="/filtre" method="post" role="form product-form">
+                                                    <div class="form-group ">
+                                                        <form role="form product-form">
+                                                            <div class="form-group">
+
+                                                              
+                                                              <a class="u-header-collapse__submenu-nav-link u-header-collapse__nav-pointer card-header" href="javascript:;" data-target="#headerSidebarPages-Filtre-Collapse" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="headerSidebarPagesCollapse" style="padding: 10px; font-weight: bold;">Konum</a>
+                                                                
+                                                                
+                                                                <div id="headerSidebarPages-Filtre-Collapse" style="background-color: #fdfdfd;">
+                                                                    <div class="filtreicin resize-on-mobile" style="">
+                                                                        <form id="Brands" class="form-deneme" action="/filtre" method="post" role="form product-form">
+                                                                            <ul class="list-unstyled">
+                                                                                <div class="panel-body" style="padding: 25px;">
+
+                                                                                        <div class="form-group">
+                                                                                            <label>Şehir</label>
+                                                                                                <select name="Iller" id="Iller" class="form-control hasCustomSelect" style="-webkit-appearance: menulist-button; width: 231px; position: absolute; opacity: 0; height: 34px; font-size: 12px;">
+                                                                                                  <div id="Iller">
+                                                                                                    <option option value="0" selected> Şehir Seçiniz! </option>
+                                                                                                  </div>
+                                                                                                </select>
+                                                                                            <span class="customSelect form-control" style="display: inline-block;"><span class="customSelectInner" style="width: 209px; display: inline-block;"><p id="myselecttext"></p></span></span>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label>İlçe</label>
+                                                                                                <select name="Ilceler" id="Ilceler" disabled="disabled" class="form-control hasCustomSelect" style="-webkit-appearance: menulist-button; width: 231px; position: absolute; opacity: 0; height: 34px; font-size: 12px;">
+                                                                                                    <option option value="0" selected> Lütfen Önce bir İl seçiniz </option>
+                                                                                                </select>
+                                                                                            <span class="customSelect form-control" style="display: inline-block;"><span class="customSelectInner" style="width: 209px; display: inline-block;"><p id="myselecttext2"></p></span></span>
+                                                                                        </div>
+                                                                                        <button id="siralasehir" class="btn btn-secondary" type="button" style="float: right; border-radius: 0px;">Ara</button>
+
+                                                                            </ul>
+                                                                            
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </form>
+                                                
+                                        </ul>
+                                    </div>
+                                    <% } %>
+                                    <div class="col mb-6 mb-md-0 col-md-10">
+                                        <% if (satansayisi > 0) { %> 
+                                            <div style="margin-bottom: 16px;">
+                                                <div id="sira" class=" flex-center-between  py-1 " style="height: 36px; background-color: #fdfdfd;">
+                                                    <div class="d-xl-none">
+                                                        <!-- Account Sidebar Toggle Button -->
+                                                        <a id="sidebarNavToggler1" class="btn btn-sm py-1 font-weight-normal" href="javascript:;" role="button" aria-controls="sidebarContent1" aria-haspopup="true" aria-expanded="false" data-unfold-event="click" data-unfold-hide-on-scroll="false" data-unfold-target="#sidebarContent1" data-unfold-type="css-animation" data-unfold-animation-in="fadeInLeft" data-unfold-animation-out="fadeOutLeft" data-unfold-duration="500">
+                                                            <i class="fas fa-sliders-h"></i> <span class="ml-1">Filtrele</span>
+                                                        </a>
+                                                        <!-- End Account Sidebar Toggle Button -->
+                                                    </div>
+                                                    <div class="px-3 d-none d-xl-block">
+                                                        <ul class="nav nav-tab-shop" id="pills-tab" role="tablist">
+                                                            <li class="nav-item">
+                                                                <a class="nav-link active" id="pills-one-example1-tab" data-toggle="pill" href="#pills-one-example1" role="tab" aria-controls="pills-one-example1" aria-selected="false">
+                                                                    <div class="d-md-flex justify-content-md-center align-items-md-center">
+                                                                        <i class="fa fa-th"></i>
+                                                                    </div>
+                                                                </a>
+                                                            </li>                                   
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <nav class="px-3 flex-horizontal-center text-gray-20 d-xl-flex">
+                                                        <select id="sirala" class="js-select selectpicker dropdown-select max-width-200 max-width-160-sm right-dropdown-0 px-2 px-xl-0"
+                                                            data-style="btn-sm bg-white font-weight-normal py-2 border text-gray-20 bg-lg-down-transparent border-lg-down-0">
+                                                            <option value="one" selected>Klasik Listele</option>
+                                                            <option value="two">Artan Fiyata Göre Sırala</option>
+                                                            <option value="three">Azalan Fiyata Göre Sırala</option>
+                                                            <option value="four">A-Z Sırala</option>
+                                                            <option value="five">Z-A Sırala</option>
+                                                            
+                                                        </select>
+                                                    </nav>
+                                                </div>
+                                                </div>
+                                                <% } %>
+                                        <ul class="row list-unstyled products-group no-gutters border-bottom border-md-bottom-0" id="saticilar">
+                                            <% if (satansayisi > 0) { %>
+                                                
+
+                                            <% urunler.forEach(Product => { %>
+                                                <%- include('../../partials/_urunusatanlar', {Product}) %> 
+                                            <% }) %>
+                                            <% } else { %>
+                                               
+                                                    <h3 class="font-size-18 mb-4 col-md-12 ml-8 text-danger" style="justify-content: center; text-align: center;">Ürünün Satıcısı Bulunmamaktadır.</h3>
+                                               
+                                                
+                                                <% } %>
+                                                                                          
+                                        </ul>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Jpills-three-example1" role="tabpanel" aria-labelledby="Jpills-three-example1-tab">
+                                <div class="mx-md-5 pt-1">
+                                    <h3 class="font-size-18 mb-4">Teknik Özellikler</h3>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <tbody>
+                                                <% ozellik.forEach(Product => { %>
+                                                    <%- include('../../partials/_urunteknik', {Product}) %> 
+                                                <% }) %>                                               
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Jpills-two-example1" role="tabpanel" aria-labelledby="Jpills-two-example1-tab">
+                                <div class="row">
+                                    <% Product.forEach(Product => { %>
+                                        <%- include('../../partials/_urundetay', {Product}) %> 
+                                    <% }) %> 
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="Jpills-four-example1" role="tabpanel" aria-labelledby="Jpills-four-example1-tab">
+                                <div class="row mb-8">
+                                    <div class="col-md-6">
+                                        <h3 class="font-size-18 mb-5">Yorumunuz </h3>
+                                        <!-- Form -->
+                                        <% Product.forEach(Product => { %>
+                                        <form action="/yorumekle/<%-Product.product_url %> " method="post" class="js-validate">
+                                            <% }) %>
+                                            <div class="row align-items-center mb-4">
+                                                <div class="col-md-4 col-lg-3">
+                                                    <label for="rating" class="form-label mb-0">Derecelendirme</label>
+                                                </div>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <a href="#" class="d-block">
+                                                        <div name="rating" class="rating">
+                                                        
+                                                            <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                                                            <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                                                            <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                                                            <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                                                            <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                                                            
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="js-form-message form-group mb-3 row">
+                                                <div class="col-md-4 col-lg-3">
+                                                    <label for="descriptionTextarea" class="form-label">Yorumunuz</label>
+                                                </div>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <textarea id="yorum" name="yorum" class="form-control" rows="3" id="descriptionTextarea"
+                                                    data-msg="Please enter your message."
+                                                    data-error-class="u-has-error"
+                                                    data-success-class="u-has-success"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="offset-md-4 offset-lg-3 col-auto">
+                                                    <button type="submit" class="btn btn-primary-dark btn-wide transition-3d-hover">Yorumunuzu Ekleyin </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- End Form -->
+                                    </div>
+                                </div>
+                                <!-- Review -->
+                                <% urun_yorum.forEach(Product => { %>
+                                    <%- include('../../partials/_yorumlar', {Product}) %> 
+                                <% }) %>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Tab Content -->
+                </div>
+                <!-- End Single Product Tab -->
+                <!-- Related products -->
+                <div class="container"> 
+                    <!-- Related products -->
+                    <div class="mb-6">
+                        <div class="d-flex justify-content-between align-items-center border-bottom border-color-1 flex-lg-nowrap flex-wrap mb-4">
+                            <h3 class="section-title mb-0 pb-2 font-size-22">Alakalı Ürünler</h3>
+                        </div>
+                        <% if (urunss.length>0) { %>
+                            <ul class="row list-unstyled products-group no-gutters">
+                                <% urunss.forEach(Product => { %>
+                                    <%- include('../../partials/_onurunler', {Product}) %> 
+                                <% }) %>
+                                
+                            </ul>
+                        <% } %> 
+                        
+                    </div>
+                    <!-- End Related products -->
+                    <!-- Brand Carousel -->
+                    <!-- End Brand Carousel -->
+                </div>
+                <!-- End Related products -->
+                <!-- Brand Carousel -->
+                <!-- End Brand Carousel -->
+            </div>
+        </main>
+
+        <!-- ========== END FOOTER ========== -->
+
+ 
+    
+        <!-- Go to Top -->
+        <a class="js-go-to u-go-to" href="#"
+            data-position='{"bottom": 15, "right": 15 }'
+            data-type="fixed"
+            data-offset-top="400"
+            data-compensation="#header"
+            data-show-effect="slideInUp"
+            data-hide-effect="slideOutDown">
+            <span class="fas fa-arrow-up u-go-to__inner"></span>
+        </a>
+        <!-- End Go to Top -->
+
+        <!-- JS Global Compulsory -->
+
+    </body>
+
+</html>
+<script>
+$(document).ready(function() {
+  $('#siralasehir').click(function() {
+      $( "#saticilar" ).empty();
+        var secenekDegeri = $('#Iller').val();
+        var search_params = new URLSearchParams(window.location.search);
+                
+                // new value of "id" is set to "101"
+                
+            $.ajax({
+            
+            // İstek türü (örneğin, GET veya POST)
+            type: 'GET',
+                    //okeeeyyy
+            // İstek gönderilecek URL
+            url: '/siralafiyatagore?sirala=City&ProductName=<%-Product[0].product_name %>&City='+secenekDegeri,
+            // İstek başarılı olduğunda çalıştırılacak fonksiyon
+            success: function(data) {
+                // Veritabanından döndürülen verileri kullanın
+                console.log(data)
+                data.forEach(Product => {
+                    switch(Product[0].dukkan_av){
+                        case "1":
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break;
+                        case "2":
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break
+                        case "3":
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break;
+                        case "4":
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break;
+                        case "5":                     
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break;
+                        
+                    }
+                    
+                });
+            }})
+  });
+});
+</script>
+<script>
+
+const illerContainer = document.getElementById('Iller');
+        const ilcelerContainer = document.getElementById('Ilceler');
+
+        iller.forEach(il => {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.name = 'Iller';
+            checkbox.value = il;
+            checkbox.id = `il-${il}`;
+
+            const label = document.createElement('label');
+            label.htmlFor = `il-${il}`;
+            label.appendChild(document.createTextNode(il));
+
+            illerContainer.appendChild(checkbox);
+            illerContainer.appendChild(label);
+        });
+
+        illerContainer.addEventListener('change', (e) => {
+            ilcelerContainer.innerHTML = '';
+            iller.forEach(il => {
+                const ilCheckbox = document.getElementById(`il-${il}`);
+                if (ilCheckbox.checked) {
+                    ilceler[il].forEach(ilce => {
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.name = 'Ilceler';
+                        checkbox.value = ilce;
+                        checkbox.id = `ilce-${ilce}`;
+
+                        const label = document.createElement('label');
+                        label.htmlFor = `ilce-${ilce}`;
+                        label.appendChild(document.createTextNode(ilce));
+
+                        ilcelerContainer.appendChild(checkbox);
+                        ilcelerContainer.appendChild(label);
+                    });
+                }
+            });
+        });
+
+
+
+
+    $("#sirala").change(function(){
+    if ($(this).val() === "two"){
+
+        $( "#saticilar" ).empty();
+        var search_params = new URLSearchParams(window.location.search);
+                
+                // new value of "id" is set to "101"
+                
+            $.ajax({
+            
+            // İstek türü (örneğin, GET veya POST)
+            type: 'GET',
+                    //okeeeyyy
+            // İstek gönderilecek URL
+            url: '/siralafiyatagore?sirala=fiyatagoreartan&ProductName=<%-Product[0].product_name %>',
+            // İstek başarılı olduğunda çalıştırılacak fonksiyon
+            success: function(data) {
+                // Veritabanından döndürülen verileri kullanın
+                
+                data.forEach(Product => {
+                    switch(Product[0].dukkan_av){
+                        case "1":
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break;
+                        case "2":
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break
+                        case "3":
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break;
+                        case "4":
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break;
+                        case "5":                     
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break;
+                        
+                    }
+                    
+                });
+            }})
+        }
+        if ($(this).val() === "three"){
+
+          $( "#saticilar" ).empty();
+          var search_params = new URLSearchParams(window.location.search);
+                  
+                  // new value of "id" is set to "101"
+                  
+              $.ajax({
+              
+              // İstek türü (örneğin, GET veya POST)
+              type: 'GET',
+                      //okeeeyyy
+              // İstek gönderilecek URL
+              url: '/siralafiyatagore?sirala=fiyatagoreazalan&ProductName=<%-Product[0].product_name %>',
+              // İstek başarılı olduğunda çalıştırılacak fonksiyon
+              success: function(data) {
+                  // Veritabanından döndürülen verileri kullanın
+                  
+                  data.forEach(Product => {
+                      switch(Product[0].dukkan_av){
+                          case "1":
+                              $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                          break;
+                          case "2":
+                              $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                          break
+                          case "3":
+                              $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                          break;
+                          case "4":
+                              $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                          break;
+                          case "5":                     
+                              $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                          break;
+                          
+                      }
+                      
+                  });
+              }})
+          }
+          if ($(this).val() === "four"){
+
+                $( "#saticilar" ).empty();
+                var search_params = new URLSearchParams(window.location.search);
+                        
+                        // new value of "id" is set to "101"
+                        
+                    $.ajax({
+                    
+                    // İstek türü (örneğin, GET veya POST)
+                    type: 'GET',
+                            //okeeeyyy
+                    // İstek gönderilecek URL
+                    url: '/siralafiyatagore?sirala=sortA-Z&ProductName=<%-Product[0].product_name %>',
+                    // İstek başarılı olduğunda çalıştırılacak fonksiyon
+                    success: function(data) {
+                        // Veritabanından döndürülen verileri kullanın
+                        
+                        data.forEach(Product => {
+                            switch(Product[0].dukkan_av){
+                                case "1":
+                                    $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                                break;
+                                case "2":
+                                    $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                                break
+                                case "3":
+                                    $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                                break;
+                                case "4":
+                                    $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                                break;
+                                case "5":                     
+                                    $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                                break;
+                                
+                            }
+                            
+                        });
+                    }})
+}
+            if ($(this).val() === "five"){
+
+            $( "#saticilar" ).empty();
+            var search_params = new URLSearchParams(window.location.search);
+                    
+                    // new value of "id" is set to "101"
+                    
+                $.ajax({
+                
+                // İstek türü (örneğin, GET veya POST)
+                type: 'GET',
+                        //okeeeyyy
+                // İstek gönderilecek URL
+                url: '/siralafiyatagore?sirala=sortZ-A&ProductName=<%-Product[0].product_name %>',
+                // İstek başarılı olduğunda çalıştırılacak fonksiyon
+                success: function(data) {
+                    // Veritabanından döndürülen verileri kullanın
+                    
+                    data.forEach(Product => {
+                        switch(Product[0].dukkan_av){
+                            case "1":
+                                $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                            break;
+                            case "2":
+                                $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                            break
+                            case "3":
+                                $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                            break;
+                            case "4":
+                                $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                            break;
+                            case "5":                     
+                                $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                            break;
+                            
+                        }
+                        
+                    });
+                }})
+        }
+        if ($(this).val() === "one"){
+
+            $( "#saticilar" ).empty();
+        var search_params = new URLSearchParams(window.location.search);
+                
+                // new value of "id" is set to "101"
+                
+            $.ajax({
+            
+            // İstek türü (örneğin, GET veya POST)
+            type: 'GET',
+                    //okeeeyyy
+            // İstek gönderilecek URL
+            url: '/siralafiyatagore?sirala=default&ProductName=<%-Product[0].product_name %>',
+            // İstek başarılı olduğunda çalıştırılacak fonksiyon
+            success: function(data) {
+                // Veritabanından döndürülen verileri kullanın
+                
+                data.forEach(Product => {
+                    switch(Product[0].dukkan_av){
+                        case "1":
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break;
+                        case "2":
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break
+                        case "3":
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break;
+                        case "4":
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star text-muted"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break;
+                        case "5":                     
+                            $( "#saticilar" ).append('<div class="product-item__outer w-100"><div class="product-item__inner remove-prodcut-hover py-4 row"> <div class="product-item__header col-6 col-md-4"> <div class="mb-2"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="d-block text-center"><img class="img-fluid" height="250" width="140" src="/uploads/images/'+ Product[0].dukkanphoto +'" alt="Image Description"></a> </div> </div> <div class="product-item__body col-6 col-md-5"> <div class="pr-lg-10"> <div class="mb-2"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="font-size-12 text-gray-5">'+Product[0].vergidairesiili +'</a></div> <h5 class="mb-2 product-item__title"><a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="text-blue font-weight-bold">'+Product[0].dukkanadi +'</a></h5> <div class="prodcut-price mb-2 d-md-none"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="mb-3 d-none d-md-block"> <a class="d-inline-flex align-items-center small font-size-14" href="#"> <div class="text-warning mr-2"> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> <small class="fas fa-star"></small> </div> <span class="text-secondary">'+ Product[0].dukkanoysayisi +'</span> </a> </div> </div> </div> <div class="product-item__footer col-md-3 d-md-block"> <div class="mb-3"> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Fiyatı '+ Product[1] +' ₺</div> </div> <div class="prodcut-price mb-2"> <div class="text-gray-100">Ürün Stok '+ Product[2] +'</div> </div> <div class="prodcut-add-cart"> <a href="/dukkanlar/'+ Product[0].dukkanurl +'" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Dükkana Git</a> </div> </div> </div> </div></div>');
+                        break;
+                        
+                    }
+                    
+                });
+            }})
+        }
+});
+</script>
+<script>
+    function displayVals() {
+      const singleValues = $( "#Iller" ).val();
+      var multipleValues = $( "#multiple" ).val() || [];
+      $( "#myselecttext" ).text(singleValues);
+    }
+     
+    $( "select" ).change( displayVals );
+    displayVals();
+    function displayVals2() {
+      const singleValues = $( "#Ilceler" ).val();
+      var multipleValues = $( "#multiple" ).val() || [];
+      // When using jQuery 3:
+      // var multipleValues = $( "#multiple" ).val();
+      $( "#myselecttext2" ).text(singleValues);
+    }
+     
+    $( "select" ).change( displayVals2 );
+    displayVals2();
+    function displayVals3() {
+      const singleValues = $( "#myselect3" ).val();
+      // When using jQuery 3:
+      // var multipleValues = $( "#multiple" ).val();
+      $( "#myselecttext3" ).text(singleValues);
+    }
+     
+    $( "select" ).change( displayVals3 );
+    displayVals3();
+    document.addEventListener("click", closeAllSelect);
+	var x, i, j, l, ll, selElmnt, a, b, c;
+/* Look for any elements with the class "custom-select": */
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /* For each element, create a new DIV that will act as the selected item: */
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /* For each element, create a new DIV that will contain the option list: */
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /* For each option in the original select element,
+    create a new DIV that will act as an option item: */
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /* When an item is clicked, update the original select box,
+        and the selected item: */
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+    /* When the select box is clicked, close any other select boxes,
+    and open/close the current select box: */
+    e.stopPropagation();
+    closeAllSelect(this);
+    this.nextSibling.classList.toggle("select-hide");
+    this.classList.toggle("select-arrow-active");
+  });
+}
+
+function closeAllSelect(elmnt) {
+  /* A function that will close all select boxes in the document,
+  except the current select box: */
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+
+/* If the user clicks anywhere outside the select box,
+then close all select boxes: */
+document.addEventListener("click", closeAllSelect);
+var data = [
+  {
+    "il": "Adana",
+    "plaka": 1,
+    "ilceleri": [
+      "Aladağ",
+      "Ceyhan",
+      "Çukurova",
+      "Feke",
+      "İmamoğlu",
+      "Karaisalı",
+      "Karataş",
+      "Kozan",
+      "Pozantı",
+      "Saimbeyli",
+      "Sarıçam",
+      "Seyhan",
+      "Tufanbeyli",
+      "Yumurtalık",
+      "Yüreğir"
+    ]
+  },
+  {
+    "il": "Adıyaman",
+    "plaka": 2,
+    "ilceleri": [
+      "Besni",
+      "Çelikhan",
+      "Gerger",
+      "Gölbaşı",
+      "Kahta",
+      "Merkez",
+      "Samsat",
+      "Sincik",
+      "Tut"
+    ]
+  },
+  {
+    "il": "Afyonkarahisar",
+    "plaka": 3,
+    "ilceleri": [
+      "Başmakçı",
+      "Bayat",
+      "Bolvadin",
+      "Çay",
+      "Çobanlar",
+      "Dazkırı",
+      "Dinar",
+      "Emirdağ",
+      "Evciler",
+      "Hocalar",
+      "İhsaniye",
+      "İscehisar",
+      "Kızılören",
+      "Merkez",
+      "Sandıklı",
+      "Sinanpaşa",
+      "Sultandağı",
+      "Şuhut"
+    ]
+  },
+  {
+    "il": "Ağrı",
+    "plaka": 4,
+    "ilceleri": [
+      "Diyadin",
+      "Doğubayazıt",
+      "Eleşkirt",
+      "Hamur",
+      "Merkez",
+      "Patnos",
+      "Taşlıçay",
+      "Tutak"
+    ]
+  },
+  {
+    "il": "Amasya",
+    "plaka": 5,
+    "ilceleri": [
+      "Göynücek",
+      "Gümüşhacıköy",
+      "Hamamözü",
+      "Merkez",
+      "Merzifon",
+      "Suluova",
+      "Taşova"
+    ]
+  },
+  {
+    "il": "Ankara",
+    "plaka": 6,
+    "ilceleri": [
+      "Altındağ",
+      "Ayaş",
+      "Bala",
+      "Beypazarı",
+      "Çamlıdere",
+      "Çankaya",
+      "Çubuk",
+      "Elmadağ",
+      "Güdül",
+      "Haymana",
+      "Kalecik",
+      "Kızılcahamam",
+      "Nallıhan",
+      "Polatlı",
+      "Şereflikoçhisar",
+      "Yenimahalle",
+      "Gölbaşı",
+      "Keçiören",
+      "Mamak",
+      "Sincan",
+      "Kazan",
+      "Akyurt",
+      "Etimesgut",
+      "Evren",
+      "Pursaklar"
+    ]
+  },
+  {
+    "il": "Antalya",
+    "plaka": 7,
+    "ilceleri": [
+      "Akseki",
+      "Alanya",
+      "Elmalı",
+      "Finike",
+      "Gazipaşa",
+      "Gündoğmuş",
+      "Kaş",
+      "Korkuteli",
+      "Kumluca",
+      "Manavgat",
+      "Serik",
+      "Demre",
+      "İbradı",
+      "Kemer",
+      "Aksu",
+      "Döşemealtı",
+      "Kepez",
+      "Konyaaltı",
+      "Muratpaşa"
+    ]
+  },
+  {
+    "il": "Artvin",
+    "plaka": 8,
+    "ilceleri": [
+      "Ardanuç",
+      "Arhavi",
+      "Merkez",
+      "Borçka",
+      "Hopa",
+      "Şavşat",
+      "Yusufeli",
+      "Murgul"
+    ]
+  },
+  {
+    "il": "Aydın",
+    "plaka": 9,
+    "ilceleri": [
+      "Merkez",
+      "Bozdoğan",
+      "Efeler",
+      "Çine",
+      "Germencik",
+      "Karacasu",
+      "Koçarlı",
+      "Kuşadası",
+      "Kuyucak",
+      "Nazilli",
+      "Söke",
+      "Sultanhisar",
+      "Yenipazar",
+      "Buharkent",
+      "İncirliova",
+      "Karpuzlu",
+      "Köşk",
+      "Didim"
+    ]
+  },
+  {
+    "il": "Balıkesir",
+    "plaka": 10,
+    "ilceleri": [
+      "Altıeylül",
+      "Ayvalık",
+      "Merkez",
+      "Balya",
+      "Bandırma",
+      "Bigadiç",
+      "Burhaniye",
+      "Dursunbey",
+      "Edremit",
+      "Erdek",
+      "Gönen",
+      "Havran",
+      "İvrindi",
+      "Karesi",
+      "Kepsut",
+      "Manyas",
+      "Savaştepe",
+      "Sındırgı",
+      "Gömeç",
+      "Susurluk",
+      "Marmara"
+    ]
+  },
+  {
+    "il": "Bilecik",
+    "plaka": 11,
+    "ilceleri": [
+      "Merkez",
+      "Bozüyük",
+      "Gölpazarı",
+      "Osmaneli",
+      "Pazaryeri",
+      "Söğüt",
+      "Yenipazar",
+      "İnhisar"
+    ]
+  },
+  {
+    "il": "Bingöl",
+    "plaka": 12,
+    "ilceleri": [
+      "Merkez",
+      "Genç",
+      "Karlıova",
+      "Kiğı",
+      "Solhan",
+      "Adaklı",
+      "Yayladere",
+      "Yedisu"
+    ]
+  },
+  {
+    "il": "Bitlis",
+    "plaka": 13,
+    "ilceleri": [
+      "Adilcevaz",
+      "Ahlat",
+      "Merkez",
+      "Hizan",
+      "Mutki",
+      "Tatvan",
+      "Güroymak"
+    ]
+  },
+  {
+    "il": "Bolu",
+    "plaka": 14,
+    "ilceleri": [
+      "Merkez",
+      "Gerede",
+      "Göynük",
+      "Kıbrıscık",
+      "Mengen",
+      "Mudurnu",
+      "Seben",
+      "Dörtdivan",
+      "Yeniçağa"
+    ]
+  },
+  {
+    "il": "Burdur",
+    "plaka": 15,
+    "ilceleri": [
+      "Ağlasun",
+      "Bucak",
+      "Merkez",
+      "Gölhisar",
+      "Tefenni",
+      "Yeşilova",
+      "Karamanlı",
+      "Kemer",
+      "Altınyayla",
+      "Çavdır",
+      "Çeltikçi"
+    ]
+  },
+  {
+    "il": "Bursa",
+    "plaka": 16,
+    "ilceleri": [
+      "Gemlik",
+      "İnegöl",
+      "İznik",
+      "Karacabey",
+      "Keles",
+      "Mudanya",
+      "Mustafakemalpaşa",
+      "Orhaneli",
+      "Orhangazi",
+      "Yenişehir",
+      "Büyükorhan",
+      "Harmancık",
+      "Nilüfer",
+      "Osmangazi",
+      "Yıldırım",
+      "Gürsu",
+      "Kestel"
+    ]
+  },
+  {
+    "il": "Çanakkale",
+    "plaka": 17,
+    "ilceleri": [
+      "Ayvacık",
+      "Bayramiç",
+      "Biga",
+      "Bozcaada",
+      "Çan",
+      "Merkez",
+      "Eceabat",
+      "Ezine",
+      "Gelibolu",
+      "Gökçeada",
+      "Lapseki",
+      "Yenice"
+    ]
+  },
+  {
+    "il": "Çankırı",
+    "plaka": 18,
+    "ilceleri": [
+      "Merkez",
+      "Çerkeş",
+      "Eldivan",
+      "Ilgaz",
+      "Kurşunlu",
+      "Orta",
+      "Şabanözü",
+      "Yapraklı",
+      "Atkaracalar",
+      "Kızılırmak",
+      "Bayramören",
+      "Korgun"
+    ]
+  },
+  {
+    "il": "Çorum",
+    "plaka": 19,
+    "ilceleri": [
+      "Alaca",
+      "Bayat",
+      "Merkez",
+      "İskilip",
+      "Kargı",
+      "Mecitözü",
+      "Ortaköy",
+      "Osmancık",
+      "Sungurlu",
+      "Boğazkale",
+      "Uğurludağ",
+      "Dodurga",
+      "Laçin",
+      "Oğuzlar"
+    ]
+  },
+  {
+    "il": "Denizli",
+    "plaka": 20,
+    "ilceleri": [
+      "Acıpayam",
+      "Buldan",
+      "Çal",
+      "Çameli",
+      "Çardak",
+      "Çivril",
+      "Merkez",
+      "Merkezefendi",
+      "Pamukkale",
+      "Güney",
+      "Kale",
+      "Sarayköy",
+      "Tavas",
+      "Babadağ",
+      "Bekilli",
+      "Honaz",
+      "Serinhisar",
+      "Baklan",
+      "Beyağaç",
+      "Bozkurt"
+    ]
+  },
+  {
+    "il": "Diyarbakır",
+    "plaka": 21,
+    "ilceleri": [
+      "Kocaköy",
+      "Çermik",
+      "Çınar",
+      "Çüngüş",
+      "Dicle",
+      "Ergani",
+      "Hani",
+      "Hazro",
+      "Kulp",
+      "Lice",
+      "Silvan",
+      "Eğil",
+      "Bağlar",
+      "Kayapınar",
+      "Sur",
+      "Yenişehir",
+      "Bismil"
+    ]
+  },
+  {
+    "il": "Edirne",
+    "plaka": 22,
+    "ilceleri": [
+      "Merkez",
+      "Enez",
+      "Havsa",
+      "İpsala",
+      "Keşan",
+      "Lalapaşa",
+      "Meriç",
+      "Uzunköprü",
+      "Süloğlu"
+    ]
+  },
+  {
+    "il": "Elazığ",
+    "plaka": 23,
+    "ilceleri": [
+      "Ağın",
+      "Baskil",
+      "Merkez",
+      "Karakoçan",
+      "Keban",
+      "Maden",
+      "Palu",
+      "Sivrice",
+      "Arıcak",
+      "Kovancılar",
+      "Alacakaya"
+    ]
+  },
+  {
+    "il": "Erzincan",
+    "plaka": 24,
+    "ilceleri": [
+      "Çayırlı",
+      "Merkez",
+      "İliç",
+      "Kemah",
+      "Kemaliye",
+      "Refahiye",
+      "Tercan",
+      "Üzümlü",
+      "Otlukbeli"
+    ]
+  },
+  {
+    "il": "Erzurum",
+    "plaka": 25,
+    "ilceleri": [
+      "Aşkale",
+      "Çat",
+      "Hınıs",
+      "Horasan",
+      "İspir",
+      "Karayazı",
+      "Narman",
+      "Oltu",
+      "Olur",
+      "Pasinler",
+      "Şenkaya",
+      "Tekman",
+      "Tortum",
+      "Karaçoban",
+      "Uzundere",
+      "Pazaryolu",
+      "Köprüköy",
+      "Palandöken",
+      "Yakutiye",
+      "Aziziye"
+    ]
+  },
+  {
+    "il": "Eskişehir",
+    "plaka": 26,
+    "ilceleri": [
+      "Çifteler",
+      "Mahmudiye",
+      "Mihalıççık",
+      "Sarıcakaya",
+      "Seyitgazi",
+      "Sivrihisar",
+      "Alpu",
+      "Beylikova",
+      "İnönü",
+      "Günyüzü",
+      "Han",
+      "Mihalgazi",
+      "Odunpazarı",
+      "Tepebaşı"
+    ]
+  },
+  {
+    "il": "Gaziantep",
+    "plaka": 27,
+    "ilceleri": [
+      "Araban",
+      "İslahiye",
+      "Nizip",
+      "Oğuzeli",
+      "Yavuzeli",
+      "Şahinbey",
+      "Şehitkamil",
+      "Karkamış",
+      "Nurdağı"
+    ]
+  },
+  {
+    "il": "Giresun",
+    "plaka": 28,
+    "ilceleri": [
+      "Alucra",
+      "Bulancak",
+      "Dereli",
+      "Espiye",
+      "Eynesil",
+      "Merkez",
+      "Görele",
+      "Keşap",
+      "Şebinkarahisar",
+      "Tirebolu",
+      "Piraziz",
+      "Yağlıdere",
+      "Çamoluk",
+      "Çanakçı",
+      "Doğankent",
+      "Güce"
+    ]
+  },
+  {
+    "il": "Gümüşhane",
+    "plaka": 29,
+    "ilceleri": [
+      "Merkez",
+      "Kelkit",
+      "Şiran",
+      "Torul",
+      "Köse",
+      "Kürtün"
+    ]
+  },
+  {
+    "il": "Hakkari",
+    "plaka": 30,
+    "ilceleri": [
+      "Çukurca",
+      "Merkez",
+      "Şemdinli",
+      "Yüksekova"
+    ]
+  },
+  {
+    "il": "Hatay",
+    "plaka": 31,
+    "ilceleri": [
+      "Altınözü",
+      "Arsuz",
+      "Defne",
+      "Dörtyol",
+      "Hassa",
+      "Antakya",
+      "İskenderun",
+      "Kırıkhan",
+      "Payas",
+      "Reyhanlı",
+      "Samandağ",
+      "Yayladağı",
+      "Erzin",
+      "Belen",
+      "Kumlu"
+    ]
+  },
+  {
+    "il": "Isparta",
+    "plaka": 32,
+    "ilceleri": [
+      "Atabey",
+      "Eğirdir",
+      "Gelendost",
+      "Merkez",
+      "Keçiborlu",
+      "Senirkent",
+      "Sütçüler",
+      "Şarkikaraağaç",
+      "Uluborlu",
+      "Yalvaç",
+      "Aksu",
+      "Gönen",
+      "Yenişarbademli"
+    ]
+  },
+  {
+    "il": "Mersin",
+    "plaka": 33,
+    "ilceleri": [
+      "Anamur",
+      "Erdemli",
+      "Gülnar",
+      "Mut",
+      "Silifke",
+      "Tarsus",
+      "Aydıncık",
+      "Bozyazı",
+      "Çamlıyayla",
+      "Akdeniz",
+      "Mezitli",
+      "Toroslar",
+      "Yenişehir"
+    ]
+  },
+  {
+    "il": "İstanbul",
+    "plaka": 34,
+    "ilceleri": [
+      "Adalar",
+      "Bakırköy",
+      "Beşiktaş",
+      "Beykoz",
+      "Beyoğlu",
+      "Çatalca",
+      "Eyüp",
+      "Fatih",
+      "Gaziosmanpaşa",
+      "Kadıköy",
+      "Kartal",
+      "Sarıyer",
+      "Silivri",
+      "Şile",
+      "Şişli",
+      "Üsküdar",
+      "Zeytinburnu",
+      "Büyükçekmece",
+      "Kağıthane",
+      "Küçükçekmece",
+      "Pendik",
+      "Ümraniye",
+      "Bayrampaşa",
+      "Avcılar",
+      "Bağcılar",
+      "Bahçelievler",
+      "Güngören",
+      "Maltepe",
+      "Sultanbeyli",
+      "Tuzla",
+      "Esenler",
+      "Arnavutköy",
+      "Ataşehir",
+      "Başakşehir",
+      "Beylikdüzü",
+      "Çekmeköy",
+      "Esenyurt",
+      "Sancaktepe",
+      "Sultangazi"
+    ]
+  },
+  {
+    "il": "İzmir",
+    "plaka": 35,
+    "ilceleri": [
+      "Aliağa",
+      "Bayındır",
+      "Bergama",
+      "Bornova",
+      "Çeşme",
+      "Dikili",
+      "Foça",
+      "Karaburun",
+      "Karşıyaka",
+      "Kemalpaşa",
+      "Kınık",
+      "Kiraz",
+      "Menemen",
+      "Ödemiş",
+      "Seferihisar",
+      "Selçuk",
+      "Tire",
+      "Torbalı",
+      "Urla",
+      "Beydağ",
+      "Buca",
+      "Konak",
+      "Menderes",
+      "Balçova",
+      "Çiğli",
+      "Gaziemir",
+      "Narlıdere",
+      "Güzelbahçe",
+      "Bayraklı",
+      "Karabağlar"
+    ]
+  },
+  {
+    "il": "Kars",
+    "plaka": 36,
+    "ilceleri": [
+      "Arpaçay",
+      "Digor",
+      "Kağızman",
+      "Merkez",
+      "Sarıkamış",
+      "Selim",
+      "Susuz",
+      "Akyaka"
+    ]
+  },
+  {
+    "il": "Kastamonu",
+    "plaka": 37,
+    "ilceleri": [
+      "Abana",
+      "Araç",
+      "Azdavay",
+      "Bozkurt",
+      "Cide",
+      "Çatalzeytin",
+      "Daday",
+      "Devrekani",
+      "İnebolu",
+      "Merkez",
+      "Küre",
+      "Taşköprü",
+      "Tosya",
+      "İhsangazi",
+      "Pınarbaşı",
+      "Şenpazar",
+      "Ağlı",
+      "Doğanyurt",
+      "Hanönü",
+      "Seydiler"
+    ]
+  },
+  {
+    "il": "Kayseri",
+    "plaka": 38,
+    "ilceleri": [
+      "Bünyan",
+      "Develi",
+      "Felahiye",
+      "İncesu",
+      "Pınarbaşı",
+      "Sarıoğlan",
+      "Sarız",
+      "Tomarza",
+      "Yahyalı",
+      "Yeşilhisar",
+      "Akkışla",
+      "Talas",
+      "Kocasinan",
+      "Melikgazi",
+      "Hacılar",
+      "Özvatan"
+    ]
+  },
+  {
+    "il": "Kırklareli",
+    "plaka": 39,
+    "ilceleri": [
+      "Babaeski",
+      "Demirköy",
+      "Merkez",
+      "Kofçaz",
+      "Lüleburgaz",
+      "Pehlivanköy",
+      "Pınarhisar",
+      "Vize"
+    ]
+  },
+  {
+    "il": "Kırşehir",
+    "plaka": 40,
+    "ilceleri": [
+      "Çiçekdağı",
+      "Kaman",
+      "Merkez",
+      "Mucur",
+      "Akpınar",
+      "Akçakent",
+      "Boztepe"
+    ]
+  },
+  {
+    "il": "Kocaeli",
+    "plaka": 41,
+    "ilceleri": [
+      "Gebze",
+      "Gölcük",
+      "Kandıra",
+      "Karamürsel",
+      "Körfez",
+      "Derince",
+      "Başiskele",
+      "Çayırova",
+      "Darıca",
+      "Dilovası",
+      "İzmit",
+      "Kartepe"
+    ]
+  },
+  {
+    "il": "Konya",
+    "plaka": 42,
+    "ilceleri": [
+      "Akşehir",
+      "Beyşehir",
+      "Bozkır",
+      "Cihanbeyli",
+      "Çumra",
+      "Doğanhisar",
+      "Ereğli",
+      "Hadim",
+      "Ilgın",
+      "Kadınhanı",
+      "Karapınar",
+      "Kulu",
+      "Sarayönü",
+      "Seydişehir",
+      "Yunak",
+      "Akören",
+      "Altınekin",
+      "Derebucak",
+      "Hüyük",
+      "Karatay",
+      "Meram",
+      "Selçuklu",
+      "Taşkent",
+      "Ahırlı",
+      "Çeltik",
+      "Derbent",
+      "Emirgazi",
+      "Güneysınır",
+      "Halkapınar",
+      "Tuzlukçu",
+      "Yalıhüyük"
+    ]
+  },
+  {
+    "il": "Kütahya",
+    "plaka": 43,
+    "ilceleri": [
+      "Altıntaş",
+      "Domaniç",
+      "Emet",
+      "Gediz",
+      "Merkez",
+      "Simav",
+      "Tavşanlı",
+      "Aslanapa",
+      "Dumlupınar",
+      "Hisarcık",
+      "Şaphane",
+      "Çavdarhisar",
+      "Pazarlar"
+    ]
+  },
+  {
+    "il": "Malatya",
+    "plaka": 44,
+    "ilceleri": [
+      "Akçadağ",
+      "Arapgir",
+      "Arguvan",
+      "Darende",
+      "Doğanşehir",
+      "Hekimhan",
+      "Merkez",
+      "Pütürge",
+      "Yeşilyurt",
+      "Battalgazi",
+      "Doğanyol",
+      "Kale",
+      "Kuluncak",
+      "Yazıhan"
+    ]
+  },
+  {
+    "il": "Manisa",
+    "plaka": 45,
+    "ilceleri": [
+      "Akhisar",
+      "Alaşehir",
+      "Demirci",
+      "Gördes",
+      "Kırkağaç",
+      "Kula",
+      "Merkez",
+      "Salihli",
+      "Sarıgöl",
+      "Saruhanlı",
+      "Selendi",
+      "Soma",
+      "Şehzadeler",
+      "Yunusemre",
+      "Turgutlu",
+      "Ahmetli",
+      "Gölmarmara",
+      "Köprübaşı"
+    ]
+  },
+  {
+    "il": "Kahramanmaraş",
+    "plaka": 46,
+    "ilceleri": [
+      "Afşin",
+      "Andırın",
+      "Dulkadiroğlu",
+      "Onikişubat",
+      "Elbistan",
+      "Göksun",
+      "Merkez",
+      "Pazarcık",
+      "Türkoğlu",
+      "Çağlayancerit",
+      "Ekinözü",
+      "Nurhak"
+    ]
+  },
+  {
+    "il": "Mardin",
+    "plaka": 47,
+    "ilceleri": [
+      "Derik",
+      "Kızıltepe",
+      "Artuklu",
+      "Merkez",
+      "Mazıdağı",
+      "Midyat",
+      "Nusaybin",
+      "Ömerli",
+      "Savur",
+      "Dargeçit",
+      "Yeşilli"
+    ]
+  },
+  {
+    "il": "Muğla",
+    "plaka": 48,
+    "ilceleri": [
+      "Bodrum",
+      "Datça",
+      "Fethiye",
+      "Köyceğiz",
+      "Marmaris",
+      "Menteşe",
+      "Milas",
+      "Ula",
+      "Yatağan",
+      "Dalaman",
+      "Seydikemer",
+      "Ortaca",
+      "Kavaklıdere"
+    ]
+  },
+  {
+    "il": "Muş",
+    "plaka": 49,
+    "ilceleri": [
+      "Bulanık",
+      "Malazgirt",
+      "Merkez",
+      "Varto",
+      "Hasköy",
+      "Korkut"
+    ]
+  },
+  {
+    "il": "Nevşehir",
+    "plaka": 50,
+    "ilceleri": [
+      "Avanos",
+      "Derinkuyu",
+      "Gülşehir",
+      "Hacıbektaş",
+      "Kozaklı",
+      "Merkez",
+      "Ürgüp",
+      "Acıgöl"
+    ]
+  },
+  {
+    "il": "Niğde",
+    "plaka": 51,
+    "ilceleri": [
+      "Bor",
+      "Çamardı",
+      "Merkez",
+      "Ulukışla",
+      "Altunhisar",
+      "Çiftlik"
+    ]
+  },
+  {
+    "il": "Ordu",
+    "plaka": 52,
+    "ilceleri": [
+      "Akkuş",
+      "Altınordu",
+      "Aybastı",
+      "Fatsa",
+      "Gölköy",
+      "Korgan",
+      "Kumru",
+      "Mesudiye",
+      "Perşembe",
+      "Ulubey",
+      "Ünye",
+      "Gülyalı",
+      "Gürgentepe",
+      "Çamaş",
+      "Çatalpınar",
+      "Çaybaşı",
+      "İkizce",
+      "Kabadüz",
+      "Kabataş"
+    ]
+  },
+  {
+    "il": "Rize",
+    "plaka": 53,
+    "ilceleri": [
+      "Ardeşen",
+      "Çamlıhemşin",
+      "Çayeli",
+      "Fındıklı",
+      "İkizdere",
+      "Kalkandere",
+      "Pazar",
+      "Merkez",
+      "Güneysu",
+      "Derepazarı",
+      "Hemşin",
+      "İyidere"
+    ]
+  },
+  {
+    "il": "Sakarya",
+    "plaka": 54,
+    "ilceleri": [
+      "Akyazı",
+      "Geyve",
+      "Hendek",
+      "Karasu",
+      "Kaynarca",
+      "Sapanca",
+      "Kocaali",
+      "Pamukova",
+      "Taraklı",
+      "Ferizli",
+      "Karapürçek",
+      "Söğütlü",
+      "Adapazarı",
+      "Arifiye",
+      "Erenler",
+      "Serdivan"
+    ]
+  },
+  {
+    "il": "Samsun",
+    "plaka": 55,
+    "ilceleri": [
+      "Alaçam",
+      "Bafra",
+      "Çarşamba",
+      "Havza",
+      "Kavak",
+      "Ladik",
+      "Terme",
+      "Vezirköprü",
+      "Asarcık",
+      "Ondokuzmayıs",
+      "Salıpazarı",
+      "Tekkeköy",
+      "Ayvacık",
+      "Yakakent",
+      "Atakum",
+      "Canik",
+      "İlkadım"
+    ]
+  },
+  {
+    "il": "Siirt",
+    "plaka": 56,
+    "ilceleri": [
+      "Baykan",
+      "Eruh",
+      "Kurtalan",
+      "Pervari",
+      "Merkez",
+      "Şirvan",
+      "Tillo"
+    ]
+  },
+  {
+    "il": "Sinop",
+    "plaka": 57,
+    "ilceleri": [
+      "Ayancık",
+      "Boyabat",
+      "Durağan",
+      "Erfelek",
+      "Gerze",
+      "Merkez",
+      "Türkeli",
+      "Dikmen",
+      "Saraydüzü"
+    ]
+  },
+  {
+    "il": "Sivas",
+    "plaka": 58,
+    "ilceleri": [
+      "Divriği",
+      "Gemerek",
+      "Gürün",
+      "Hafik",
+      "İmranlı",
+      "Kangal",
+      "Koyulhisar",
+      "Merkez",
+      "Suşehri",
+      "Şarkışla",
+      "Yıldızeli",
+      "Zara",
+      "Akıncılar",
+      "Altınyayla",
+      "Doğanşar",
+      "Gölova",
+      "Ulaş"
+    ]
+  },
+  {
+    "il": "Tekirdağ",
+    "plaka": 59,
+    "ilceleri": [
+      "Çerkezköy",
+      "Çorlu",
+      "Ergene",
+      "Hayrabolu",
+      "Malkara",
+      "Muratlı",
+      "Saray",
+      "Süleymanpaşa",
+      "Kapaklı",
+      "Şarköy",
+      "Marmaraereğlisi"
+    ]
+  },
+  {
+    "il": "Tokat",
+    "plaka": 60,
+    "ilceleri": [
+      "Almus",
+      "Artova",
+      "Erbaa",
+      "Niksar",
+      "Reşadiye",
+      "Merkez",
+      "Turhal",
+      "Zile",
+      "Pazar",
+      "Yeşilyurt",
+      "Başçiftlik",
+      "Sulusaray"
+    ]
+  },
+  {
+    "il": "Trabzon",
+    "plaka": 61,
+    "ilceleri": [
+      "Akçaabat",
+      "Araklı",
+      "Arsin",
+      "Çaykara",
+      "Maçka",
+      "Of",
+      "Ortahisar",
+      "Sürmene",
+      "Tonya",
+      "Vakfıkebir",
+      "Yomra",
+      "Beşikdüzü",
+      "Şalpazarı",
+      "Çarşıbaşı",
+      "Dernekpazarı",
+      "Düzköy",
+      "Hayrat",
+      "Köprübaşı"
+    ]
+  },
+  {
+    "il": "Tunceli",
+    "plaka": 62,
+    "ilceleri": [
+      "Çemişgezek",
+      "Hozat",
+      "Mazgirt",
+      "Nazımiye",
+      "Ovacık",
+      "Pertek",
+      "Pülümür",
+      "Merkez"
+    ]
+  },
+  {
+    "il": "Şanlıurfa",
+    "plaka": 63,
+    "ilceleri": [
+      "Akçakale",
+      "Birecik",
+      "Bozova",
+      "Ceylanpınar",
+      "Eyyübiye",
+      "Halfeti",
+      "Haliliye",
+      "Hilvan",
+      "Karaköprü",
+      "Siverek",
+      "Suruç",
+      "Viranşehir",
+      "Harran"
+    ]
+  },
+  {
+    "il": "Uşak",
+    "plaka": 64,
+    "ilceleri": [
+      "Banaz",
+      "Eşme",
+      "Karahallı",
+      "Sivaslı",
+      "Ulubey",
+      "Merkez"
+    ]
+  },
+  {
+    "il": "Van",
+    "plaka": 65,
+    "ilceleri": [
+      "Başkale",
+      "Çatak",
+      "Erciş",
+      "Gevaş",
+      "Gürpınar",
+      "İpekyolu",
+      "Muradiye",
+      "Özalp",
+      "Tuşba",
+      "Bahçesaray",
+      "Çaldıran",
+      "Edremit",
+      "Saray"
+    ]
+  },
+  {
+    "il": "Yozgat",
+    "plaka": 66,
+    "ilceleri": [
+      "Akdağmadeni",
+      "Boğazlıyan",
+      "Çayıralan",
+      "Çekerek",
+      "Sarıkaya",
+      "Sorgun",
+      "Şefaatli",
+      "Yerköy",
+      "Merkez",
+      "Aydıncık",
+      "Çandır",
+      "Kadışehri",
+      "Saraykent",
+      "Yenifakılı"
+    ]
+  },
+  {
+    "il": "Zonguldak",
+    "plaka": 67,
+    "ilceleri": [
+      "Çaycuma",
+      "Devrek",
+      "Ereğli",
+      "Merkez",
+      "Alaplı",
+      "Gökçebey"
+    ]
+  },
+  {
+    "il": "Aksaray",
+    "plaka": 68,
+    "ilceleri": [
+      "Ağaçören",
+      "Eskil",
+      "Gülağaç",
+      "Güzelyurt",
+      "Merkez",
+      "Ortaköy",
+      "Sarıyahşi"
+    ]
+  },
+  {
+    "il": "Bayburt",
+    "plaka": 69,
+    "ilceleri": [
+      "Merkez",
+      "Aydıntepe",
+      "Demirözü"
+    ]
+  },
+  {
+    "il": "Karaman",
+    "plaka": 70,
+    "ilceleri": [
+      "Ermenek",
+      "Merkez",
+      "Ayrancı",
+      "Kazımkarabekir",
+      "Başyayla",
+      "Sarıveliler"
+    ]
+  },
+  {
+    "il": "Kırıkkale",
+    "plaka": 71,
+    "ilceleri": [
+      "Delice",
+      "Keskin",
+      "Merkez",
+      "Sulakyurt",
+      "Bahşili",
+      "Balışeyh",
+      "Çelebi",
+      "Karakeçili",
+      "Yahşihan"
+    ]
+  },
+  {
+    "il": "Batman",
+    "plaka": 72,
+    "ilceleri": [
+      "Merkez",
+      "Beşiri",
+      "Gercüş",
+      "Kozluk",
+      "Sason",
+      "Hasankeyf"
+    ]
+  },
+  {
+    "il": "Şırnak",
+    "plaka": 73,
+    "ilceleri": [
+      "Beytüşşebap",
+      "Cizre",
+      "İdil",
+      "Silopi",
+      "Merkez",
+      "Uludere",
+      "Güçlükonak"
+    ]
+  },
+  {
+    "il": "Bartın",
+    "plaka": 74,
+    "ilceleri": [
+      "Merkez",
+      "Kurucaşile",
+      "Ulus",
+      "Amasra"
+    ]
+  },
+  {
+    "il": "Ardahan",
+    "plaka": 75,
+    "ilceleri": [
+      "Merkez",
+      "Çıldır",
+      "Göle",
+      "Hanak",
+      "Posof",
+      "Damal"
+    ]
+  },
+  {
+    "il": "Iğdır",
+    "plaka": 76,
+    "ilceleri": [
+      "Aralık",
+      "Merkez",
+      "Tuzluca",
+      "Karakoyunlu"
+    ]
+  },
+  {
+    "il": "Yalova",
+    "plaka": 77,
+    "ilceleri": [
+      "Merkez",
+      "Altınova",
+      "Armutlu",
+      "Çınarcık",
+      "Çiftlikköy",
+      "Termal"
+    ]
+  },
+  {
+    "il": "Karabük",
+    "plaka": 78,
+    "ilceleri": [
+      "Eflani",
+      "Eskipazar",
+      "Merkez",
+      "Ovacık",
+      "Safranbolu",
+      "Yenice"
+    ]
+  },
+  {
+    "il": "Kilis",
+    "plaka": 79,
+    "ilceleri": [
+      "Merkez",
+      "Elbeyli",
+      "Musabeyli",
+      "Polateli"
+    ]
+  },
+  {
+    "il": "Osmaniye",
+    "plaka": 80,
+    "ilceleri": [
+      "Bahçe",
+      "Kadirli",
+      "Merkez",
+      "Düziçi",
+      "Hasanbeyli",
+      "Sumbas",
+      "Toprakkale"
+    ]
+  },
+  {
+    "il": "Düzce",
+    "plaka": 81,
+    "ilceleri": [
+      "Akçakoca",
+      "Merkez",
+      "Yığılca",
+      "Cumayeri",
+      "Gölyaka",
+      "Çilimli",
+      "Gümüşova",
+      "Kaynaşlı"
+    ]
+  }
+]
+function search(nameKey, myArray){
+    for (var i=0; i < myArray.length; i++) {
+        if (myArray[i].plaka == nameKey) {
+            return myArray[i];
+        }
+    }
+}
+$( document ).ready(function() {
+  $.each(data, function( index, value ) {
+    $('#Iller').append($('<option>', {
+        value: value.plaka+':'+value.il,
+        text:  value.il
+    }));
+  });
+  $("#Iller").change(function(){
+    var valueSelected = this.value;
+    if($('#Iller').val().split(':')[0] > 0) {
+      $('#Ilceler').html('');
+      $('#Ilceler').append($('<option>', {
+        value: 0,
+        text:  'Lütfen Bir İlçe seçiniz'
+      }));
+      $('#Ilceler').prop("disabled", false);
+      var resultObject = search($('#Iller').val().split(':')[0], data);
+      $.each(resultObject.ilceleri, function( index, value ) {
+        $('#Ilceler').append($('<option>', {
+            value: value, 
+            text:  value
+        }));
+      });
+      return false;
+    }
+    $('#Ilceler').prop("disabled", true);
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+        var target = document.querySelector("#headerSidebarPages-Filtre-Collapse");
+        target.classList.add("show");
+    });
+    </script>

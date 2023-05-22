@@ -1,0 +1,67 @@
+<title>Yapx | Şifremi Unuttum</title>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+					<img src="/general/img/img-01.png" alt="IMG">
+				</div>
+				<form id="myForm" action="/sifremiunuttumcode" method="post" class="login100-form validate-form">
+					<span class="login100-form-title">
+						KOD DOĞRULA
+					</span>
+					<div id="myP" class="alert" hidden>
+						<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+						Girilen kod hatalı!
+					</div>           
+					
+					<div class="wrap-input100 ">
+						<input class="input100" type="text" name="code" placeholder="Code">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button id="gonder" type="submit" class="login100-form-btn">
+							Şifremi Gönder
+						</button>
+					</div>
+					<div class="text-center p-t-12">
+						<span class="txt1">
+							Kod gelmedi mi?
+						</span>
+						<a class="txt2" href="javascript:window.location.reload(true)">
+							Kodu tekrar gönder?
+						</a>
+					</div>
+
+					<div class="text-center p-t-136">
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+<!--===============================================================================================-->	
+	<script src="/general/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/general/vendor/bootstrap/js/popper.js"></script>
+	<script src="/general/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/general/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/general/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="/general/js/main.js"></script>
+
+</body>
+</html>

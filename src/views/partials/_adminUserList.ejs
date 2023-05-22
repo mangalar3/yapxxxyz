@@ -1,0 +1,104 @@
+
+
+<tr>
+    <td><%-Product.email %></td>
+    <td><%-Product.dukkanadi %></td>
+    <td><%-Product.dukkanadi %></td>
+    <td><%-Product.gsmtelefon %></td>
+    <td><%-Product.dukkanili %></td>
+    <td><%-Product.dukkanilcesi %></td>
+    <td><%-Product.User_Status %></td>
+    <td><% if (Product.userid == '3') { %>
+        <span class="role member">Dükkan</span>
+    <% } 
+    else if (Product.userid == '1') { %>
+        <span class="role user">Bireysel Kullanıcı</span>
+    <% } 
+    %></td>
+    <td><%-Product.KalanSure %></td>
+    <td>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<%-Product.email.split('@')[0]+Product.email.split('@')[1].split('.')[0] %>">Detay veya İşlem için tıklayın <i class="fa fa-search"> </i></button>
+    </td>
+    <td>
+        <form action="/yapxadminlogin/EditStore?id=<%-Product.Dukkan_UniqueID %>" method="post" enctype="application/x-www-form-urlencoded">
+            <div class="modal fade" tabindex="-1" id="<%-Product.email.split('@')[0]+Product.email.split('@')[1].split('.')[0] %>" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div  class="modal-dialog" role="document">
+                
+                    <div  class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel" >Kullanıcı Bilgileri</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <h5>Profil Linki: <span class="ml-3" style="font-weight: normal;"> <a href="/dukkanlar/<%-Product.dukkanurl %>">Profili görüntülemek için tıklayın</a> </span>  </h5>
+                        <hr>
+                        <h5>Kayıt Tarih: <span class="ml-3" style="font-weight: normal;"> <%-(new Date(Date.parse(Product.createdAt))).toLocaleString('tr-TR') %> </span>  </h5>
+                        <hr>
+                        <h5>En Son Giriş Yapılan Tarih: <span class="ml-3" style="font-weight: normal;"> 27.02.2023 12:40GMT </span> </h5>
+                        <hr>
+                        <h5>Puan ortalaması: <span class="ml-3" style="font-weight: normal;"> <%-Product.dukkan_av %> </span> </h5>
+                        <hr>
+                        <h5>Kullanıcıya Yapılan Yorum Sayısı:<span class="ml-3" style="font-weight: normal;"> <%-Product.dukkanyorum.length %> </span> </h5>
+                        <hr>
+                        <h5>Kullanıcıya Yaptığı Yorum Sayısı:<span class="ml-3" style="font-weight: normal;"> 5 </span> </h5>
+                        <hr>
+                        <h5>Kullanıcı Durumu: <div class="mb-3"></div> <span class=""><select class="js-select2" name="status">
+                            <option selected="selected">Seçiniz</option>
+                            <option value="Aktif" >Aktif</option>
+                            <option value="Pasif">Pasif</option>
+                            <option value="Engelle">Engelle</option>
+                            <option value="Sil">Sil</option>
+                        </select><div class="dropDownSelect2"></div></span></h5>
+                        <hr>
+                        <h5>Rol: <div class="mb-3"></div> <span class=""><select class="js-select2" name="userType">
+                            <option selected="selected">Seçiniz</option>
+                            <option value="1">Bireysel Kullanıcı</option>
+                            <option value="2">Bireysel Dükkan</option>
+                            <option value="4">Kurumsal Kullanıcı</option>
+                            <option value="3">Kurumsal Dükkan</option>
+                            <option value="5">Meslek</option>
+                        </select><div class="dropDownSelect2"></div></span></h5>
+                        <hr>
+                        <h5>Üyeliğine Süre Ekle: <div class="mb-1"></div><span class="ml-3" style="font-weight: normal;"> <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Gün</span>
+                            </div>
+                            <input name="GiveTime" type="number" class="form-control" placeholder="Tanımak İstediğiniz gün sayısını girin.." aria-label="Username" aria-describedby="basic-addon1">
+                            </div> </span> </h5>
+                            <hr>
+                    </div>
+                
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
+                    
+                </div>
+                </div>
+            </div>
+            </div>
+        </form>
+    </td>
+</tr>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("i#success_button").click(function() {
+            var nameAttribute = $(this).attr("name");
+            console.log(nameAttribute);
+        });
+    });
+
+
+
+    $('#myModal').on('shown.bs.modal', function () {
+$('#myInput').trigger('focus')
+
+
+
+})
+
+
+
+</script>

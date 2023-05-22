@@ -1,0 +1,385 @@
+<style>
+    h1 {
+color: white;
+line-height: 120%;
+margin: 0 auto 2rem auto;
+max-width: 30rem;
+}
+select {
+
+/* styling */
+background-color: white;
+border: thin solid blue;
+border-radius: 4px;
+display: inline-block;
+font: inherit;
+line-height: 1.5em;
+padding: 0.5em 3.5em 0.5em 1em;
+
+/* reset */
+
+margin: 0;      
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+
+
+/* arrows */
+
+select.classic {
+background-image:
+linear-gradient(45deg, transparent 50%, blue 50%),
+linear-gradient(135deg, blue 50%, transparent 50%),
+linear-gradient(to right, skyblue, skyblue);
+background-position:
+calc(100% - 20px) calc(1em + 2px),
+calc(100% - 15px) calc(1em + 2px),
+100% 0;
+background-size:
+5px 5px,
+5px 5px,
+2.5em 2.5em;
+background-repeat: no-repeat;
+}
+
+select.classic:focus {
+background-image:
+linear-gradient(45deg, white 50%, transparent 50%),
+linear-gradient(135deg, transparent 50%, white 50%),
+linear-gradient(to right, gray, gray);
+background-position:
+calc(100% - 15px) 1em,
+calc(100% - 20px) 1em,
+100% 0;
+background-size:
+5px 5px,
+5px 5px,
+2.5em 2.5em;
+background-repeat: no-repeat;
+border-color: grey;
+outline: 0;
+}
+
+
+ body {
+  background-color: #eff4f7;
+  color: #777;
+  font-family: 'Titillium Web', Arial, Helvetica, sans-serif
+}
+.message-box {
+  width: 800px;
+  height: 600px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.message.right {
+  justify-content: flex-end;
+}
+
+.message-content {
+  background-color: #fed700;
+  border-radius: 5px;
+  padding: 10px;
+  max-width: 70%;
+}
+
+.message-content p {
+  margin: 0;
+}
+
+.time {
+  font-size: 12px;
+  color: #888;
+  margin-top: 5px;
+  display: block;
+}
+
+.input-box {
+  display: flex;
+  margin-top: 10px;
+}
+
+.input-box input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-box button {
+  padding: 10px;
+  background-color: #fed700;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+td {
+  padding: 8px;
+}
+
+td:first-child {
+  width: 150px;
+  font-weight: bold;
+}
+
+td:nth-child(2) {
+  width: 200px;
+  font-weight: bold;
+}
+
+td:last-child {
+  font-style: italic;
+}
+
+td:hover {
+  cursor: pointer;
+  background-color: #ddd;
+}
+
+.message-container {
+  display: none;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.message-container.active {
+  display: block;
+}
+
+
+.chat-online {
+    color: #34ce57
+}
+
+.chat-offline {
+    color: #e4606d
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    max-height: 800px;
+    overflow-y: scroll
+}
+
+.chat-message-left,
+.chat-message-right {
+    display: flex;
+    flex-shrink: 0
+}
+
+.chat-message-left {
+    margin-right: auto
+}
+
+.chat-message-right {
+    flex-direction: row-reverse;
+    margin-left: auto
+}
+.py-3 {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+}
+.px-4 {
+    padding-right: 1.5rem!important;
+    padding-left: 1.5rem!important;
+}
+.flex-grow-0 {
+    flex-grow: 0!important;
+}
+.border-top {
+    border-top: 1px solid #dee2e6!important;
+}
+
+
+
+</style>
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div style="width: 800px; float: right;">
+
+            
+            <div class="message-box">
+                <div class="message">
+                  <div class="message-content">
+                    <p>Hello, how are you doing today?</p>
+                    <span class="time">12:34 PM</span>
+                  </div>
+                </div>
+                <div class="message right">
+                    <div class="message-content">
+                      <p>I'm doing great, thanks for asking.</p>
+                      <span class="time">12:38 PM</span>
+                    </div>
+                  </div>
+                
+                <div class="message">
+                  <div class="message-content">
+                    <p>I'm doing great, thanks for asking.</p>
+                    <span class="time">12:38 PM</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="input-box">
+                <input type="text" placeholder="Write your message here...">
+                <button type="submit">Send</button>
+              </div>
+             </div>
+             <div style=" width:500px; float: left;">
+                <div class="card">
+                    <div class="row g-0">
+                        <div class="col-12">
+        
+                            <div class="px-4 d-none d-md-block">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+
+                                        <div class="row" style="justify-content: center; padding: 20px;">
+                                            <h4 style="margin: 20px; color: #777;"></h4>
+                                        <select name="" id="" style="">
+                                            <option value="">Tümü</option>
+                                            <option value="">Ürün Hakkında</option>
+                                            <option value="">Teslimat</option>
+                                            <option value="">Kullanıcı Hakkında</option>
+                                            <option value="">Şikayet</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+        
+                            <a href="#" class="list-group-item list-group-item-action border-0">
+                                
+                                <div class="badge float-right" style="margin-top: 10px; background-color: #b1b1b1bb;">Weber ürününün şu özelliği hakkında a...</div>
+                                <div class="d-flex align-items-start">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
+                                    <div class="flex-grow-1 ml-3">
+                                        Vanessa Tucker
+                                        <div class="small"><span class="fas fa-circle chat-online"></span> Ürün Hakkında</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action border-0">
+                                <div class="badge float-right" style="margin-top: 10px; background-color: #b1b1b1bb;">Weber ürününün şu özelliği hakkında a...</div>
+                                <div class="d-flex align-items-start">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle mr-1" alt="William Harris" width="40" height="40">
+                                    <div class="flex-grow-1 ml-3">
+                                        William Harris
+                                        <div class="small"><span class="fas fa-circle chat-online"></span> Ürün Hakkında</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action border-0">
+                                <div class="badge float-right" style="margin-top: 10px; background-color: #b1b1b1bb;">Weber ürününün şu özelliği hakkında a...</div>
+                                <div class="d-flex align-items-start">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                                    <div class="flex-grow-1 ml-3">
+                                        Sharon Lessman
+                                        <div class="small"><span class="fas fa-circle chat-online"></span> Ürün Hakkında</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action border-0">
+                                <div class="d-flex align-items-start">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png" class="rounded-circle mr-1" alt="Christina Mason" width="40" height="40">
+                                    <div class="flex-grow-1 ml-3">
+                                        Christina Mason
+                                        <div class="small"><span class="fas fa-circle chat-offline"></span> Şikayet</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action border-0">
+                                <div class="d-flex align-items-start">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle mr-1" alt="Fiona Green" width="40" height="40">
+                                    <div class="flex-grow-1 ml-3">
+                                        Fiona Green
+                                        <div class="small"><span class="fas fa-circle chat-offline"></span> Şikayet</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action border-0">
+                                <div class="d-flex align-items-start">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle mr-1" alt="Doris Wilder" width="40" height="40">
+                                    <div class="flex-grow-1 ml-3">
+                                        Doris Wilder
+                                        <div class="small"><span class="fas fa-circle chat-offline"></span> Şikayet</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action border-0">
+                                <div class="d-flex align-items-start">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png" class="rounded-circle mr-1" alt="Haley Kennedy" width="40" height="40">
+                                    <div class="flex-grow-1 ml-3">
+                                        Haley Kennedy
+                                        <div class="small"><span class="fas fa-circle chat-offline"></span> Şikayet</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action border-0">
+                                <div class="d-flex align-items-start">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1" alt="Jennifer Chang" width="40" height="40">
+                                    <div class="flex-grow-1 ml-3">
+                                        Jennifer Chang
+                                        <div class="small"><span class="fas fa-circle chat-offline"></span> Şikayet</div>
+                                    </div>
+                                </div>
+                            </a>
+        
+                            <hr class="d-block d-lg-none mt-1 mb-0">
+                        </div>
+                        
+                    </div>
+                </div>
+             </div>
+              
+  
+        </div>
+            
+    </div>
+</div>
+
+
+<script>
+ 
+
+</script>

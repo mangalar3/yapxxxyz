@@ -1,0 +1,35 @@
+
+<li class="col-6 col-md-3 col-wd-2gdot4 product-item">
+    <div class="product-item__outer h-100">
+        <div class="product-item__inner px-xl-4 p-3">
+            <div class="product-item__body pb-xl-2">
+                <div class="mb-2"><a href="/kategoriler/<%- Product[0].product_category3 %>" class="font-size-12 text-gray-5"><%- Product[0].product_category3 %></a></div>
+                <h5 class="mb-1 product-item__title"><a href="/urunler/<%- Product[0].product_url %>" class="text-blue font-weight-bold"><%-Product[0].product_name %> </a></h5>
+                <div class="mb-2">
+                    <a href="/urunler/<%- Product[0].product_url %>" class="d-block text-center"><img class="img-fluid" src="/uploads/images/<%-Product[0].product_category3.trim() %>/<%- Product[0].product_photo[0] %>" alt="Image Description"></a>
+                </div>
+                <div class="flex-center-between mb-1" style="margin-top: 20%;">
+                        <div >
+                            <div class="text-gray-23" style="font-size: small; margin-left: 10px;">
+                                Fiyat <div class="text-secondary" style="font-weight: bold;"> <%- Product[1] %> ₺</div>
+                           
+                            </div>
+                            
+                        </div>
+                        
+                    
+                        <div >
+
+                        
+                        <div class="text-gray-23" style="font-size: small; margin-right: 20px;">
+                            Stok S. <div class="text-secondary" style="font-weight: bold;"> <%- Product[2] %></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</li>

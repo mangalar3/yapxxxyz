@@ -1,0 +1,44 @@
+{
+  "name": "igprivfull",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "instagram",
+    "instagram private",
+    "instagram api",
+    "instagram cookie panel",
+    "instagram web api"
+  ],
+  "author": "Can Yesilyurt",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^3.1.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.1",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.6",
+    "mongoose-paginate": "^5.0.3",
+    "mongoose-pagination": "^1.0.0",
+    "node-fetch": "^3.2.6",
+    "nodemailer": "^6.7.5",
+    "nodemon": "^2.0.16",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
+  }
+}

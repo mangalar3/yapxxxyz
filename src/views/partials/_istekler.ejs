@@ -1,0 +1,23 @@
+<tr>
+    
+    <td class="d-none d-md-table-cell">
+        <a href="/urunler/<%- Product.product_url %> "><img height="200" width="200" class="img-fluid p-1 border border-color-1" src="/uploads/images/<%-Product.product_category3.trim() %>/<%- Product.product_photo[0] %>" alt="<%- Product.product_name %>" ></a>
+    </td>
+
+    <td data-title="Ürün Adı">
+        <a href="/urunler/<%- Product.product_url %> " class="text-gray-90"><%-Product.product_name %> </a>
+    </td>
+
+    <td data-title="Ürün Fiyatı">
+        <span class=""><%-Product.product_price %></span>
+    </td>
+    
+    <td data-title="Stok">
+        <!-- Stock Status -->
+        <span><%-Product.stock_alert %></span>
+        <!-- End Stock Status -->
+    </td>
+    <td class="text-center">
+        <a style="color: red;" href="/urunler/<%- Product.product_url %> " class="font-size-14">Sil</a>
+    </td>
+</tr>

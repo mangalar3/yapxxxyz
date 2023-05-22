@@ -1,0 +1,117 @@
+
+<div class="col-md-7 mb-md-6 mb-lg-0">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="exampleModalLabel" ><%-Product.product_name %></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="/dukkanaeklev2" method="post" enctype="application/x-www-form-urlencoded">
+              <div class="modal-body">
+                  
+                  <h5>Ürün Bilgileri <div class="mb-1"></div><span class="ml-3" style="font-weight: normal;"> <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Stok</span>
+                      </div>
+                      <input name="stok" type="text" class="form-control" placeholder="Stok sayısını girin.." aria-label="Username" aria-describedby="basic-addon1">
+                    </div> </span> </h5>
+                    
+                    <h5><div class="mb-1"></div><span class="ml-3" style="font-weight: normal;"> <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Fiyat</span>
+                      </div>
+                      <input name="fiyat" type="text" class="form-control" placeholder="Fiyatı girin.." aria-label="Username" aria-describedby="basic-addon1">
+                    </div> </span> </h5>
+                    
+
+
+                <input name="url" value="<%-Product.product_url %>" hidden>
+              </div>
+            
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    <div class="mb-2">
+        <div class="border-bottom mb-3 pb-md-1 pb-3">
+            <a href="/kategori/<%-Product.product_category2  %>" class="font-size-12 text-gray-5 mb-2 d-inline-block"><%-Product.product_category2  %></a>
+            <span style="float: right;"> <% if (myacc[0].userid == "3") { %>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" ><i class="fas fa-plus"></i> Dükkanıma Ekle</button>
+            <% } %></span> 
+            <h2 class="font-size-25 text-lh-1dot2"><%-Product.product_name  %> 
+            </h2>
+            <div class="mb-2">
+                <a class="d-inline-flex align-items-center small font-size-15 text-lh-1" href="#">
+                    <div class="text-warning mr-2">
+                        <small class="fas fa-star <% if(Product.avarage>0){ %><% } else{ %>text-muted<% } %>"></small>
+                        <small class="fas fa-star <% if(Product.avarage>1){ %><% } else{ %>text-muted<% } %>"></small>
+                        <small class="fas fa-star <% if(Product.avarage>2){ %><% } else{ %>text-muted<% } %>"></small>
+                        <small class="fas fa-star <% if(Product.avarage>3){ %><% } else{ %>text-muted<% } %>"></small>
+                        <small class="fas fa-star <% if(Product.avarage>4){ %><% } else{ %>text-muted<% } %>"></small>
+                    </div>
+                    <span class="text-secondary font-size-13">(<%-Product.urun_oysayisi %>  müşteri yorumu)</span>
+                </a>
+            </div>
+        </div>
+        <form id="isteklistesiekle" action="/isteklistesiekle/<%- Product.product_url %>" method="post">
+            
+        <div class="flex-horizontal-center flex-wrap mb-4">
+            <button type="submit" style="background:transparent; border:none; color:transparent;" class="text-gray-6 font-size-13 mr-2"><i class="ec ec-favorites mr-1 font-size-15"></i> İstek Listesine Ekle</button>
+            
+        </div>
+        </form>
+        
+        <div class="mb-2">
+            <ul class="font-size-14 pl-3 ml-1 text-gray-110">
+                <li><%-Product.product_description  %></li>
+                
+            </ul>
+        </div>
+        
+        <div class=" mt-4">
+          <div class="col-md-3">
+
+          </div>
+          <div class="col-md-3">
+
+          </div>
+          
+          <div class="col-md-6">
+            
+            <div style="text-align: center; justify-content: center;">
+              
+              <div class="card text-white bg-white" style="max-width: 20rem; text-align: center; justify-content: center;">
+                
+                <div class="card-body">
+                  <h5 class="card-title mt-3" style="text-align: center; justify-content: center;"><span style="color:white; background-color: #3AA03A; padding-right: 6px; padding-left: 6px; margin-top: 7px; font-size: 12px; font-family:Arial, Helvetica, sans-serif; float: left; border-radius: 5%;">Şu an en ucuz</span> <span style="color: #6592E2; font-size: 13px;"><a href="" style="color: #6592E2; font-weight: bold;">Sercan Dukkan</a></span> <span style="color: rgba(15, 15, 15, 0.582); float: right; font-weight:600;">55₺</span>    </h5>
+                </div>
+              </div>
+           
+            
+            </div>
+
+
+          </div>
+        
+          
+
+        </div>
+        
+        <div class="mb-4">
+            <div class="d-flex align-items-baseline">
+                <ins class="font-size-36 text-decoration-none"></ins>
+            </div>
+        </div>
+
+        <script>
+              $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+        </script>

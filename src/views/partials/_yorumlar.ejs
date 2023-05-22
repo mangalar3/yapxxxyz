@@ -1,0 +1,27 @@
+<div class="border-bottom border-color-1 pb-4 mb-4">
+    <!-- Review Rating -->
+    <div class="d-flex justify-content-between align-items-center text-secondary font-size-1 mb-2">
+        <div class="text-warning text-ls-n2 font-size-16" style="width: 80px;">
+            <small class="fas fa-star <% if(Product.split(':')[2]>0){ %><% } else{ %>text-muted<% } %>"></small>
+            <small class="fas fa-star <% if(Product.split(':')[2]>1){ %><% } else{ %>text-muted<% } %>"></small>
+            <small class="fas fa-star <% if(Product.split(':')[2]>2){ %><% } else{ %>text-muted<% } %>"></small>
+            <small class="fas fa-star <% if(Product.split(':')[2]>3){ %><% } else{ %>text-muted<% } %>"></small>
+            <small class="fas fa-star <% if(Product.split(':')[2]>4){ %><% } else{ %>text-muted<% } %>"></small>
+        </div>
+    </div>
+    <!-- End Review Rating -->
+<!--first arr second 1 alw-->
+
+    <p class="text-gray-90"><%-Product.split(':')[1]  %> </p>
+
+
+    <div class="mb-2">
+        <strong><%=Product.split(':')[0] %></strong>
+        <span class="font-size-13 text-gray-23">- April 3, 2019</span>
+    </div>
+   
+
+    <!-- Reviewer -->
+    
+    <!-- End Reviewer -->
+</div>

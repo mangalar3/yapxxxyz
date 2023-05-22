@@ -1,0 +1,121 @@
+<li class="col-6 col-md-3 col-wd-2gdot4 product-item">
+    <div class="product-item__outer h-100">
+        <div class="product-item__inner px-xl-4 p-3">
+            <div class="product-item__body pb-xl-2">
+                <div>
+                    <nav class="navbar navbar-light light-blue lighten-4">
+                        <div>
+                            <button style="width: 40px; background: none; color: rgb(9, 9, 170); border: none;" class="noselect" data-toggle="modal" data-target="#<%-(Product[0].product_name.split(' ')[0]+Product[0].product_name.split(' ')[1]+Product[0].product_name.split(' ')[2])  %>">Düzenle</button>
+                            
+                            
+                        </div>
+                        
+                        <div>
+                            <button style="width: 40px; background: none; color:brown; border: none;" class="noselect2" data-toggle="modal" data-target="#<%-(Product[0].product_name.split(' ')[0]+Product[0].product_name.split(' ')[1]+Product[0].product_name.split(' ')[2]+1)  %>">Sil</button>
+                            
+                        </div>
+                        <!-- Navbar brand -->
+                        
+                        <!-- Collapsible content -->
+                      
+                      </nav>
+                      <hr>
+                   
+                <div class="mb-2"><a href="/kategoriler/<%- Product[0].product_category3 %>" class="font-size-12 text-gray-5"><%- Product[0].product_category3 %></a></div>
+                <h5 class="mb-1 product-item__title"><a href="/urunler/<%- Product[0].product_url %>" class="text-blue font-weight-bold"><%-Product[0].product_name %> </a></h5>
+                
+                <div class="mb-2">
+                    <a href="/urunler/<%- Product[0].product_url %>" class="d-block text-center"><img class="img-fluid" src="/uploads/images/<%-Product[0].product_category3 %>/<%- Product[0].product_photo[0] %>" alt="Image Description"></a>
+                </div>
+                <div class="flex-center-between mb-1" style="margin-top: 20%;">
+                    <div >
+                        <div class="text-gray-23" style="font-size: small; margin-left: 10px;">
+                            Fiyat <div class="text-secondary" style="font-weight: bold;"> <%- Product[1] %> ₺</div>
+                       
+                        </div>
+                        
+                    </div>
+                    
+                
+                    <div >
+
+                    
+                    <div class="text-gray-23" style="font-size: small; margin-right: 20px;">
+                        Stok S. <div class="text-secondary" style="font-weight: bold;"> <%- Product[2] %></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+</li>
+
+    <div class="modal fade" id="<%-(Product[0].product_name.split(' ')[0]+Product[0].product_name.split(' ')[1]+Product[0].product_name.split(' ')[2])  %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="/urunuduzenle/<%-Product[0].product_url  %>" method="post">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><%-Product[0].product_name  %></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                
+                    <div class="modal-body">               
+                            <div class="form-group">
+                            <label for="formGroupExampleInput">Ürün Stock Sayınız</label>
+                            <input type="number" class="form-control" name="stok" id="stok" placeholder="Güncel Stok Sayınız:<%-Product[2] %> " required>
+                            </div>
+                            <div class="form-group">
+                            <label for="formGroupExampleInput2">Ürün Satış Fiyatınız</label>
+                            <input type="number" class="form-control" name="fiyat" id="fiyat" placeholder="Güncel Satış Fiyatınız:<%-Product[1] %> " required>
+                            </div>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                    <button type="submit" class="btn btn-primary">Ürünü Düzenle</button>
+                    </div>           
+
+            </div>
+        </div>
+        </form>
+    </div>
+
+
+
+    <div class="modal fade" id="<%-(Product[0].product_name.split(' ')[0]+Product[0].product_name.split(' ')[1]+Product[0].product_name.split(' ')[2]+1)  %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="/urunukaldir/<%-Product[0].product_url  %>" method="post">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><%-Product[0].product_name  %></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                
+                    <div class="modal-body">               
+                            <div class="form-group">
+                            <label>Ürünü Kaldırmak İstediğinize Emin Misiniz?</label>
+                            </div>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                                    <button type="submit" class="btn btn-danger">Ürünü Kaldır</button>
+                    </div>           
+
+            </div>
+        </div>
+        </form>
+    </div>
+
+
+
+<script>
+  function myFunction(x) {
+  const element = document.getElementById(x.toString());
+  if (element.className == "navbar-collapse collapse show") {
+    element.className = "navbar-collapse collapse disabled";
+  } else {
+    element.className = "navbar-collapse collapse show";
+  }
+}
+</script>

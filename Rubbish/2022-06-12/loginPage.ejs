@@ -1,0 +1,53 @@
+
+  
+  <div class="login-box">
+
+    <div class="card card-outline card-primary">
+      <div class="card-header text-center">
+        <a href="/" class="h1"><b>Twitter</b>Profiline Bakanlar</a>
+      </div>
+      <div class="card-body">
+        <% if (locals.validation_error != undefined || locals.success_message != undefined || locals.login_error != undefined || tUserlogin_error != undefined) { %>
+          <%- include('../../partials/_mesaj') %> 
+       <% } %>
+
+     
+        <form action="/login" method="post">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" name="tUsername" placeholder="Kullanıcı adı">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" name="tPassword" placeholder="Şifre">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+           
+
+            <div class="col-12">
+              <input type="button" value="Giriş Yap" onclick="this.disabled=true; this.value='Lütfen bekleyin...'; this.form.submit();" class="btn btn-primary btn-block">
+              
+            </div>
+
+          </div>
+        </form>
+      <center> <div id="google_translate_element"></div>
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({ pageLanguage: 'tr' }, 'google_translate_element');
+                            }
+                        </script></center> 
+      </div>
+
+    </div>
+
+  </div>
+  

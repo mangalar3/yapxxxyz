@@ -1,0 +1,47 @@
+<li class="col-6 col-md-3 col-wd-2gdot4 product-item">
+    <div class="product-item__outer h-100">
+        <div class="product-item__inner px-xl-4 p-3">
+            <div class="product-item__body pb-xl-2">
+                <div class="mb-2"><a href="/kategori/<%- Product.product_category %>" class="font-size-12 text-gray-5"><%- Product.product_category %></a></div>
+                <h5 class="mb-1 product-item__title"><a href="/urunler/<%- Product.product_url %>" class="text-blue font-weight-bold"><%- Product.product_name %></a></h5>
+                <div class="mb-2">
+                    <a href="/urunler/<%- Product.product_url %>" class="d-block text-center"><img class="img-fluid" src="/uploads/images/<%-(Product.product_category3).trim()%>/<%- Product.product_photo[0] %>" alt="<%- Product.product_name %>"></a>
+                </div>
+                <div class="flex-center-between mb-1">
+                    <div class="prodcut-price">
+                        <div class="text-gray-100"><%- Product.product_price %></div>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="flex-center-between mb-1" style="margin-top: 10%;">
+                    
+                    <div >
+                        <div class="text-gray-23" style="font-size: small; margin-left: 10px; text-align: center; justify-content: center;">
+                            En düşük <div class="text-green" style="font-weight: bold;"> 23₺</div>
+                       
+                        </div>
+                        
+                    </div>
+                    
+                
+                    <div >
+
+                    
+                    <div class="text-gray-23" style="font-size: small; margin-right: 10px; text-align: center; justify-content: center;">
+                        En yüksek <div class="text-green" style="font-weight: bold;"> 55₺</div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            </div>
+            <div class="product-item__footer">
+                <div class="border-top pt-2 flex-center-between flex-wrap">
+                    <a href="/isteklistesi" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> İstek Listesi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>

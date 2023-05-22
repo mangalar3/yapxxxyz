@@ -1,0 +1,23 @@
+<li class="col-wd-3 col-md-4 product-item product-item__card pb-2 mb-2 pb-md-0 mb-md-0 border-bottom border-md-bottom-0">
+    <div class="product-item__outer h-100 w-100">
+        <div class="product-item__inner p-md-3 row no-gutters">
+            <div class="col col-lg-auto product-media-left">
+                <a href="/urunler/<%- Product.product_url %>  " class="max-width-150 d-block"><img class="img-fluid" src="/uploads/images/<%-Product.product_category3.trim() %>/<%- Product.product_photo[0] %>" alt="Image Description"></a>
+            </div>
+            <div class="col product-item__body pl-2 pl-lg-3 mr-xl-2 mr-wd-1">
+                <div class="mb-4">
+                    <div class="mb-2"><a href="/urunler/<%- Product.product_url %>  " class="font-size-12 text-gray-5"><%- Product.product_category %></a></div>
+                    <h5 class="product-item__title"><a href="/urunler/<%- Product.product_url %>  " class="text-blue font-weight-bold"><%- Product.product_name %></a></h5>
+                </div>
+                <div class="product-item__footer">
+                    <div class="border-top pt-2 flex-center-between flex-wrap">
+                        <a href="/isteklistesiekle/<%- Product.product_url %>" class="text-gray-6 font-size-13"><i class="ec ec-favorites mr-1 font-size-15"></i> Favorilere Ekle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+<script>
+
+</script>

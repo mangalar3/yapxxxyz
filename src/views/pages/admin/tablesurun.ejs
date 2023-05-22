@@ -1,0 +1,660 @@
+<style>
+    h1 {
+color: white;
+line-height: 120%;
+margin: 0 auto 2rem auto;
+max-width: 30rem;
+}
+select {
+
+/* styling */
+background-color: white;
+border: thin solid blue;
+border-radius: 4px;
+display: inline-block;
+font: inherit;
+line-height: 1.5em;
+padding: 0.5em 3.5em 0.5em 1em;
+
+/* reset */
+
+margin: 0;      
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-appearance: none;
+-moz-appearance: none;
+}
+
+
+/* arrows */
+
+select.classic {
+background-image:
+linear-gradient(45deg, transparent 50%, blue 50%),
+linear-gradient(135deg, blue 50%, transparent 50%),
+linear-gradient(to right, skyblue, skyblue);
+background-position:
+calc(100% - 20px) calc(1em + 2px),
+calc(100% - 15px) calc(1em + 2px),
+100% 0;
+background-size:
+5px 5px,
+5px 5px,
+2.5em 2.5em;
+background-repeat: no-repeat;
+}
+
+select.classic:focus {
+background-image:
+linear-gradient(45deg, white 50%, transparent 50%),
+linear-gradient(135deg, transparent 50%, white 50%),
+linear-gradient(to right, gray, gray);
+background-position:
+calc(100% - 15px) 1em,
+calc(100% - 20px) 1em,
+100% 0;
+background-size:
+5px 5px,
+5px 5px,
+2.5em 2.5em;
+background-repeat: no-repeat;
+border-color: grey;
+outline: 0;
+}
+
+
+ table {
+   width: 100%;
+   height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  
+  background: linear-gradient(90deg, #ffe656, #ffffff);
+ }
+
+ th, td {
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 600;
+  font-size: 13px;
+  color: black;
+  border: 1px solid gray;
+  
+  
+  
+ }
+
+
+ th {
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 800;
+  font-size: 12px;
+  color: black;
+  text-transform: uppercase;
+  background: rgb(218, 218, 218);
+ }
+
+
+ .typewriter{
+  color: black;
+  font-family: monospace;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(30, end),
+    blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+
+
+</style>
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                
+                  <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="exampleModalLabel" >Bannerdaki Ürünler</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        
+                        <div class="modal-body">
+                          <table>
+                            <thead id="product-table">
+                              <tr>
+                                <th>Banner Başlık</th>
+                                <th>Banner Açıklama</th>
+                                <th>Ürün adı</th>
+                                <th>İşlem</th>
+                            </tr>
+                              
+                            </thead>
+                              
+                            <tbody>
+                              <% BannerList.forEach(Product => { %>
+                              <tr>
+                                <td><%-Product.Banner_Title %></td>
+                                <td><%-Product.Banner_Description %></td>
+                                <td><%-Product.Banner_Product_Name %></td>
+                                <td>
+                                  <form action="/yapxadminlogin/banner2/<%-Product.Product_Url %>" method="post">
+                                   <button class="btn-danger" style="width: max-content; padding: 10px;">Kaldır</button>
+                                  </form>
+                                </td>
+                              </tr>
+                              <% }) %>
+                                   
+                            </tbody>
+                          </table>
+
+                           
+                            
+                              
+
+
+
+
+
+                          
+                        </div>
+                       
+                        <div class="modal-footer">
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <% Urunler.forEach(Product => { %>
+                  <div class="modal fade" id="<%-Product.product_url %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="exampleModalLabel" >Ürünün Bilgileri</h4>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        
+                        <div class="modal-body">
+                            <h5>Ürün Linki: <span class="ml-3" style="font-weight: normal;"> <a href="/urunler/<%-Product.product_url %>">Ürün görüntülemek için tıklayın</a> </span>  </h5>
+                            <hr>
+                            <h5>Eklenme Tarihi: <span class="ml-3" style="font-weight: normal;"> <%-(new Date(Date.parse(Product.createdAt))).toLocaleString('tr-TR') %></span>  </h5>
+                            <hr>
+                            <h5>Tıklanma Sayısı: <span class="ml-3" style="font-weight: normal;"> <%-Product.tiklanmasayisi %> </span> </h5>
+                            <hr>
+                            <h5>Favori Sayısı: <span class="ml-3" style="font-weight: normal;"> 0 </span> </h5>
+                            <hr>
+                            <h5>Ürüne Yapılan Yorum Sayısı:<span class="ml-3" style="font-weight: normal;"> <%-Product.urun_yorum.length %> </span> </h5>
+                            <hr>
+                            <h5>Ürünün Ortalama Puanı:<span class="ml-3" style="font-weight: normal;"> <%-Product.avarage %> </span> </h5>
+                            <hr>
+                            <h5>Fotoğraf Ekle:<span class="ml-3" style="font-weight: normal; float: right;">
+                              <form action="" method="post" enctype="multipart/form-data">
+                              <div class="custom-file">
+                                <input accept="image/*" type='file' id="images" name="images">
+                              </div>
+                              <div class="pb-3"></div>
+                            
+                              </form></span> </h5>
+                            <hr>
+
+                        </div>
+                       
+                        <div class="modal-footer">
+                          <form action="/yapxadminlogin/urunsil/<%-Product.product_url %>" method="post">
+                            <button type="submit" class="btn btn-danger" >Ürünü Sil</button>
+                          </form>
+                          
+                          <button type="button" class="btn btn-primary">Değişiklikleri Kaydet</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+                  
+                  <% }) %>    
+                  
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                          
+                          
+                                            <div class="col-md-6 pb-3">
+                                              
+                                                <div class="overview-wrap" style="">
+                                                  
+                                                  
+                                                  
+                                                  <div class="form-group" style="margin-left: 240px;  padding: 2%; background: linear-gradient(90deg, #fed700, #ffffff); border-radius: 5%;" id="aramacılır">
+                                                    <h4 style="padding: 5%;">Kategori Arama</h4>
+                                                      <div class="col-md-4">
+                                                        <form action="/yapxadminlogin/filtreKategori" method="post" enctype="application/x-www-form-urlencoded">
+                                                          <select name="subject" id="subject">
+                                                              <option  value="" selected="selected">Ana Kategori</option>
+                                                            </select>
+                                                            <br><br>
+                                                          <select name="topic" id="topic">
+                                                              <option value="" selected="selected">Alt Kategori</option>
+                                                            </select>
+                                                            <br><br>
+                                                          <select name="chapter" id="chapter">
+                                                              <option value="" selected="selected">Cins</option>
+                                                            </select>
+                                                            <br><br>
+                                                            <button   class="au-btn--submit" id="search-button" style="color: white; ">Ara</button>  
+                                                          </form>
+                                                        </div>
+                                                      </div>
+
+
+                                                  <div style="margin-bottom: 20px; margin-left: 50px; margin-right: 50px;  padding: 2%; background: linear-gradient(-90deg, #fed700, #ffffff); border-radius: 5%;" id="aramacılır2">
+                                                    <form action="/yapxadminlogin/urunara" method="post"  enctype="application/x-www-form-urlencoded">
+                                                      <h4 style="padding: 2%; padding-left: 2px;">Ürün Arama</h4>
+                                                      <div style=" width: 500px;">
+
+                                                      
+                                                        <input class="au-input "
+                                                        type="text"
+                                                        id="search-input"
+                                                        name="aranan"
+                                                        placeholder="Ürünlerin adına göre arama yapın..."
+                                                        style="width: 435px;"
+                                                        
+                                                      />
+                                                      <button type="submit" class="au-btn--submit" id="search-button" style="color: white; float: right; ">Ara </button>
+                                                    </form>
+                                                    
+                  
+                                                    
+                                                      
+                                                  </div>
+                                                  <div style=" margin-top: 50px; margin-left: 80px; width: 300px; height: 100px;">
+                            
+                                                    <button class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal3" style="width: 300px; height: 50px;">
+                                                      <i class="fas fa-info"></i>
+                                                      Banner Bilgileri
+                        
+                                                    </button>
+                                                  </div>
+                                                  
+                                              </div>
+                                           
+                                                    
+                                                    
+                                                    
+
+                                            </div>
+                                        </div>
+                                        <div class="row m-t-25">
+                                            
+                                          <div id="myBackDiv" style="margin-left: 700px; display: none;">
+                                            <button ><a href="/yapxadminlogin/tablesurun" style="font-size: 20px;"><i class="fa fa-angle-left" style="font-size: 30px; padding-right: 10px;"></i>Ürünlere Geri Dön </a></button>
+                                          </div>
+                                            
+                                        </div>
+                                         <hr>                     
+                                        <div class="row">
+                                          <!--<h2 style="margin-left: 15px;">Ürünler</h2>  -->
+                                          
+                                            <div class="col-lg-12 m-t-25" >
+                                                
+                                                
+                                                
+                                                    <table id="product-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Ürün Adı</th>
+                                                                <th>Ana Kategori</th>
+                                                                <th>Alt Kategori</th>
+                                                                <th >Cins</th>
+                                                                <th>Marka</th>
+                                                                <th>Dükkan Sayısı (Ait)</th>
+                                                                <th>Toplam Stok</th>
+                                                                <th>Ortalama Fiyat</th>
+                                                                <th>Fotoğrafları</th>
+                                                                <th >Detaylar ve Banner Ekleme</th>
+                                                            </tr>
+                                                        </thead>                                      
+                                                            <tbody id="">
+                                                                <% Urunler.forEach(Product => { %>
+                                                                <tr>
+                                                                    <td><%-Product.product_name %></td>
+                                                                    <td><%-Product.product_category %></td>
+                                                                    <td><%-Product.product_category2 %></td>
+                                                                    <td><%-Product.product_category3 %></td>
+                                                                    <td><%-Product.product_marka %></td>
+                                                                    <td><%-Product.product_seller.length %></td>
+                                                                    <td><%-Product.totalstock  %></td>
+                                                                    <td><%-Product.avg %> ₺</td>
+                                                                    
+                                                                    <td>
+                                                                        <% let i = 0 %>
+                                                                        <% Product.product_photo.forEach((item) => { %>
+                                                                        <form action="/yapxadminlogin/PhoteDelete?id=<%-Product.product_url %>&index=<%= i %>" method="post" enctype="application/x-www-form-urlencoded">
+                                                                          <% if (Product.product_photo.length>1) { %>
+                                                                            <button type="submit" class="ml-3" style="color: red; font-weight: bold;"> <img  src="/uploads/images/<%-Product.product_category3 %>/<%- item%>" width="20" height="20"><div>X</button> 
+                                                                          <% } else { %>
+                                                                            <img  src="/uploads/images/<%-Product.product_category3 %>/<%- item%>" width="20" height="20">
+                                                                            <% } %>
+                                                                              
+                                                                        </form>
+                                                                        <% i++ %>
+                                                                            <% }) %>
+                                                                    </td>
+                                                                    
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<%-Product.product_url %>" style="width: 50px; height: 50px;"><i class="fa fa-search"> </i></button>
+                                                                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#<%-Product.product_photo[0].split('.')[0] %>" style="width: 50px; height: 50px;"><i class="fa fa-plus"> </i></button>
+                                                                    </td>
+                                                                    
+                                                                      
+                                                                    
+                                                                </tr>
+                                                                
+                                                                  <div class="modal fade" id="<%-Product.product_photo[0].split('.')[0] %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                      <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                          <h4 class="modal-title" id="exampleModalLabel" >Banner Ekleme</h4>
+                                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                          </button>
+                                                                        </div>
+                                                                        
+                                                                        
+                                                                       
+                                                                        
+                                                                          
+                                                                            <% if (Product.banner == 1) { %>
+                                                                              <form action="/yapxadminlogin/banner2/<%-Product.product_url %>" method="post"  enctype="application/x-www-form-urlencoded">
+                                                                                <button type="submit" class="btn btn-danger">Bannerdan Kaldır</button>
+                                                                              </form>
+                                                                            <% } else { %>
+                                                                              <form action="/yapxadminlogin/banner/<%-Product.product_url %>" method="post"  enctype="application/x-www-form-urlencoded">
+                                                                                <div class="modal-body">
+                                                                            
+                                                                                  <hr>
+                                                                                  <div style="width: 450px; height: 200px; background-color: gray;">
+                                                                                    <div style="float: right; margin: 20px; width: 150px; height: 100px; background-color: white;">
+                                                                                      <img src="/uploads/images/<%-Product.product_category3 %>/<%-Product.product_photo[0] %>" alt="">
+                                                                                    </div>
+                                                                                    <div style="float: left; margin-top: 30px; margin-left: 10px; ">
+                                                                                      <h6 style="color: #34bcec;" id="myHeading">Banner Üst Yazı</h6>
+                                                                                      <h6 style="margin-top: 10px;" id="myHeading2">Banner Açıklama</h6>
+                                                                                    </div>
+                                                                                    <div style="float:left; color:black; background-color: #fed500; margin-left: 20px; margin-top: 80px; padding: 1%; border-radius: 5%;">Ürüne Git</div>
+                                                      
+                                                                                  </div>
+                                                                                  <hr>
+                                                                                  
+                                                                                   <span class="ml-3" style="font-weight: normal;"> <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                      <span class="input-group-text">Banner Üst Başlık</span>
+                                                                                      
+                                                                                    </div>
+                                                                                    <textarea name="bannerustyazi" class="form-control" aria-label="With textarea" id="myTextarea" required></textarea>
+                                                                                  </div> </span> 
+                                                                                  <hr>
+                                                                                   <span class="ml-3" style="font-weight: normal;"> <div class="input-group">
+                                                                                    <div class="input-group-prepend">
+                                                                                      <span class="input-group-text">Banner Açıklama</span>
+                                                                                    </div>
+                                                                                    <textarea name="banneryazi" class="form-control" aria-label="With textarea" id="myTextarea2" required></textarea>
+                                                                                  </div> </span>
+                                                                                  <hr>
+                                                                                  <h5>Fotoğraf Ekle:<span class="ml-3" style="font-weight: normal; float: right;">
+                                                                                    <div class="custom-file">
+                                                                                      <input accept="image/*" type='file' id="images" name="images">
+                                                                                    </div>
+                                                                                    <div class="pb-3"></div>
+                                                                                    </span> </h5>
+                                                                                  <hr>
+                                                                                  <div class="modal-footer">
+                                                                                </div>
+                                                                                <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
+                                                                              </form>
+                                                                            <% } %>
+                                                                          
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                
+                                                                <% }) %>                  
+                                                            </tbody>  
+                                                    </table>
+                                                    <div style="text-align: center; padding: 2%;">
+                                                      <a href="/yapxadminlogin/tablesurun?pg=<%-  %>"><i class="fas fa-angle-left"></i></a>
+                                                      <label for="" style="padding: 2%;"> <%- 1 %></label>
+                                                      <a href="/yapxadminlogin/tablesurun?pg=<%- 2 %>"><i class="fas fa-angle-right"></i></a>
+                                                  </div>
+                                                   
+                                                  
+                                                   
+                                                   
+                                                
+                            </div>
+                            <!-- END MAIN CONTENT-->
+                            <!-- END PAGE CONTAINER-->
+                        </div>
+                
+                    </div>
+                        </div>
+                        
+                                <!-- END DATA TABLE -->
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2023 Yapx. All rights reserved. Template by <a href="localhost:8080">Yapaax</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $("i#success_button").click(function() {
+                        var nameAttribute = $(this).attr("name");
+                        console.log(nameAttribute);
+                    });
+                });
+
+
+
+                $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+
+if(window.location.href.indexOf("/yapxadminlogin/urunara") > -1) {
+  document.getElementById("myBackDiv").style.display = "block";
+}
+if(window.location.href.indexOf("/yapxadminlogin/filtreKategori") > -1) {
+  document.getElementById("myBackDiv").style.display = "block";
+}
+
+
+
+
+
+            </script>
+            <script>
+        var subjectObject = {
+    "Kaba & İnce Yapı": {
+      "Demir Grubu": ["İnce Demir(Q8-Q10)", "Kalın Demir(Q12-Q30)", "Çelik Hasır", "Kangal Demir","Çivi ve Tel",],
+      "Beton Grubu": ["GRO Beton(C16-C24)", "C30 Beton", "C35 Beton", "C40 Beton","Hazır Sıva"],
+      "Dolgu Malzemeleri" : ['Mıcır', 'Toprak', 'Moloz', 'Cüruf' ],   
+      "Yalıtım Malzemeleri" : ['Temel Yalıtım Malzemeleri', 'Çatı Yalıtım Malzemeleri', 'Cephe Yalıtım Malzemeleri', 'Islak Zemin Yalıtım Malzemeleri','Ses Yalıtım Malzemeleri'],
+      "Tuğla ve Blok Ürünleri" : ['Tuğla(8.5-10-13.5)','GazBeton','Bims','İzoTuğla','Yığma Tuğla'],
+      "Çatı Malzemeleri"  : ['Kiremit Grubu','Sac Grubu','Sandvic Panel Grubu','Şıngıl Çatı Grubu','Beton Kiremit Grubu','OSB Plaka',],
+      "Sıva ve Harç Malzemeleri": ['Çimento','Kireç','Kum','Brüt Beton Astarı','Hazır Sıva','Grout Harcı',],
+      "Alçı ve Alçıpan Grubu": ['Makine Sıva Alçısı','El Sıva Alçsı(Perlitli)','Saten Alçısı','Kartonpiyer Alçısı','Ders Dolgu Alçısı','Alçıpan','OSB Plaka'],
+      "Asma Tavan Grubu" : ['Metal Asma Tavan(CLIP-IN)','Karolam Asma Tavan','Taş Yünü Asma Tavan','Gergi Tavan','Dekoratif Tavan'],
+      "Boya Grubu" :  ['İç Cephe Boyası','Dış Cephe Boyası','Tavan Boyası','Ahşap Boyası','Metal Boyası'],
+      "Cephe Kaplama Ürünleri" :  ['Betopan Plaka','Dış Cephe Plakası','Kompozit Kaplama','Doğal Taş Kaplama'],
+      "Mantolama Ürünleri" : ['Hazır Söve Ürünleri','Dübelli EPS Kaplama','Dübelli XPS Kaplama','Dübelli Taş Yünü Kaplama','Mantolama Yapıştırıcısı Harcı'],
+
+      //burası bitti//
+
+    },
+    "Mobilya ve PVC Doğrama ": {
+      "İç Mekan Kapı Grubu": ["Lake Kapı", "PVC Kapı", "Amerikan Kapı"],
+      "İç Mekan Mobilya Grubu": ["Vestiyerler", "Mutfak Dolapları", "Banyo Dolapları","Gardıroplar"],
+      "Dış Cephe Kaplama Grubu": ["Dış Cephe Kaplama Grubu", ],
+      "Zemin Kaplama ve Parke Grubu": ["Laminant Parke", "Masif Parke", "Lamine Parke","PVC Zemin Kaplama"],
+      "Kapı Pencere Doğramaları": ["Çelik Kapılar", "Alüminyum Kapı-Pencereler", "Demir Kapılar","PVC Kapı-Pencereler","Menfez ve Müdahele Kapakları","Havalandırma Kapakları",],
+      "Korkuluklar": ["Demir Korkuluklar", "Alüminyum Korkuluklar", "Cam Korkuluklar","Ahşap Korkuluklar",],
+      "Açılır Kapanır Sistemler": ["Garaj Kapıları", "Açılır Kapanır Pergule", "Otomatik Panjur","Otomatik ve Fotoselli Kapılar","Otomatik Bahçe Kapısı",],
+      "Cam Grubu": ["Saydam ve Yarı Saydam Cam", "Renkli Cam", "Reflekte Cam","Isı Cam"],
+//burası da bitti//
+    },
+
+    "Peyzaj ve Mermer Grubu": {
+      "Havuz Sistemleri": ["Yüzme Havuzları", "Süs Havuzları", "Sulama Havuzları","Prefabrik Havuzlar"],
+      "Bitki Grubu": ["Ağaç Grubu", "Çim Grubu", "Süs Bitkileri","Saksı Bitkileri","Dekoratif Bitkiler"],
+      "Çit ve Bahçe Sistemleri": ["Sulama Sistemleri", "Panel Çitler", "Telli Çit Çeşitleri","Dekoratif Çit Çeşitleri","Ahşap Çit Çeşitleri"],
+      "Doğal Taş ve Mermerler": ["Mermerit", "Koryan", "Çimstone","Doğal Mermer","Granit","Porselen"],
+      //burası da bitti//
+    },
+    "Genel Hizmetler": {
+      "İş Makineleri": ["Hafriyat Araçları", "Taşıma Araçları", "Yük Asansörleri","Cephe İskeleti Sistemleri"],
+      "Nakliye": ["Traktör Nakliyesi", "Kamyon Nakliyesi", "Tır Nakliyesi"],
+      "İş Güvenliği": ["İş Güvenliği Ekipmanları", "Uyarı Levhaları", "İş Güvenliği Firmaları","Şantiye Güvenliği","Saha Güvenliği Ekipmanları"],
+      "Yemek Hizmetleri": ["Yemek Firmaları", ],
+      "Temizlik Hizmetleri": ["Şantiye Temizliği", "Bina Temizliği", ""],
+      "Hammaliye": ["Günlük Beden İşçisi", "Yük Taşıma", ],
+      //burası da bitti//
+
+    },
+    "Elektrik ve Su Tesisatı": {
+      "Temiz ve Pis Su Malzemeleri": ["PPRC Boruları", "PPRC Ek Parçaları", "PN Boru Grubu","PVC Pis Su Boruları","PVC Pis Su Ek Parçaları","Altyapı Boru Grubu","Süzgeçler"],
+      "Isıtma ve Soğutma Sistemleri": ["Kombiler", "Radyatörler", "Kazanlar","Yerden Isıtma Malzemeleri","Isı Pompaları","Şömine ve Aksesuarları","Klimalar","Şofbenler"],
+      "Vitrifiye ve Armatürler": ["Lavabolar", "Pisuar ve Hela Taşları", "Klozet ve Kapakları","Bataryalar","Duşakabin,Jakuzi ve Küvet","Banyo Aksesuarları"],
+      "Kablo ve Priz Grubu": ["Besleme Kabloları", "TV Kabloları", "Zayıf Akım Kabloları","Priz ve Anahtar Grubu"],
+      "Sigorta ve Pano Grubu": ["Kaçak Akım Grubu", "Şalter Grubu", "Sigorta Grubu","Kombinasyon Kutuları","Sigorta Kutusu","Pano Malzemeleri"],
+      "TV ve Uydu Sistemleri": ["TV ve Uydu Sistemleri", ],
+      "Aydınlatma Grubu": ["Avizeler", "Aplikler", "Bahçe Aydınlatmaları","Cephe Aydınlatmaları","Ampul Led ve Spotlar","İç Mekan Aydınlatmaları"],
+      "Güvenlik Sistemleri": ["Diyafon ve Zil Sistemler","Kamera Sistemleri","Alarm Sistemleri","Yangın Uyarı Sistemleri"],
+      "Paratoner ve Topraklama Sistemleri": ["Paratoner ve Topraklama Sistemleri",],
+      "Mekanik Elektrik Sistemleri": ["Asansör ve Ekipmanları", "Güneş Enerjisi Sistemleri", "Mekanik Havalandırma Sistemleri","Jenaratörler"],
+    },
+//burası da bitti//
+
+    "Hırdavat ve Nalbur Grubu": {
+      "El Aletleri": ["Mekanik El Aletleri", "Elektrikli El Aletleri", "Kaynak Makineleri ve Aksesuarları"],
+      "Vida ve Civata Grubu": ["Vidalar", "Civatalar", "Somun Grubu","Guon ve Rot Grubu","Dübel Grubu","Bağlantı Elemanları"], 
+      "Sulama Ekipmanları": ["Su Hortumları", "Fıskiyeler", "Vana ve Musluklar"],
+      "Silikon ve Mastikler": ["Silikonlar", "Mastikler", "Yapıştırıcı ve Bantlar","Ekopsi Yapıştırıcı Grubu"],
+      "Kapı ve Pencere Aksesuarları": ["Kapı ve Pencere Kolları", "Kilit Sistemleri", "Mobilya Kulpları","Menteşeler"],
+      "Hırdavat": ["Ölçü Aletleri", "Merdivenler", "Takım Çanta ve Dolapları","İnşaat Makineleri"],
+    },//burası da bitti//
+}
+window.onload = function() {
+    var subjectSel = document.getElementById("subject");
+    var topicSel = document.getElementById("topic");
+    var chapterSel = document.getElementById("chapter");
+    for (var x in subjectObject) {
+      subjectSel.options[subjectSel.options.length] = new Option(x, x);
+    }
+    subjectSel.onchange = function() {
+      //empty Chapters- and Topics- dropdowns
+      chapterSel.length = 1;
+      topicSel.length = 1;
+      //display correct values
+      for (var y in subjectObject[this.value]) {
+        topicSel.options[topicSel.options.length] = new Option(y, y);
+      }
+    }
+    topicSel.onchange = function() {
+      //empty Chapters dropdown
+      chapterSel.length = 1;
+      //display correct values
+      var z = subjectObject[subjectSel.value][this.value];
+      for (var i = 0; i < z.length; i++) {
+        chapterSel.options[chapterSel.options.length] = new Option(z[i], z[i]);
+      }
+    }
+  }
+
+  $(document).ready(function() {
+  // Textarea değiştiğinde tetiklenecek fonksiyon
+  $('#myTextarea').on('input', function() {
+    // Textareadaki değeri al
+    var value = $(this).val();
+     // Karakter sayısını hesapla
+     var charCount = value.length;
+    // Maksimum karakter sayısı
+    var maxChars = 20;
+    // Karakter sayısını kontrol et
+    if (charCount > maxChars) {
+      // Maksimuma ulaşıldığında, textarea içeriğini kırp
+      value = value.substring(0, maxChars);
+      $(this).val(value);
+      charCount = maxChars;
+    }
+    // Başlığı seç ve içeriğini değiştir
+    $('#myHeading').text(value);
+    
+  });
+});
+$(document).ready(function() {
+  // Textarea değiştiğinde tetiklenecek fonksiyon
+  $('#myTextarea2').on('input', function() {
+    // Textareadaki değeri al
+    var value = $(this).val();
+     // Karakter sayısını hesapla
+     var charCount = value.length;
+    // Maksimum karakter sayısı
+    var maxChars = 30;
+    // Karakter sayısını kontrol et
+    if (charCount > maxChars) {
+      // Maksimuma ulaşıldığında, textarea içeriğini kırp
+      value = value.substring(0, maxChars);
+      $(this).val(value);
+      charCount = maxChars;
+    }
+    // Başlığı seç ve içeriğini değiştir
+    $('#myHeading2').text(value);
+  });
+});
+
+$(document).ready(function(){
+  $("#tukla").click(function(){
+    $("#aramacılır").slideToggle();
+    $("#aramacılır2").slideToggle();
+
+  });
+});
+
+
+            </script>
